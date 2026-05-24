@@ -162,10 +162,22 @@ $case = Join-Path $env:TEMP ('reversa-scenario-b-' + [guid]::NewGuid().ToString(
 New-Item -ItemType Directory -Path $case | Out-Null
 Set-Location $case
 git init | Out-Null
+$env:CS_AGENT_EXE='F:\smoke\CS253\cs-agent.exe'
+$env:CS_AGENT_PROFILE='CS253'
+npm install --no-save --package-lock=false F:\smoke\reversa\reversa
+npx @pnocera/reversa content-server detect --json
 node F:\smoke\reversa\reversa\bin\reversa.js install
 ```
 
 If the installer asks to enable Content Server, decline for this setup.
+
+Before starting Codex or any Reversa agent from this disposable project, verify that local `npx` resolves the unpublished package:
+
+```powershell
+npx @pnocera/reversa content-server detect --json
+```
+
+If this prints `Comando desconhecido: "content-server"`, stop the scenario. `npx` is still using the published package instead of the local checkout, and the migration prompt cannot be validated.
 
 Verify or force the disabled state:
 
