@@ -38,6 +38,15 @@ The agent does the first walkthrough of the property. Does not open drawers, doe
 
 ---
 
+## 🏛️ Content Server — the archivist with the official index
+**Command:** `/reversa-content-server`
+
+The archivist does not wander every corridor. They consult the official index first: profiles, graph status, documentation categories, unresolved references, and confidence counts already collected by `cs-agent`.
+
+> Use Content Server when analyzing OpenText Content Server projects with `cs-agent` initialized. It creates a read-only inventory snapshot and keeps Scout from recursively walking huge `srcmodules` trees.
+
+---
+
 ## 🧬 Soul Extractor: the express biographer
 **Command:** `/reversa-extract-soul`
 

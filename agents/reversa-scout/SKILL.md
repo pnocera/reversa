@@ -18,8 +18,36 @@ Read `.reversa/state.json` → fields `output_folder` (default: `_reversa_sdd`) 
 
 ## Process
 
+### 0. Content Server snapshot guard
+Before listing the tree, check `.reversa/config.toml` section `[integrations.cs_agent]`.
+
+Always do a cheap pre-walk Content Server detection pass before recursively listing directories:
+
+1. Run `npx @pnocera/reversa content-server probe --json`.
+2. If it fails, continue normally and add a top-level `signals[]` item to `.reversa/context/surface.json`:
+   `{ "type": "cs_agent_probe_failed", "evidence": ["content-server probe"] }`
+3. If probe succeeds, run `npx @pnocera/reversa content-server detect --json`.
+4. If detect has no profiles, add:
+   `{ "type": "cs_agent_no_profile", "evidence": ["content-server detect"] }`
+5. If detect finds a profile, add:
+   `{ "type": "cs_agent_profile_detected", "evidence": ["content-server detect", "<profile>", "<ot_home>"] }`
+
+Do not enable the integration from Scout. Only Reversa or the installer may update `.reversa/config.toml`.
+
+If `[integrations.cs_agent].enabled = true`, run:
+
+```bash
+npx @pnocera/reversa content-server snapshot
+npx @pnocera/reversa content-server inventory
+```
+
+Then read `.reversa/context/cs-agent/graph-status.json` and use it as the source for Content Server file counts, module counts, support assets, unresolved references, and confidence counts. Add:
+`{ "type": "cs_agent_profile", "evidence": [".reversa/context/cs-agent/_meta.json", ".reversa/context/cs-agent/graph-status.json"] }`
+
+If snapshot fails, continue with normal filesystem reconnaissance, add `cs_agent_snapshot_failed`, and do not recursively walk `.reversa/context/cs-agent/`.
+
 ### 1. Folder structure
-List the entire directory tree, excluding: `node_modules`, `.git`, `.reversa`, `_reversa_sdd`, `dist`, `build`, `coverage`, `__pycache__`, `.cache`
+List the entire directory tree, excluding: `node_modules`, `.git`, `.reversa`, `_reversa_sdd`, `dist`, `build`, `coverage`, `__pycache__`, `.cache`. If the Content Server integration is enabled, also exclude `srcmodules` from recursive traversal and replace that detail with the cs-agent snapshot summary.
 
 ### 2. Technologies and frameworks
 Identify from configuration files:
@@ -60,6 +88,7 @@ Always populate:
 - `granularity` (one of the 5 values above, never `custom`)
 - `rationale` in one short sentence in the installation language
 - `signals` with `type` and `evidence` (list of relative paths that support the signal)
+- `content_server` when a cs-agent snapshot is available, with profile, schema version, source file count, support asset count, module counts, confidence counts, and unresolved reference counts
 
 ## Output
 

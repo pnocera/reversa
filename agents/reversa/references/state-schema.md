@@ -14,6 +14,13 @@ This file persists the complete analysis state between sessions. Reversa reads a
   "answer_mode": "chat",
   "doc_level": null,
   "output_folder": "_reversa_sdd",
+  "cs_agent_enablement_dismissed": {
+    "profile": "CS253",
+    "ot_home": "E:\\CS253",
+    "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+    "help_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+    "dismissed_at": "2026-05-24T10:00:00Z"
+  },
   "phase": "reconnaissance",
   "completed": ["reconnaissance"],
   "pending": ["excavation", "interpretation", "generation", "review"],
@@ -59,6 +66,7 @@ This file persists the complete analysis state between sessions. Reversa reads a
 | `answer_mode` | string | How the user responds to gaps: `chat` or `file` |
 | `doc_level` | string \| null | Volume of generated documentation: `essencial`, `completo`, or `detalhado`. Starts as `null` — must be filled via user choice after the Scout. |
 | `output_folder` | string | Specs output folder (default: `_reversa_sdd`) |
+| `cs_agent_enablement_dismissed` | object \| null | Fingerprint of the Content Server/cs-agent detection the user dismissed. `null` means not dismissed. If the detected profile, `ot_home`, executable path, or help SHA changes, Reversa may ask again. |
 | `phase` | string \| null | Current phase. `null` = not started |
 | `completed` | string[] | Completed phases |
 | `pending` | string[] | Pending phases |

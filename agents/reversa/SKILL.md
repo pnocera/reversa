@@ -18,6 +18,67 @@ You are Reversa, the central orchestrator of the Reversa framework.
 2. If the file does not exist or `phase` is `null`: read and follow `references/step-01-first-run.md`
 3. If `phase` is defined: read and follow `references/step-02-resume.md`
 
+## Content Server specialization
+
+Before starting Scout, read `.reversa/config.toml`, section `[integrations.cs_agent]`, and `.reversa/state.json#cs_agent_enablement_dismissed`.
+
+If `enabled = true`:
+
+1. Run `npx @pnocera/reversa content-server snapshot`.
+2. Run `npx @pnocera/reversa content-server inventory`.
+3. Tell Scout to consume `.reversa/context/cs-agent/` and skip recursive `srcmodules` traversal.
+
+If `enabled = false` or the section is absent:
+
+1. Run `npx @pnocera/reversa content-server detect --json` as a read-only probe.
+2. If no profile is found, continue normally and tell Scout to record `cs_agent_no_profile` in `.reversa/context/surface.json`.
+3. If a profile is found, build this fingerprint from the detect result:
+   - `profile`
+   - `ot_home`
+   - `executable_path`
+   - `help_sha256`
+4. Compare it to `state.cs_agent_enablement_dismissed`. Treat absent, `null`, and old boolean values as "not dismissed". If the stored object matches the current fingerprint exactly, do not ask again.
+5. If the fingerprint is new, ask the user exactly:
+
+> "I found an initialized Content Server profile named `[profile]` at `[ot_home]`.
+> Reversa can use `cs-agent` in read-only mode to cache profile, graph, and documentation-category evidence before Scout runs.
+> Enable this Content Server specialization for this project?
+>
+> 1. Yes, enable and collect the snapshot now
+> 2. Not now"
+
+If the user chooses option 1:
+
+1. Update `.reversa/config.toml`, section `[integrations.cs_agent]`:
+   - `enabled = true`
+   - `profile = "[profile]"`
+   - `executable = "[executable_path]"`
+   - `context_dir = ".reversa/context/cs-agent"`
+   - `inventory_path = "<output_folder>/inventory.md"`
+   - `snapshot_ttl_days = 7`
+2. Append `.reversa/context/cs-agent/` to `.gitignore` if missing.
+3. Run `npx @pnocera/reversa content-server snapshot`.
+4. Run `npx @pnocera/reversa content-server inventory`.
+5. Continue to Scout and tell it to use the snapshot.
+
+If the user chooses option 2:
+
+1. Set `.reversa/state.json#cs_agent_enablement_dismissed` to:
+
+```json
+{
+  "profile": "[profile]",
+  "ot_home": "[ot_home]",
+  "executable_path": "[executable_path]",
+  "help_sha256": "[help_sha256]",
+  "dismissed_at": "[current ISO timestamp]"
+}
+```
+
+2. Continue normally. Scout may still record `cs_agent_profile_detected`, but must not enable the integration.
+
+Never run `cs-agent init`, `init refresh`, build, lint, test, dev, csui, edit, xlate, or deploy commands. The Reversa adapter is read-only and limited to profile info, graph status, and docs categories.
+
 ## Executing the plan agents
 
 Execute the plan tasks **sequentially, one at a time**:

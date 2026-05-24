@@ -6,3 +6,8 @@
 # [user]
 # name = "Your Name"
 # chat_language = "pt-br"
+
+# Optional Content Server integration override:
+# [integrations.cs_agent]
+# executable = "F:\\smoke\\CS253\\cs-agent.exe"
+# profile = "CS253"

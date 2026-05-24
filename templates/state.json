@@ -9,6 +9,7 @@
   "output_folder": "_reversa_sdd",
   "forward_folder": "_reversa_forward",
   "phase": null,
+  "cs_agent_enablement_dismissed": null,
   "completed": [],
   "pending": ["reconnaissance", "excavation", "interpretation", "generation", "review"],
   "checkpoints": {},
