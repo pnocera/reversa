@@ -54,7 +54,7 @@ O menu de agentes lista times, não agentes individuais. O usuário escolhe na g
 4. `Pricing and Size Agents`
 5. `Translators N8N->Specs->Python` (desmarcado por padrão)
 
-O `Reversa Agents Core` é renderizado como um separator cinza não selecionável que visualmente mostra `(*)` como se fosse um item marcado e desabilitado: o usuário enxerga, sabe que está incluído, e o cursor pula por cima. Ele contém todos os agentes de descoberta (Reversa, Scout, Soul Extractor, Archaeologist, Detective, Architect, Writer, Reviewer, Visor, Data Master, Design System, Agents Help, Reconstructor), então o antigo grupo "Discovery Add-ons" deixou de existir como conceito separado. Mesmo o menu escondendo o detalhe por agente, o resumo final da instalação continua quebrando a contagem por time (Discovery, Migration, Code Forward, Translators, Pricing).
+O `Reversa Agents Core` é renderizado como um separator cinza não selecionável que visualmente mostra `(*)` como se fosse um item marcado e desabilitado: o usuário enxerga, sabe que está incluído, e o cursor pula por cima. Ele contém todos os agentes de descoberta (Reversa, Scout, Soul Extractor, Archaeologist, Detective, Architect, Writer, Reviewer, Visor, Data Master, Design System, Agents Help, Content Server, Reconstructor), então o antigo grupo "Discovery Add-ons" deixou de existir como conceito separado. Mesmo o menu escondendo o detalhe por agente, o resumo final da instalação continua quebrando a contagem por time (Discovery, Migration, Code Forward, Translators, Pricing).
 
 ---
 
@@ -99,6 +99,20 @@ npx @pnocera/reversa add-engine
 ```
 
 Adiciona suporte a uma engine de IA que não estava presente quando você instalou. Por exemplo: instalou só para Claude Code e agora quer adicionar Codex também.
+
+---
+
+### `content-server`
+
+```bash
+npx @pnocera/reversa content-server probe
+npx @pnocera/reversa content-server detect
+npx @pnocera/reversa content-server snapshot
+npx @pnocera/reversa content-server inventory
+npx @pnocera/reversa content-server doctor
+```
+
+Usa um `cs-agent` já inicializado como fonte read-only de evidências para projetos OpenText Content Server. O adaptador permite apenas leituras de perfil, status do grafo e categorias de documentação, e grava o cache em `.reversa/context/cs-agent/`.
 
 ---
 
