@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "profile": "CS253",
+  "data": {
+    "status": {
+      "schemaVersion": 3,
+      "sourceFileCount": 42,
+      "supportAssetCount": 7,
+      "nodeCount": 120,
+      "edgeCount": 244,
+      "countsByModule": {
+        "core": 80,
+        "web": 40
+      },
+      "confidenceCounts": {
+        "confirmed": 200,
+        "inferred": 40,
+        "gap": 4
+      },
+      "unresolvedRefsByKind": {
+        "function": 2
+      }
+    }
+  }
+}

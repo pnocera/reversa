@@ -6,6 +6,10 @@
     "reversa": "bin/reversa.js"
   },
   "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:cs-agent": "node scripts/test-cs-agent-integration.mjs"
+  },
   "keywords": [
     "legacy",
     "reverse-engineering",

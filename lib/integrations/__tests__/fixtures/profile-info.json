@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "profile": "CS253",
+  "data": {
+    "active": "CS253",
+    "profile": {
+      "name": "CS253",
+      "version": 3,
+      "ot_home": "F:\\smoke\\CS253",
+      "workdir": "F:\\smoke\\CS253\\work",
+      "paths": {
+        "srcdir": "F:\\smoke\\CS253\\srcmodules"
+      }
+    },
+    "path_checks": [
+      { "name": "ot_home", "exists": true },
+      { "name": "srcdir", "exists": true }
+    ]
+  }
+}

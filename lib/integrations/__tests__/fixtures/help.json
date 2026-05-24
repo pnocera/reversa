@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "data": {
+    "topics": [
+      {
+        "name": "profile",
+        "commands": ["info"]
+      },
+      {
+        "name": "graph",
+        "commands": ["status"]
+      },
+      {
+        "name": "docs",
+        "commands": ["categories"]
+      }
+    ]
+  }
+}

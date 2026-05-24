@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "profile": "CS253",
+  "data": {
+    "categories": [
+      { "name": "Admin" },
+      { "name": "Workflow" }
+    ]
+  }
+}
