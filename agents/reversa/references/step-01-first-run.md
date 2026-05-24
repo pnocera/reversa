@@ -60,4 +60,20 @@ Refer to `references/checkpoint-guide.md` for the state.json writing rules.
 
 Ask: "[Name], shall we start with the **Scout** — project mapping?"
 
-After confirmation, activate the `reversa-scout` skill.
+After confirmation, do not activate Scout yet. First, execute the parent
+`SKILL.md` section **Content Server specialization** exactly once for this run.
+That gate must run before Scout whenever `[integrations.cs_agent].enabled` is
+`true`, `false`, or absent:
+
+- If Content Server is already enabled, collect the snapshot and inventory
+  before Scout starts.
+- If Content Server is disabled but `content-server detect --json` finds a
+  profile whose fingerprint has not been dismissed, ask the enablement question
+  before Scout starts.
+- If the user accepts, update config, collect the snapshot and inventory, then
+  activate Scout.
+- If the user declines or no profile is available, continue to Scout without
+  enabling the integration.
+
+Only after the Content Server specialization gate has completed, activate the
+`reversa-scout` skill.

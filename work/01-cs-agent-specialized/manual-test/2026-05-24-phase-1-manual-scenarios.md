@@ -205,6 +205,8 @@ reversa
 
 Expected:
 
+- Reversa may first present the exploration plan approval prompt. Approve the plan and confirm starting Scout.
+- Before Scout actually starts, Reversa runs the Content Server specialization gate.
 - Scout performs cheap pre-walk detection.
 - `.reversa/context/surface.json` records `cs_agent_profile_detected` or the orchestrator detects the same profile directly.
 - Reversa prompts:
