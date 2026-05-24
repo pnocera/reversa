@@ -99,6 +99,25 @@ Always populate:
 **In `.reversa/context/`:**
 - `surface.json` — structured data for the other agents
 
+## Artifact writing safety
+
+When generating `inventory.md`, `dependencies.md`, or other Markdown artifacts from PowerShell, do not use double-quoted Markdown strings or here-strings that contain literal backticks. In PowerShell, the backtick is an escape character and can corrupt inline-code formatting or interpolation.
+
+Preferred approaches:
+
+1. Use Node.js to construct an array of strings and write `lines.join('\n') + '\n'`.
+2. If using PowerShell, use an explicit line builder such as `[System.Collections.Generic.List[string]]`, add one final Markdown line at a time, and use concatenation or the `-f` operator for dynamic values.
+
+Do not append mixed arrays of strings and objects directly to Markdown output. Convert all values to scalar strings first, then write the final line list once.
+
+Before checkpointing, validate the generated Markdown:
+
+```powershell
+Select-String -LiteralPath '_reversa_sdd\inventory.md','_reversa_sdd\dependencies.md' -Pattern '$(','`r','`n' -SimpleMatch
+```
+
+If any match appears, regenerate the affected file before reporting completion.
+
 ## Checkpoint
 
 When done, report to Reversa:
