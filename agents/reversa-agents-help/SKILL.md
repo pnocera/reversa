@@ -1,132 +1,132 @@
 ---
 name: reversa-agents-help
-description: Explica com analogias o que cada agente do Reversa faz e quando usá-lo. Ative com /reversa-agents-help.
+description: Explains with analogies what each Reversa agent does and when to use it. Activate with /reversa-agents-help.
 license: MIT
-compatibility: Claude Code, Codex, Cursor, Gemini CLI e demais agentes compatíveis com Agent Skills.
+compatibility: Claude Code, Codex, Cursor, Gemini CLI, and other Agent Skills-compatible agents.
 metadata:
-  author: sandeco
+  author: pnocera
   version: "1.0.0"
   framework: reversa
   role: help
 ---
 
-Apresente exatamente o texto abaixo, sem alterações, sem resumir.
+Present exactly the text below, without changes, without summarizing.
 
 ---
 
-# Agentes do Reversa — guia com analogias
+# Reversa Agents — guide with analogies
 
-O Reversa é um time de especialistas. Cada agente faz uma coisa só — e faz bem.
-
----
-
-## 🎼 Reversa — orquestrador central
-**Comando:** `/reversa`
-
-Um regente de orquestra não toca nenhum instrumento. Ele conhece a partitura inteira e diz quem entra quando, em que ordem, em que ritmo. Sem ele, cada músico tocaria sua parte sem se conectar com os outros.
-
-> Use o Reversa para iniciar ou retomar a análise completa. Ele cuida da sequência por você.
+Reversa is a team of specialists. Each agent does one thing only — and does it well.
 
 ---
 
-## 🗺️ Scout — o corretor de imóveis
-**Comando:** `/reversa-scout`
+## 🎼 Reversa — central orchestrator
+**Command:** `/reversa`
 
-O corretor faz o primeiro tour no imóvel. Não abre gavetas, não lê documentos, não mexe em nada. Só mapeia: quantos cômodos, qual o bairro, que instalações existem, qual o estado geral.
+An orchestra conductor plays no instrument. They know the entire score and say who comes in when, in what order, at what tempo. Without them, each musician would play their part without connecting to the others.
 
-> Use o Scout no começo. Ele gera o inventário do projeto — linguagens, frameworks, módulos, dependências — sem entrar no código.
-
----
-
-## 🧬 Soul Extractor: o biógrafo expresso
-**Comando:** `/reversa-extract-soul`
-
-O biógrafo expresso visita o personagem, lê as anotações do corretor (Scout), folheia rapidamente alguns álbuns de família e o histórico de cartas (git log), e produz uma biografia de uma página: quem é, o que faz, e as decisões fundadoras que moldaram a vida toda. Não é a história completa, é a alma destilada.
-
-> Use o Soul Extractor logo após o Scout, quando quiser uma síntese executiva do sistema (propósito, entidades centrais e decisões fundadoras) numa única Spec, sem esperar todo o pipeline. Não substitui Archaeologist nem Detective.
+> Use Reversa to start or resume the full analysis. It handles the sequence for you.
 
 ---
 
-## ⛏️ Archaeologist — o escavador
-**Comando:** `/reversa-archaeologist`
+## 🗺️ Scout — the real estate agent
+**Command:** `/reversa-scout`
 
-O arqueólogo escava o terreno com paciência, camada por camada. Cataloga cada artefato encontrado: tamanho, material, localização, forma. Ele não interpreta a civilização, só descreve com precisão o que está lá.
+The agent does the first walkthrough of the property. Does not open drawers, does not read documents, does not touch anything. Just maps: how many rooms, which neighborhood, what facilities exist, what the overall condition is.
 
-> Use o Archaeologist para analisar o código módulo a módulo. Ele extrai funções, algoritmos, estruturas de dados e fluxos de controle. **Roda um módulo por sessão** para economizar tokens.
-
----
-
-## 🔍 Detective — o Sherlock Holmes
-**Comando:** `/reversa-detective`
-
-Sherlock Holmes chega depois do arqueólogo. Olha para os artefatos catalogados e pergunta: *"Mas por que isso está aqui? Quem colocou? O que isso revela sobre quem viveu aqui?"* Ele não escava. Ele interpreta.
-
-> Use o Detective após o Archaeologist. Ele extrai regras de negócio implícitas, lê o histórico git como um diário e reconstrói decisões que ninguém documentou.
+> Use Scout at the beginning. It generates the project inventory — languages, frameworks, modules, dependencies — without entering the code.
 
 ---
 
-## 📐 Architect — o cartógrafo
-**Comando:** `/reversa-architect`
+## 🧬 Soul Extractor: the express biographer
+**Command:** `/reversa-extract-soul`
 
-O cartógrafo visita um território e produz mapas formais: planta baixa, mapa de elevação, planta estrutural. Alguém que nunca pisou lá consegue entender tudo olhando para os mapas.
+The express biographer visits the subject, reads the agent's notes (Scout), quickly leafs through some family albums and the letter history (git log), and produces a one-page biography: who they are, what they do, and the founding decisions that shaped their entire life. It is not the full story — it is the soul distilled.
 
-> Use o Architect após o Detective. Ele sintetiza tudo em diagramas C4, ERD completo e mapa de integrações.
-
----
-
-## 📝 Writer — o tabelião
-**Comando:** `/reversa-writer`
-
-O tabelião transforma o que foi descoberto em contratos formais, precisos e rastreáveis. Cada cláusula tem grau de certeza declarado. O documento vale como contrato: um agente de IA pode reimplementar o sistema a partir dele.
-
-> Use o Writer após o Architect. Ele gera as specs SDD, OpenAPI e user stories com rastreabilidade de código.
+> Use Soul Extractor right after Scout when you want an executive synthesis of the system (purpose, central entities, and founding decisions) in a single Spec, without waiting for the full pipeline. Does not replace Archaeologist or Detective.
 
 ---
 
-## ⚖️ Reviewer — o revisor de specs
-**Comando:** `/reversa-reviewer`
+## ⛏️ Archaeologist — the excavator
+**Command:** `/reversa-archaeologist`
 
-O Reviewer pega os contratos do Writer e tenta furar: *"Isso é contradição. Esse ponto não tem prova. Essa regra some se o usuário fizer X."* Ele não quer destruir, quer garantir que o que ficou de pé seja sólido.
+The archaeologist excavates the terrain patiently, layer by layer. Catalogs each artifact found: size, material, location, shape. Does not interpret the civilization — only describes with precision what is there.
 
-> Use o Reviewer após o Writer. Ele revisa criticamente as specs, reclassifica confiança e levanta perguntas para validação humana.
-
----
-
-## 🖼️ Visor — o ilustrador forense
-**Comando:** `/reversa-visor`
-
-O ilustrador forense trabalha só com imagens. Recebe screenshots do sistema e reconstrói fielmente a interface: telas, formulários, fluxos de navegação. Não precisa que o sistema esteja rodando — só das fotos.
-
-> Use o Visor quando tiver screenshots disponíveis. Ele documenta a UI sem precisar de acesso ao sistema.
+> Use Archaeologist to analyze the code module by module. It extracts functions, algorithms, data structures, and control flows. **Runs one module per session** to conserve tokens.
 
 ---
 
-## 🗄️ Data Master — o geólogo
-**Comando:** `/reversa-data-master`
+## 🔍 Detective — the Sherlock Holmes
+**Command:** `/reversa-detective`
 
-O geólogo mapeia o subsolo — a camada que ninguém vê mas que sustenta tudo. Tabelas, relacionamentos, constraints, triggers, procedures. A fundação invisível sobre a qual a aplicação está construída.
+Sherlock Holmes arrives after the archaeologist. Looks at the cataloged artifacts and asks: *"But why is this here? Who put it here? What does this reveal about whoever lived here?"* He does not excavate. He interprets.
 
-> Use o Data Master quando houver DDL, migrations ou modelos ORM disponíveis. Ele documenta o banco completamente.
-
----
-
-## 🎨 Design System — o estilista
-**Comando:** `/reversa-design-system`
-
-O estilista cataloga o guarda-roupa: paleta de cores, tipografia, espaçamentos, tokens de design. As "regras de moda" que governam a aparência do sistema — o que pode e o que não pode ser combinado.
-
-> Use o Design System quando houver arquivos CSS, temas ou screenshots de interface. Ele extrai os tokens visuais do projeto.
+> Use Detective after Archaeologist. It extracts implicit business rules, reads the git history like a diary, and reconstructs decisions that nobody documented.
 
 ---
 
-## Sequência recomendada
+## 📐 Architect — the cartographer
+**Command:** `/reversa-architect`
+
+The cartographer visits a territory and produces formal maps: floor plan, elevation map, structural blueprint. Someone who has never been there can understand everything just by looking at the maps.
+
+> Use Architect after Detective. It synthesizes everything into C4 diagrams, complete ERD, and an integration map.
+
+---
+
+## 📝 Writer — the notary
+**Command:** `/reversa-writer`
+
+The notary transforms what was discovered into formal, precise, and traceable contracts. Every clause has a declared confidence level. The document works as a contract: an AI agent can reimplement the system from it.
+
+> Use Writer after Architect. It generates SDD specs, OpenAPI, and user stories with code traceability.
+
+---
+
+## ⚖️ Reviewer — the spec reviewer
+**Command:** `/reversa-reviewer`
+
+The Reviewer takes the Writer's contracts and tries to break them: *"This is a contradiction. This point has no proof. This rule disappears if the user does X."* It does not want to destroy — it wants to ensure that what remains standing is solid.
+
+> Use Reviewer after Writer. It critically reviews the specs, reclassifies confidence, and raises questions for human validation.
+
+---
+
+## 🖼️ Visor — the forensic illustrator
+**Command:** `/reversa-visor`
+
+The forensic illustrator works only with images. Receives screenshots of the system and faithfully reconstructs the interface: screens, forms, navigation flows. Does not require the system to be running — just the photos.
+
+> Use Visor when you have screenshots available. It documents the UI without needing access to the system.
+
+---
+
+## 🗄️ Data Master — the geologist
+**Command:** `/reversa-data-master`
+
+The geologist maps the subsoil — the layer nobody sees but that sustains everything. Tables, relationships, constraints, triggers, procedures. The invisible foundation on which the application is built.
+
+> Use Data Master when DDL, migrations, or ORM models are available. It fully documents the database.
+
+---
+
+## 🎨 Design System — the stylist
+**Command:** `/reversa-design-system`
+
+The stylist catalogs the wardrobe: color palette, typography, spacing, design tokens. The "fashion rules" that govern the system's appearance — what can and cannot be combined.
+
+> Use Design System when CSS files, themes, or interface screenshots are available. It extracts the project's visual tokens.
+
+---
+
+## Recommended sequence
 
 ```
-/reversa → orquestra tudo automaticamente
+/reversa → orchestrates everything automatically
 
-Ou manualmente:
-Scout → Archaeologist (N sessões) → Detective → Architect → Writer → Reviewer
+Or manually:
+Scout → Archaeologist (N sessions) → Detective → Architect → Writer → Reviewer
 
-Opcionais em qualquer fase:
+Optional at any phase:
 Soul Extractor · Visor · Data Master · Design System
 ```

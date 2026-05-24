@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Parseia dados de CSV, JSON ou Excel e formata para uso em Highcharts.
+Parses data from CSV, JSON, or Excel and formats it for use in Highcharts.
 
-Detecta automaticamente o formato, encoding, e estrutura dos dados.
-Saída: JSON pronto para ser embutido nas opções do Highcharts.
+Automatically detects format, encoding, and data structure.
+Output: JSON ready to be embedded in Highcharts options.
 
-Uso:
-    python parse_data.py <arquivo> [--format categories|timeseries|xy|pie]
-    python parse_data.py dados.csv --sheet "Plan1" --encoding utf-8
-    python parse_data.py dados.json --output formatted.json
+Usage:
+    python parse_data.py <file> [--format categories|timeseries|xy|pie]
+    python parse_data.py data.csv --sheet "Sheet1" --encoding utf-8
+    python parse_data.py data.json --output formatted.json
 
-Saída:
-    JSON com: { categories, series, metadata }
+Output:
+    JSON with: { categories, series, metadata }
 """
 
 import sys
@@ -21,7 +21,7 @@ from pathlib import Path
 
 
 def detect_encoding(filepath: str) -> str:
-    """Tenta detectar encoding do arquivo."""
+    """Attempts to detect the file encoding."""
     encodings = ['utf-8', 'utf-8-sig', 'latin1', 'iso-8859-1', 'cp1252']
     for enc in encodings:
         try:
@@ -34,17 +34,17 @@ def detect_encoding(filepath: str) -> str:
 
 
 def parse_number(value: str) -> float | None:
-    """Converte string para número, tratando formatos BR e US."""
+    """Converts a string to a number, handling BR and US formats."""
     if not value or not isinstance(value, str):
         return value if isinstance(value, (int, float)) else None
     value = value.strip().replace(' ', '')
-    # Formato BR: 1.234,56
+    # BR format: 1.234,56
     if ',' in value and '.' in value and value.rindex(',') > value.rindex('.'):
         value = value.replace('.', '').replace(',', '.')
-    # Formato BR sem milhar: 123,45
+    # BR format without thousands separator: 123,45
     elif ',' in value and '.' not in value:
         value = value.replace(',', '.')
-    # Remover símbolos de moeda
+    # Remove currency symbols
     for symbol in ['R$', '$', '€', '£', '%']:
         value = value.replace(symbol, '')
     try:
@@ -54,13 +54,13 @@ def parse_number(value: str) -> float | None:
 
 
 def parse_csv(filepath: str, encoding: str = 'utf-8', delimiter: str = None) -> dict:
-    """Parseia CSV para formato Highcharts."""
+    """Parses a CSV into Highcharts format."""
     import csv
 
     with open(filepath, 'r', encoding=encoding) as f:
         content = f.read()
 
-    # Detectar delimitador
+    # Detect delimiter
     if delimiter is None:
         sniffer = csv.Sniffer()
         try:
@@ -74,12 +74,12 @@ def parse_csv(filepath: str, encoding: str = 'utf-8', delimiter: str = None) -> 
     rows = list(reader)
 
     if len(rows) < 2:
-        return {"error": "Arquivo com menos de 2 linhas"}
+        return {"error": "File has fewer than 2 lines"}
 
     headers = [h.strip() for h in rows[0]]
     data_rows = rows[1:]
 
-    # Primeira coluna = categorias, demais = séries
+    # First column = categories, rest = series
     categories = [row[0].strip() for row in data_rows if row]
     series = []
     for col_idx in range(1, len(headers)):
@@ -109,15 +109,15 @@ def parse_csv(filepath: str, encoding: str = 'utf-8', delimiter: str = None) -> 
 
 
 def parse_json_data(filepath: str) -> dict:
-    """Parseia JSON para formato Highcharts."""
+    """Parses JSON into Highcharts format."""
     with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # Se já é formato Highcharts, retornar direto
+    # If already in Highcharts format, return directly
     if isinstance(data, dict) and 'series' in data:
         return data
 
-    # Se é array de objetos [{x: ..., y: ...}]
+    # If it's an array of objects [{x: ..., y: ...}]
     if isinstance(data, list) and len(data) > 0 and isinstance(data[0], dict):
         keys = list(data[0].keys())
         category_key = keys[0]
@@ -132,7 +132,7 @@ def parse_json_data(filepath: str) -> dict:
             "metadata": {"rows": len(data), "keys": keys, "format": "array_of_objects"}
         }
 
-    # Se é array de arrays [[cat, v1, v2], ...]
+    # If it's an array of arrays [[cat, v1, v2], ...]
     if isinstance(data, list) and len(data) > 0 and isinstance(data[0], list):
         categories = [str(row[0]) for row in data[1:]]
         headers = data[0]
@@ -147,11 +147,11 @@ def parse_json_data(filepath: str) -> dict:
             "metadata": {"rows": len(data) - 1, "format": "array_of_arrays"}
         }
 
-    return {"error": "Formato JSON não reconhecido", "raw": data}
+    return {"error": "Unrecognized JSON format", "raw": data}
 
 
 def parse_excel(filepath: str, sheet: str = None) -> dict:
-    """Parseia Excel para formato Highcharts."""
+    """Parses Excel into Highcharts format."""
     from openpyxl import load_workbook
 
     wb = load_workbook(filepath, read_only=True, data_only=True)
@@ -163,7 +163,7 @@ def parse_excel(filepath: str, sheet: str = None) -> dict:
 
     rows = list(ws.iter_rows(values_only=True))
     if len(rows) < 2:
-        return {"error": "Planilha com menos de 2 linhas"}
+        return {"error": "Spreadsheet has fewer than 2 rows"}
 
     headers = [str(h).strip() if h else f"Col_{i}" for i, h in enumerate(rows[0])]
     data_rows = rows[1:]
@@ -195,17 +195,17 @@ def parse_excel(filepath: str, sheet: str = None) -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Parseia dados para formato Highcharts")
-    parser.add_argument("filepath", help="Caminho do arquivo de dados")
-    parser.add_argument("--encoding", default=None, help="Encoding do arquivo CSV")
-    parser.add_argument("--delimiter", default=None, help="Delimitador CSV")
-    parser.add_argument("--sheet", default=None, help="Nome da aba Excel")
-    parser.add_argument("--output", "-o", help="Salvar resultado em arquivo")
+    parser = argparse.ArgumentParser(description="Parses data into Highcharts format")
+    parser.add_argument("filepath", help="Path to the data file")
+    parser.add_argument("--encoding", default=None, help="CSV file encoding")
+    parser.add_argument("--delimiter", default=None, help="CSV delimiter")
+    parser.add_argument("--sheet", default=None, help="Excel sheet name")
+    parser.add_argument("--output", "-o", help="Save result to file")
     args = parser.parse_args()
 
     path = Path(args.filepath)
     if not path.exists():
-        print(f"[ERRO] Arquivo não encontrado: {path}", file=sys.stderr)
+        print(f"[ERROR] File not found: {path}", file=sys.stderr)
         sys.exit(1)
 
     ext = path.suffix.lower()
@@ -218,26 +218,26 @@ def main():
     elif ext in ('.xlsx', '.xls'):
         result = parse_excel(str(path), sheet=args.sheet)
     else:
-        print(f"[ERRO] Formato não suportado: {ext}", file=sys.stderr)
+        print(f"[ERROR] Unsupported format: {ext}", file=sys.stderr)
         sys.exit(1)
 
     if "error" in result:
-        print(f"[ERRO] {result['error']}", file=sys.stderr)
+        print(f"[ERROR] {result['error']}", file=sys.stderr)
         sys.exit(1)
 
     meta = result.get("metadata", {})
-    print(f"[INFO] Linhas: {meta.get('rows', '?')}, "
-          f"Colunas: {meta.get('columns', len(result.get('series', [])) + 1)}", file=sys.stderr)
+    print(f"[INFO] Rows: {meta.get('rows', '?')}, "
+          f"Columns: {meta.get('columns', len(result.get('series', [])) + 1)}", file=sys.stderr)
     if 'series' in result:
         for s in result['series']:
-            print(f"[INFO]   Série '{s['name']}': {len(s['data'])} pontos", file=sys.stderr)
+            print(f"[INFO]   Series '{s['name']}': {len(s['data'])} points", file=sys.stderr)
 
     output = json.dumps(result, ensure_ascii=False, indent=2)
 
     if args.output:
         with open(args.output, 'w', encoding='utf-8') as f:
             f.write(output)
-        print(f"[INFO] Salvo em: {args.output}", file=sys.stderr)
+        print(f"[INFO] Saved to: {args.output}", file=sys.stderr)
     else:
         print(output)
 

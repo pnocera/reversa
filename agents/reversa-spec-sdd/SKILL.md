@@ -1,280 +1,280 @@
 ---
 name: reversa-spec-sdd
 description: >
-  Agente final do time Code New Project Agents do Reversa. Decompõe um PRD em componentes lógicos e gera specs SDD (Spec-Driven Development) por componente, com score automático de qualidade. Use quando o usuário digitar "/reversa-spec-sdd", "reversa-spec-sdd" ou quando invocado pelo orquestrador `/reversa-new`. Lê `_reversa_sdd/prd.md` e produz `_reversa_sdd/sdd/<componente>.md`. Ao concluir, faz handoff para `/reversa-forward`.
-  Também pode ser usado avulso para avaliar uma spec existente (modo de avaliação) ou para gerar spec única a partir de qualquer entrada que o usuário forneça.
-  Entrega: arquivos `.md` no formato SDD com score de qualidade (0 a 100) e análise de gaps.
+  Final agent of the Reversa Code New Project Agents team. Decomposes a PRD into logical components and generates SDD (Spec-Driven Development) specs per component, with automatic quality scoring. Use when the user types "/reversa-spec-sdd", "reversa-spec-sdd", or when invoked by the `/reversa-new` orchestrator. Reads `_reversa_sdd/prd.md` and produces `_reversa_sdd/sdd/<component>.md`. On completion, hands off to `/reversa-forward`.
+  Can also be used standalone to evaluate an existing spec (evaluation mode) or to generate a single spec from any input the user provides.
+  Output: `.md` files in SDD format with a quality score (0 to 100) and gap analysis.
 license: MIT
-compatibility: Claude Code, Codex, Cursor, Gemini CLI e demais agentes compatíveis com Agent Skills.
+compatibility: Claude Code, Codex, Cursor, Gemini CLI, and other Agent Skills-compatible agents.
 metadata:
-  author: sandeco
+  author: pnocera
   version: "1.0.0"
   framework: reversa
   team: newproject
   stage: spec-sdd
 ---
 
-# reversa-spec-sdd, Spec-Driven Development no Reversa
+# reversa-spec-sdd, Spec-Driven Development in Reversa
 
-Esta skill conduz o processo completo de SDD dentro do pipeline Code New Project Agents: **decompor → redigir → avaliar → iterar** até cada spec estar pronta para o ciclo forward.
+This skill drives the complete SDD process within the Code New Project Agents pipeline: **decompose → draft → evaluate → iterate** until each spec is ready for the forward cycle.
 
-A skill é uma versão vendored da `sdd-spec` global, adaptada para o contexto Reversa: lê `prd.md` como fonte primária, escreve em `_reversa_sdd/sdd/`, marca tudo com selo 🟡 e termina com handoff para `/reversa-forward`.
+The skill is a vendored version of the global `sdd-spec`, adapted to the Reversa context: reads `prd.md` as the primary source, writes to `_reversa_sdd/sdd/`, marks everything with seal 🟡, and ends with a handoff to `/reversa-forward`.
 
-## Por que SDD?
+## Why SDD?
 
-Specs escritas antes do código economizam tempo porque:
+Specs written before the code save time because they:
 
-- Tornam ambiguidades visíveis antes de virarem bugs
-- Alinham expectativas entre quem pede e quem implementa
-- Servem de referência permanente para testes, revisões e onboarding
-- Permitem que LLMs implementem com muito mais precisão
+- Make ambiguities visible before they turn into bugs
+- Align expectations between the requester and the implementer
+- Serve as a permanent reference for tests, reviews, and onboarding
+- Allow LLMs to implement with much greater precision
 
-A metodologia aqui é **RFC Pragmático mais LLM-First**: estruturada como um RFC (Problem / Goals / Design / Edge Cases), mas otimizada para ser consumida por humanos e por agentes de IA.
+The methodology here is **Pragmatic RFC plus LLM-First**: structured like an RFC (Problem / Goals / Design / Edge Cases), but optimized to be consumed by humans and AI agents alike.
 
-## Antes de começar
+## Before starting
 
-1. Leia `.reversa/state.json` para `user_name`, `chat_language`, `doc_language`, `output_folder` (padrão `_reversa_sdd`).
-2. Verifique pré-condição: **`<output_folder>/prd.md` deve existir**. Se ausente, encerre com mensagem clara:
-   > "Não encontrei `<output_folder>/prd.md`. Rode `/reversa-drafter` primeiro, ou invoque `/reversa-new` para conduzir o pipeline completo."
-3. Garanta que a pasta `<output_folder>/sdd/` existe. Crie se ausente.
+1. Read `.reversa/state.json` for `user_name`, `chat_language`, `doc_language`, `output_folder` (default `_reversa_sdd`).
+2. Check the precondition: **`<output_folder>/prd.md` must exist**. If absent, stop with a clear message:
+   > "I could not find `<output_folder>/prd.md`. Run `/reversa-drafter` first, or invoke `/reversa-new` to run the complete pipeline."
+3. Ensure the folder `<output_folder>/sdd/` exists. Create it if absent.
 
-## Output path padrão
+## Default output path
 
-Cada spec gerada vai para:
+Each generated spec goes to:
 
 ```
-<output_folder>/sdd/<componente-kebab-case>.md
+<output_folder>/sdd/<component-kebab-case>.md
 ```
 
-Por exemplo: `_reversa_sdd/sdd/user-authentication.md`, `_reversa_sdd/sdd/payment-checkout.md`.
+For example: `_reversa_sdd/sdd/user-authentication.md`, `_reversa_sdd/sdd/payment-checkout.md`.
 
-O componente é decomposto a partir do `prd.md` na primeira fase.
+The component is decomposed from `prd.md` in the first phase.
 
-## Selo 🟡 obrigatório
+## Mandatory seal 🟡
 
-Todos os itens das specs geradas pelo `reversa-spec-sdd` devem usar o selo **🟡 PLANEJADO** (variante de 🟡 INFERIDO usado em outros contextos do Reversa). O selo 🟢 CONFIRMADO é reservado para fatos extraídos de código existente pelo Time de Descoberta, regra herdada para evitar confusão entre "fato do legado" e "hipótese forward".
+All items in specs generated by `reversa-spec-sdd` must use the seal **🟡 PLANNED** (a variant of 🟡 INFERRED used in other Reversa contexts). The seal 🟢 CONFIRMED is reserved for facts extracted from existing code by the Discovery Team — a rule inherited to avoid confusion between "legacy fact" and "forward hypothesis".
 
-Cada requisito, comportamento, edge case e critério de aceite das specs deve começar com 🟡.
+Every requirement, behavior, edge case, and acceptance criterion in the specs must begin with 🟡.
 
 ---
 
-## Fluxo de trabalho
+## Workflow
 
-### Fase 0, Decomposição em componentes
+### Phase 0, Component decomposition
 
-Leia `<output_folder>/prd.md` na íntegra. A partir das seções "Escopo", "Personas-alvo" e "Critérios de aceite", proponha uma decomposição do produto em componentes lógicos. Cada componente deve representar uma unidade coesa que vai virar uma spec SDD individual.
+Read `<output_folder>/prd.md` in full. From the "Scope", "Target personas", and "Acceptance criteria" sections, propose a decomposition of the product into logical components. Each component should represent a cohesive unit that will become an individual SDD spec.
 
-Apresente a decomposição ao usuário:
+Present the decomposition to the user:
 
-> "Pelo PRD, identifiquei estes componentes lógicos:
+> "From the PRD, I identified these logical components:
 >
->   1. **<componente 1>**: <descrição em uma frase>
->   2. **<componente 2>**: <descrição em uma frase>
->   3. **<componente N>**: ...
+>   1. **<component 1>**: <description in one sentence>
+>   2. **<component 2>**: <description in one sentence>
+>   3. **<component N>**: ...
 >
-> Concorda com essa decomposição? Quer adicionar, remover ou renomear algum?"
+> Do you agree with this decomposition? Do you want to add, remove, or rename any?"
 
-Aguarde resposta. Itere até confirmação (máximo 2 ajustes). Para cada componente confirmado, normalize o nome em kebab-case ASCII.
+Wait for the response. Iterate until confirmed (maximum 2 adjustments). For each confirmed component, normalize the name to ASCII kebab-case.
 
-### Fase 1, Entrevista por componente (opcional)
+### Phase 1, Interview per component (optional)
 
-Para cada componente, decida se a informação no `prd.md` já basta:
+For each component, decide whether the information in `prd.md` is already sufficient:
 
-- **Basta:** vá direto para Fase 2.
-- **Falta:** faça no máximo 3 perguntas focadas, cobrindo os pontos abaixo que estiverem ausentes:
-  1. **O problema específico daquele componente:** "Qual o papel do `<componente>` no produto?"
-  2. **O sucesso:** "Como você saberá que esse componente funcionou? O que o usuário consegue fazer?"
-  3. **Escopo:** "O que está explicitamente FORA do escopo desse componente?"
-  4. **Edge cases:** "Já consegue antecipar casos difíceis ou situações de erro nesse componente?"
+- **Sufficient:** go directly to Phase 2.
+- **Insufficient:** ask at most 3 focused questions, covering the points below that are missing:
+  1. **The specific problem of that component:** "What is the role of `<component>` in the product?"
+  2. **Success:** "How will you know this component worked? What can the user do?"
+  3. **Scope:** "What is explicitly OUT of scope for this component?"
+  4. **Edge cases:** "Can you already anticipate difficult cases or error situations in this component?"
 
-Limite total: 3 perguntas por componente, escolhendo as mais críticas.
+Total limit: 3 questions per component, choosing the most critical ones.
 
-### Fase 2, Redigir a spec
+### Phase 2, Draft the spec
 
-Use o template em `references/spec_template.md` como base. Preencha **todas** as seções:
+Use the template in `references/spec_template.md` as the base. Fill in **all** sections:
 
-- **Requisitos funcionais:** formato `RF-01`, `RF-02`. Cada um testável isoladamente. Selo 🟡 obrigatório.
-- **Comportamentos:** descreva o que acontece, não como implementar. A spec define o **quê**, não o **como**.
-- **Ambiguidade zero:** se não tiver certeza, marque com `⚠️ ABERTO:` e adicione à lista de Open Questions.
-- **LLM-readiness:** escreva como se um desenvolvedor ou LLM fosse implementar sem perguntar nada.
-- **Selo 🟡 em todos os itens da spec**, incluindo RFs, edge cases, critérios.
+- **Functional requirements:** format `RF-01`, `RF-02`. Each one individually testable. Seal 🟡 mandatory.
+- **Behaviors:** describe what happens, not how to implement it. The spec defines the **what**, not the **how**.
+- **Zero ambiguity:** if unsure, mark with `⚠️ OPEN:` and add to the Open Questions list.
+- **LLM-readiness:** write as if a developer or LLM would implement without asking anything.
+- **Seal 🟡 on all spec items**, including RFs, edge cases, and criteria.
 
-Use `<doc_language>` no conteúdo das specs.
+Use `<doc_language>` for the spec content.
 
-### Fase 3, Avaliação automática de qualidade
+### Phase 3, Automatic quality evaluation
 
-Após redigir cada spec, execute o scorer.
+After drafting each spec, run the scorer.
 
-**Detecção de Python:** tente `python --version` ou `python3 --version` via shell.
+**Python detection:** try `python --version` or `python3 --version` via shell.
 
-- **Se Python disponível:**
+- **If Python is available:**
 
   ```
-  python scripts/spec_scorer.py --spec <output_folder>/sdd/<componente>.md
+  python scripts/spec_scorer.py --spec <output_folder>/sdd/<component>.md
   ```
 
-  Use a saída literal do script.
+  Use the literal output of the script.
 
-- **Se Python não disponível (modo manual):** aplique o procedimento da seção "Scoring em engines sem Python" mais abaixo.
+- **If Python is not available (manual mode):** apply the procedure in the "Scoring in engines without Python" section below.
 
-O scoring retorna:
+Scoring returns:
 
-- **Score total** (0 a 100) com breakdown por dimensão
-- **Gaps críticos** que precisam de resolução
-- **Sugestões** ordenadas por impacto
+- **Total score** (0 to 100) with breakdown by dimension
+- **Critical gaps** that need resolution
+- **Suggestions** ordered by impact
 
-Dimensões avaliadas (ver `references/evaluation_rubric.md` para detalhes):
+Evaluated dimensions (see `references/evaluation_rubric.md` for details):
 
-| Dimensão | Peso | O que avalia |
+| Dimension | Weight | What it evaluates |
 |---|---|---|
-| Completude | 30% | Todas as seções preenchidas, requisitos cobertos |
-| Testabilidade | 25% | Requisitos verificáveis, critérios de aceite claros |
-| Clareza | 20% | Ausência de ambiguidades, linguagem precisa |
-| Escopo | 15% | Non-goals definidos, limites claros |
-| Edge Cases | 10% | Casos de erro e limites do sistema cobertos |
+| Completeness | 30% | All sections filled, requirements covered |
+| Testability | 25% | Verifiable requirements, clear acceptance criteria |
+| Clarity | 20% | No ambiguities, precise language |
+| Scope | 15% | Non-goals defined, clear boundaries |
+| Edge Cases | 10% | Error and system-limit cases covered |
 
-### Fase 4, Iteração
+### Phase 4, Iteration
 
-Com base no score:
+Based on the score:
 
-1. Score **≥ 80**: spec pronta. Persista e siga para o próximo componente.
-2. Score **60 a 79**: corrija os gaps óbvios automaticamente, depois confirme com o usuário se faltou algo crítico. Refaça scoring.
-3. Score **< 60**: volte para Fase 1 com perguntas focadas nos gaps. Refaça scoring.
+1. Score **≥ 80**: spec is ready. Persist and move to the next component.
+2. Score **60 to 79**: fix obvious gaps automatically, then confirm with the user whether anything critical is still missing. Redo scoring.
+3. Score **< 60**: go back to Phase 1 with focused questions on the gaps. Redo scoring.
 
-Limite: **3 iterações por componente**. Após 3 tentativas, persista com o score atual e adicione seção `## Pendências de qualidade` no arquivo.
+Limit: **3 iterations per component**. After 3 attempts, persist with the current score and add a `## Quality gaps` section to the file.
 
-A cada iteração, mostre o delta: "subiu de 54 para 71, faltam 2 gaps críticos".
+On each iteration, show the delta: "score went from 54 to 71, 2 critical gaps remain".
 
-### Fase 5, Persistência e handoff
+### Phase 5, Persistence and handoff
 
-Para cada componente concluído:
+For each completed component:
 
-1. Escreva `<output_folder>/sdd/<componente-kebab-case>.md` com escrita atômica (tempfile mais rename), UTF-8 sem BOM.
-2. Inclua no final do arquivo o **relatório de avaliação** (score + gaps + sugestões).
-3. Se o arquivo já existir, pergunte ao usuário se quer sobrescrever.
+1. Write `<output_folder>/sdd/<component-kebab-case>.md` with atomic write (tempfile then rename), UTF-8 without BOM.
+2. Include at the end of the file the **evaluation report** (score + gaps + suggestions).
+3. If the file already exists, ask the user whether to overwrite.
 
-Após gerar **todas** as specs, exiba relatório consolidado:
+After generating **all** specs, display the consolidated report:
 
-> "`<user_name>`, geração SDD concluída. Specs criadas em `<output_folder>/sdd/`:
+> "`<user_name>`, SDD generation complete. Specs created in `<output_folder>/sdd/`:
 >
-> | Componente | Caminho | Score | Iterações |
+> | Component | Path | Score | Iterations |
 > |---|---|---|---|
 > | <comp1> | <output_folder>/sdd/<comp1>.md | 87 | 1 |
 > | <comp2> | <output_folder>/sdd/<comp2>.md | 73 | 2 |
-> | <comp3> | <output_folder>/sdd/<comp3>.md | 68 | 3 (com pendências) |
+> | <comp3> | <output_folder>/sdd/<comp3>.md | 68 | 3 (with gaps) |
 >
-> Todos os itens marcados com selo 🟡 (planejado).
+> All items marked with seal 🟡 (planned).
 >
-> Próximo passo: rodar `/reversa-forward`, que vai consumir essas specs e iniciar o ciclo de evolução até o código.
+> Next step: run `/reversa-forward`, which will consume these specs and start the evolution cycle through to code.
 >
-> Digite **CONTINUAR** para iniciar `/reversa-forward`, ou pause aqui."
+> Type **CONTINUE** to start `/reversa-forward`, or pause here."
 
-Nunca prossiga automaticamente.
+Never proceed automatically.
 
 ---
 
-## Scoring em engines sem Python
+## Scoring in engines without Python
 
-Quando `python --version` e `python3 --version` falham, ative o modo manual:
+When `python --version` and `python3 --version` both fail, activate manual mode:
 
-1. **Leia `references/evaluation_rubric.md`** para os critérios de cada dimensão.
-2. Para cada uma das 5 dimensões, avalie a spec mentalmente e atribua nota 0 a 100, justificando em 1 a 2 frases:
+1. **Read `references/evaluation_rubric.md`** for the criteria of each dimension.
+2. For each of the 5 dimensions, evaluate the spec mentally and assign a score of 0 to 100, justifying in 1 to 2 sentences:
 
-   - **Completude (30%):** todas as 9 seções obrigatórias preenchidas? RFs cobrem o escopo declarado?
-   - **Testabilidade (25%):** RFs são verificáveis isoladamente? Critérios de aceite têm formato Dado/Quando/Então ou equivalente?
-   - **Clareza (20%):** há frases vagas (intuitivo, rápido, fácil)? Há contradições?
-   - **Escopo (15%):** non-goals declarados explicitamente? Limites claros?
-   - **Edge cases (10%):** pelo menos 3 casos de erro/limite cobertos?
+   - **Completeness (30%):** are all 9 mandatory sections filled? Do the RFs cover the declared scope?
+   - **Testability (25%):** are the RFs individually verifiable? Do acceptance criteria use Given/When/Then format or equivalent?
+   - **Clarity (20%):** are there vague phrases (intuitive, fast, easy)? Are there contradictions?
+   - **Scope (15%):** are non-goals explicitly declared? Are the boundaries clear?
+   - **Edge cases (10%):** are at least 3 error/boundary cases covered?
 
-3. **Calcule o score ponderado:**
+3. **Calculate the weighted score:**
 
    ```
-   score = (Completude * 0.30) + (Testabilidade * 0.25) + (Clareza * 0.20)
-         + (Escopo * 0.15) + (Edge Cases * 0.10)
+   score = (Completeness * 0.30) + (Testability * 0.25) + (Clarity * 0.20)
+         + (Scope * 0.15) + (Edge Cases * 0.10)
    ```
 
-4. **Liste os gaps** em ordem de criticidade (bloqueadores, importantes, melhorias).
+4. **List the gaps** in order of criticality (blockers, important, improvements).
 
-5. **Renderize a saída** no mesmo formato do script:
+5. **Render the output** in the same format as the script:
 
    ```
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SCORE TOTAL: <NN>/100
+   TOTAL SCORE: <NN>/100
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
    Breakdown:
-     Completude:    <NN>/100 (peso 30%)
-     Testabilidade: <NN>/100 (peso 25%)
-     Clareza:       <NN>/100 (peso 20%)
-     Escopo:        <NN>/100 (peso 15%)
-     Edge Cases:    <NN>/100 (peso 10%)
+     Completeness:  <NN>/100 (weight 30%)
+     Testability:   <NN>/100 (weight 25%)
+     Clarity:       <NN>/100 (weight 20%)
+     Scope:         <NN>/100 (weight 15%)
+     Edge Cases:    <NN>/100 (weight 10%)
 
-   Gaps críticos:
+   Critical gaps:
      - <gap 1>
      - <gap 2>
 
-   Sugestões (por impacto):
-     1. <sugestão>
-     2. <sugestão>
+   Suggestions (by impact):
+     1. <suggestion>
+     2. <suggestion>
    ```
 
-O resultado em modo manual deve ser equivalente ao do script para uma mesma spec.
+The manual-mode result should be equivalent to the script's result for the same spec.
 
 ---
 
-## Modo: avaliação de spec existente
+## Mode: evaluation of an existing spec
 
-Se o usuário invocar `/reversa-spec-sdd` fora do pipeline `/reversa-new`, com uma spec já escrita para avaliação:
+If the user invokes `/reversa-spec-sdd` outside the `/reversa-new` pipeline, with an already-written spec for evaluation:
 
-1. Pergunte o caminho do arquivo.
-2. Execute scoring (script ou manual).
-3. Apresente score com análise detalhada por dimensão.
-4. Liste gaps em ordem de criticidade.
-5. Pergunte se quer que você corrija os pontos apontados.
+1. Ask for the file path.
+2. Run scoring (script or manual).
+3. Present the score with detailed analysis by dimension.
+4. List gaps in order of criticality.
+5. Ask whether you should fix the identified points.
 
-Esse modo não exige `prd.md` nem entra no pipeline. É uma utilidade avulsa herdada da skill original.
+This mode does not require `prd.md` and does not enter the pipeline. It is a standalone utility inherited from the original skill.
 
 ---
 
-## Arquivos de referência
+## Reference files
 
-| Arquivo | Quando usar |
+| File | When to use |
 |---|---|
-| `references/spec_template.md` | Template completo com todas as seções, use como base para redigir |
-| `references/evaluation_rubric.md` | Critérios detalhados de avaliação por dimensão |
-| `references/sdd_guide.md` | Princípios da metodologia e boas práticas |
-| `assets/spec_examples.md` | Exemplos de spec boa vs. ruim com anotações |
-| `scripts/spec_scorer.py` | Script de scoring automático, usado quando Python está disponível |
+| `references/spec_template.md` | Complete template with all sections, use as base for drafting |
+| `references/evaluation_rubric.md` | Detailed evaluation criteria by dimension |
+| `references/sdd_guide.md` | Methodology principles and best practices |
+| `assets/spec_examples.md` | Examples of good vs. bad specs with annotations |
+| `scripts/spec_scorer.py` | Automatic scoring script, used when Python is available |
 
 ---
 
-## Sinais de uma spec ruim (evite)
+## Signs of a bad spec (avoid)
 
-- Requisitos que não podem ser testados ("o sistema deve ser intuitivo")
-- Seção de escopo ausente ou vaga ("vamos ver o que faz sentido")
-- Misturar design técnico de implementação com comportamento esperado
-- Requisitos contraditórios não sinalizados
-- Nenhum critério de aceite definido
-- Edge cases de erro completamente ausentes
+- Requirements that cannot be tested ("the system must be intuitive")
+- Missing or vague scope section ("we'll see what makes sense")
+- Mixing implementation technical design with expected behavior
+- Contradictory requirements not flagged
+- No acceptance criteria defined
+- Error edge cases completely absent
 
-## Sinais de uma spec boa (busque)
+## Signs of a good spec (aim for)
 
-- Qualquer desenvolvedor pode implementar sem fazer perguntas
-- Qualquer QA pode escrever testes a partir dela
-- Os non-goals estão tão claros quanto os goals
-- Casos de erro têm comportamento definido
-- Cada requisito tem um ID único rastreável
+- Any developer can implement it without asking questions
+- Any QA can write tests from it
+- The non-goals are as clear as the goals
+- Error cases have defined behavior
+- Each requirement has a unique traceable ID
 
 ---
 
-## Regra absoluta
+## Absolute rule
 
-Escreva apenas em `<output_folder>/sdd/`. Nunca toque em arquivos do projeto fora dessa pasta. Em sobrescrita, sempre peça confirmação `sim/não`.
+Write only to `<output_folder>/sdd/`. Never touch files in the project outside that folder. On overwrite, always ask for `yes/no` confirmation.
 
-## Saída final
+## Final output
 
-Após gerar todas as specs do PRD, termine sempre com:
+After generating all specs from the PRD, always end with:
 
-> Digite **CONTINUAR** para prosseguir com `/reversa-forward`, ou pause aqui.
+> Type **CONTINUE** to proceed with `/reversa-forward`, or pause here.
 
-Nunca prossiga automaticamente.
+Never proceed automatically.

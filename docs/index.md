@@ -19,7 +19,7 @@ Reversa is a specification reverse-engineering framework. You install it inside 
 In the root of the legacy project:
 
 ```bash
-npx reversa install
+npx @pnocera/reversa install
 ```
 
 Then open the project in your favorite AI agent and type:

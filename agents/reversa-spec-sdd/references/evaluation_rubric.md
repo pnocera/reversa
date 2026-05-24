@@ -1,113 +1,113 @@
-# Rubrica de Avaliação de Specs
+# Spec Evaluation Rubric
 
-Usada pelo `scripts/spec_scorer.py` e como guia de revisão manual.
+Used by `scripts/spec_scorer.py` and as a guide for manual review.
 
-Score total: **0–100 pontos**
+Total score: **0–100 points**
 
 ---
 
-## Dimensão 1: Completude (30 pontos)
+## Dimension 1: Completeness (30 points)
 
-Avalia se todas as seções essenciais estão presentes e preenchidas.
+Evaluates whether all essential sections are present and filled.
 
-| Critério | Pontos | Como verificar |
+| Criterion | Points | How to verify |
 |----------|--------|----------------|
-| Seções 1–6 todas presentes e preenchidas (não apenas headers) | 10 | Cada seção tem ≥ 2 frases ou 1 item de lista |
-| Requisitos funcionais com IDs (RF-XX) | 8 | Pelo menos 3 requisitos numerados |
-| Critérios de aceite definidos para cada RF Must | 7 | Coluna "Critério de Aceite" preenchida |
-| Non-Goals explícitos (seção 4) | 5 | Pelo menos 2 non-goals listados |
+| Sections 1–6 all present and filled (not just headers) | 10 | Each section has ≥ 2 sentences or 1 list item |
+| Functional requirements with IDs (RF-XX) | 8 | At least 3 numbered requirements |
+| Acceptance criteria defined for each Must RF | 7 | "Acceptance Criterion" column filled |
+| Explicit Non-Goals (section 4) | 5 | At least 2 non-goals listed |
 
-**Penalidades:**
-- Seção obrigatória completamente ausente: -5 por seção
-- Seção com placeholder não preenchido (`[colchetes]`): -2 por ocorrência
+**Penalties:**
+- Mandatory section completely absent: -5 per section
+- Section with unfilled placeholder (`[brackets]`): -2 per occurrence
 
 ---
 
-## Dimensão 2: Testabilidade (25 pontos)
+## Dimension 2: Testability (25 points)
 
-Avalia se um QA consegue escrever testes a partir da spec sem fazer perguntas.
+Evaluates whether a QA can write tests from the spec without asking questions.
 
-| Critério | Pontos | Como verificar |
+| Criterion | Points | How to verify |
 |----------|--------|----------------|
-| Requisitos usam verbos concretos e mensuráveis | 10 | Ausência de "deve ser bom", "deve ser rápido", "deve ser intuitivo" |
-| Fluxo principal (happy path) descrito passo a passo | 8 | Seção 6.2 com ≥ 3 passos |
-| Métricas de sucesso com valores numéricos | 7 | Seção 3 tem pelo menos 1 métrica com target numérico |
+| Requirements use concrete and measurable verbs | 10 | Absence of "must be good", "must be fast", "must be intuitive" |
+| Main flow (happy path) described step by step | 8 | Section 6.2 with ≥ 3 steps |
+| Success metrics with numerical values | 7 | Section 3 has at least 1 metric with a numerical target |
 
-**Penalidades:**
-- Requisito não-testável ("o sistema deve ser fácil de usar"): -3 por ocorrência
-- Happy path ausente: -8
+**Penalties:**
+- Non-testable requirement ("the system must be easy to use"): -3 per occurrence
+- Happy path absent: -8
 
 ---
 
-## Dimensão 3: Clareza (20 pontos)
+## Dimension 3: Clarity (20 points)
 
-Avalia se a linguagem é precisa e não ambígua.
+Evaluates whether the language is precise and unambiguous.
 
-| Critério | Pontos | Como verificar |
+| Criterion | Points | How to verify |
 |----------|--------|----------------|
-| Ausência de termos vagos sem definição | 8 | "rapidamente", "logo", "muitos", "alguns" sem valor — -2 cada |
-| Open Questions sinalizadas com ⚠️ ou na seção 14 | 6 | Ambiguidades são explícitas, não silenciosas |
-| Sujeito claro em cada requisito ("o sistema", "o usuário") | 6 | Não há requisitos sem sujeito identificado |
+| No vague terms without definition | 8 | "quickly", "soon", "many", "some" without a value — -2 each |
+| Open Questions flagged with ⚠️ or in section 14 | 6 | Ambiguities are explicit, not silent |
+| Clear subject in each requirement ("the system", "the user") | 6 | No requirements without an identified subject |
 
-**Penalidades:**
-- Contradição entre requisitos: -5 por contradição
-- Termo técnico sem definição para audiência não-técnica: -2 por ocorrência
+**Penalties:**
+- Contradiction between requirements: -5 per contradiction
+- Technical term without definition for a non-technical audience: -2 per occurrence
 
 ---
 
-## Dimensão 4: Escopo (15 pontos)
+## Dimension 4: Scope (15 points)
 
-Avalia se os limites da feature estão claros.
+Evaluates whether the feature's boundaries are clear.
 
-| Critério | Pontos | Como verificar |
+| Criterion | Points | How to verify |
 |----------|--------|----------------|
-| Seção de Non-Goals (4) clara e útil | 7 | Pelo menos 2 non-goals que previnem scope creep real |
-| Dependências e integrações mapeadas (seção 10) | 5 | Toda dependência externa está listada |
-| Plano de rollout / rollback presente (seção 13) | 3 | Estratégia e como reverter definidos |
+| Non-Goals section (4) clear and useful | 7 | At least 2 non-goals that prevent real scope creep |
+| Dependencies and integrations mapped (section 10) | 5 | Every external dependency is listed |
+| Rollout / rollback plan present (section 13) | 3 | Strategy and how to revert are defined |
 
-**Penalidades:**
-- Non-goals vagos ("funcionalidades futuras"): -2 por ocorrência
-- Dependência crítica não mapeada: -3
+**Penalties:**
+- Vague non-goals ("future features"): -2 per occurrence
+- Critical dependency not mapped: -3
 
 ---
 
-## Dimensão 5: Edge Cases (10 pontos)
+## Dimension 5: Edge Cases (10 points)
 
-Avalia se os casos difíceis foram antecipados.
+Evaluates whether difficult cases have been anticipated.
 
-| Critério | Pontos | Como verificar |
+| Criterion | Points | How to verify |
 |----------|--------|----------------|
-| Pelo menos 3 edge cases listados (seção 11) | 5 | Tabela com ≥ 3 linhas preenchidas |
-| Tratamento de erro com mensagem/comportamento definido | 3 | Cada erro tem comportamento esperado |
-| Casos de falha de dependências externas cobertos | 2 | Pelo menos 1 EC para timeout/indisponibilidade |
+| At least 3 edge cases listed (section 11) | 5 | Table with ≥ 3 filled rows |
+| Error handling with defined message/behavior | 3 | Each error has an expected behavior |
+| External dependency failure cases covered | 2 | At least 1 EC for timeout/unavailability |
 
-**Penalidades:**
-- Zero edge cases: -10 (esta seção zera)
-- Edge case sem comportamento definido: -1 por ocorrência
+**Penalties:**
+- Zero edge cases: -10 (this dimension scores zero)
+- Edge case without defined behavior: -1 per occurrence
 
 ---
 
-## Classificação por Score
+## Score Classification
 
-| Score | Classificação | Significado |
+| Score | Classification | Meaning |
 |-------|--------------|-------------|
-| 90–100 | ⭐ Excelente | Pronta para implementação imediata |
-| 80–89 | ✅ Boa | Pronta com ajustes menores |
-| 65–79 | ⚠️ Adequada | Implementável mas com riscos |
-| 50–64 | 🔶 Incompleta | Precisa de revisão antes de implementar |
-| < 50 | ❌ Insuficiente | Voltar para entrevista / rascunho |
+| 90–100 | ⭐ Excellent | Ready for immediate implementation |
+| 80–89 | ✅ Good | Ready with minor adjustments |
+| 65–79 | ⚠️ Adequate | Implementable but with risks |
+| 50–64 | 🔶 Incomplete | Needs review before implementing |
+| < 50 | ❌ Insufficient | Return to interview / draft |
 
 ---
 
-## Checklist Rápido de Revisão
+## Quick Review Checklist
 
-Antes de marcar uma spec como "Aprovada", confirme:
+Before marking a spec as "Approved", confirm:
 
-- [ ] Qualquer dev pode implementar sem perguntar nada?
-- [ ] Qualquer QA pode escrever testes sem perguntar nada?
-- [ ] Os non-goals estão tão claros quanto os goals?
-- [ ] Todo caso de erro tem um comportamento definido?
-- [ ] Todos os requisitos têm IDs rastreáveis?
-- [ ] Não há contradições entre requisitos?
-- [ ] Open questions estão documentadas (não silenciosas)?
-- [ ] Métricas de sucesso são numéricas e verificáveis?
+- [ ] Can any developer implement it without asking questions?
+- [ ] Can any QA write tests without asking questions?
+- [ ] Are the non-goals as clear as the goals?
+- [ ] Does every error case have a defined behavior?
+- [ ] Do all requirements have traceable IDs?
+- [ ] Are there no contradictions between requirements?
+- [ ] Are open questions documented (not silent)?
+- [ ] Are success metrics numerical and verifiable?

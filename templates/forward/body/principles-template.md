@@ -1,75 +1,75 @@
 <!--
-Template de corpo do principles.md
-Carregado por /reversa-principles.
+Body template for principles.md
+Loaded by /reversa-principles.
 
-REGRAS DE PREENCHIMENTO:
-- Princípios numerados em romano (I, II, III, ...). Numeração é estável, jamais reciclada.
-- Princípios aposentados NÃO são apagados, são marcados como "aposentado em YYYY-MM-DD" e movidos para o final.
-- Cada princípio tem título curto, descrição completa e UM exemplo concreto de aplicação.
-- A seção "Impacto" lista quais templates dependem desse princípio.
-- Princípios são raros, frequência tipicamente menor que uma vez por mês.
+FILLING RULES:
+- Principles numbered in Roman numerals (I, II, III, ...). Numbering is stable and never recycled.
+- Retired principles are NOT deleted; they are marked as "retired on YYYY-MM-DD" and moved to the end.
+- Each principle has a short title, a full description, and ONE concrete application example.
+- The "Impact" section lists which templates depend on that principle.
+- Principles are rare — typically less than once a month.
 -->
 
-# Princípios do projeto
+# Project Principles
 
-> Projeto: `<nome do projeto>`
-> Data da última alteração: `YYYY-MM-DD`
-> Mantido por: `/reversa-principles`
+> Project: `<project name>`
+> Date of last change: `YYYY-MM-DD`
+> Maintained by: `/reversa-principles`
 
-## Princípios ativos
+## Active principles
 
-### I. <Título curto>
+### I. <Short title>
 
-**Descrição.** <Parágrafo de uma a três frases descrevendo o princípio em linguagem clara.>
+**Description.** <Paragraph of one to three sentences describing the principle in plain language.>
 
-**Exemplo de aplicação.** <Cenário concreto onde o princípio se aplica e como ele influencia a decisão.>
+**Application example.** <Concrete scenario where the principle applies and how it influences the decision.>
 
-**Impacto em templates.**
-- `requirements-template.md`: <como esse princípio molda o conteúdo do requirements>
-- `roadmap-template.md`: <como esse princípio molda decisões técnicas>
-- `actions-template.md`: <quando aplicável>
+**Impact on templates.**
+- `requirements-template.md`: <how this principle shapes the content of requirements>
+- `roadmap-template.md`: <how this principle shapes technical decisions>
+- `actions-template.md`: <when applicable>
 
-**Criado em.** `YYYY-MM-DD`
-**Última revisão.** `YYYY-MM-DD`
+**Created on.** `YYYY-MM-DD`
+**Last reviewed.** `YYYY-MM-DD`
 
 ---
 
-### II. <Título curto>
+### II. <Short title>
 
-**Descrição.** <...>
+**Description.** <...>
 
-**Exemplo de aplicação.** <...>
+**Application example.** <...>
 
-**Impacto em templates.**
+**Impact on templates.**
 - `requirements-template.md`: <...>
 - `roadmap-template.md`: <...>
 
-**Criado em.** `YYYY-MM-DD`
-**Última revisão.** `YYYY-MM-DD`
+**Created on.** `YYYY-MM-DD`
+**Last reviewed.** `YYYY-MM-DD`
 
 ---
 
-## Princípios aposentados
+## Retired principles
 
 <!--
-Princípios que deixaram de valer ficam aqui, com data de aposentadoria.
-Não apague, o histórico ajuda a entender decisões antigas.
+Principles that are no longer valid stay here, with their retirement date.
+Do not delete them — the history helps understand past decisions.
 -->
 
-### <NUMERAÇÃO ROMANA>. <Título original>
+### <ROMAN NUMERAL>. <Original title>
 
-**Descrição original.** <texto>
+**Original description.** <text>
 
-**Aposentado em.** `YYYY-MM-DD`
-**Motivo.** <por que deixou de valer>
+**Retired on.** `YYYY-MM-DD`
+**Reason.** <why it is no longer valid>
 
 ---
 
-## Histórico de alterações
+## Change history
 
-| Data | Operação | Princípio | Resumo |
-|------|----------|-----------|--------|
-| YYYY-MM-DD | criar | I | Versão inicial |
-| YYYY-MM-DD | adicionar | II | <resumo> |
-| YYYY-MM-DD | alterar | I | <resumo da alteração> |
-| YYYY-MM-DD | aposentar | III | <motivo curto> |
+| Date | Operation | Principle | Summary |
+|------|-----------|-----------|---------|
+| YYYY-MM-DD | create | I | Initial version |
+| YYYY-MM-DD | add | II | <summary> |
+| YYYY-MM-DD | update | I | <summary of change> |
+| YYYY-MM-DD | retire | III | <short reason> |

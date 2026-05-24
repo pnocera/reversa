@@ -1,103 +1,103 @@
 <!--
-Template de corpo do requirements-audit.md
-Carregado por /reversa-quality.
+Body template for requirements-audit.md
+Loaded by /reversa-quality.
 
-REGRAS DE PREENCHIMENTO:
-- Total entre dez e trinta itens. Menos é raso, mais é ruído.
-- Cada item tem ID Q-NNN estável dentro deste relatório.
-- Categorias permitidas: Clareza, Completude, Consistência, Cobertura, EdgeCases, Jargão, SoluçãoImplícita, Princípios.
-- Itens reprovados ganham linha extra "> motivo: ..." e, quando cabível, "> sugestão: ...".
-- ESTE COMANDO AVALIA QUALIDADE DE ESCRITA. Não inclua itens de teste de implementação ("verificar se o botão funciona" etc.).
+FILLING RULES:
+- Total between ten and thirty items. Fewer is shallow, more is noise.
+- Each item has a stable Q-NNN ID within this report.
+- Allowed categories: Clarity, Completeness, Consistency, Coverage, EdgeCases, Jargon, ImpliedSolution, Principles.
+- Failed items get an extra line "> reason: ..." and, when applicable, "> suggestion: ...".
+- THIS COMMAND EVALUATES WRITING QUALITY. Do not include implementation-testing items ("verify the button works", etc.).
 -->
 
 # Requirements Audit
 
-> Identificador da feature: `<NNN>-<short-name>`
-> Data: `YYYY-MM-DD`
-> Documento auditado: `<feature-dir>/requirements.md`
+> Feature identifier: `<NNN>-<short-name>`
+> Date: `YYYY-MM-DD`
+> Audited document: `<feature-dir>/requirements.md`
 
-## Resumo
+## Summary
 
-| Métrica | Valor |
-|---------|-------|
-| Total de itens | <NN> |
-| Aprovados | <NN> |
-| Reprovados | <NN> |
-| Veredito | Aprovado / Aprovado com ressalvas / Reprovado |
+| Metric | Value |
+|--------|-------|
+| Total items | <NN> |
+| Passed | <NN> |
+| Failed | <NN> |
+| Verdict | Passed / Passed with reservations / Failed |
 
-## Itens por categoria
+## Items by category
 
-### Clareza
+### Clarity
 
-- [ ] Q-001 | Clareza | Cada frase do requirements tem sujeito, verbo e objeto explícitos
-- [ ] Q-002 | Clareza | Não há frases iniciadas por "talvez", "provavelmente" ou "se possível" sem qualificação numérica
-- [ ] Q-003 | Clareza | Termos do glossário do projeto são definidos na primeira ocorrência
+- [ ] Q-001 | Clarity | Every sentence in requirements has an explicit subject, verb, and object
+- [ ] Q-002 | Clarity | No sentence starts with "perhaps", "probably", or "if possible" without a numeric qualifier
+- [ ] Q-003 | Clarity | Project glossary terms are defined on their first occurrence
 
-### Completude
+### Completeness
 
-- [ ] Q-004 | Completude | Todas as seções obrigatórias do template estão preenchidas com conteúdo, não placeholders
-- [ ] Q-005 | Completude | Cada Requisito Funcional tem critério de aceite verificável
-- [ ] Q-006 | Completude | Existem cenários Gherkin para casos felizes E casos negativos
+- [ ] Q-004 | Completeness | All mandatory template sections are filled with content, not placeholders
+- [ ] Q-005 | Completeness | Each Functional Requirement has a verifiable acceptance criterion
+- [ ] Q-006 | Completeness | Gherkin scenarios exist for happy-path cases AND negative cases
 
-### Consistência
+### Consistency
 
-- [ ] Q-007 | Consistência | Termos chave do domínio aparecem com a mesma grafia em todas as seções
-- [ ] Q-008 | Consistência | IDs citados em uma seção existem na seção que os define
-- [ ] Q-009 | Consistência | Confidência (🟢 / 🟡 / 🔴) coerente com a fonte citada do `_reversa_sdd/`
+- [ ] Q-007 | Consistency | Key domain terms appear with the same spelling across all sections
+- [ ] Q-008 | Consistency | IDs referenced in one section exist in the section that defines them
+- [ ] Q-009 | Consistency | Confidence (🟢 / 🟡 / 🔴) is coherent with the cited source from `_reversa_sdd/`
 
-### Cobertura
+### Coverage
 
-- [ ] Q-010 | Cobertura | Todo Requisito Funcional tem pelo menos um cenário Gherkin
-- [ ] Q-011 | Cobertura | Toda Regra de Negócio nova ou alterada cita a regra original do `_reversa_sdd/domain.md` quando aplicável
+- [ ] Q-010 | Coverage | Every Functional Requirement has at least one Gherkin scenario
+- [ ] Q-011 | Coverage | Every new or changed Business Rule cites the original rule from `_reversa_sdd/domain.md` when applicable
 
 ### EdgeCases
 
-- [ ] Q-012 | EdgeCases | Limites numéricos relevantes têm valor concreto (não "muitos", "poucos")
-- [ ] Q-013 | EdgeCases | Estados vazios, nulos e iniciais foram considerados
-- [ ] Q-014 | EdgeCases | Concorrência, retentativa e timeout foram considerados quando aplicáveis
+- [ ] Q-012 | EdgeCases | Relevant numeric limits have a concrete value (not "many", "few")
+- [ ] Q-013 | EdgeCases | Empty, null, and initial states have been considered
+- [ ] Q-014 | EdgeCases | Concurrency, retry, and timeout have been considered where applicable
 
-### Jargão
+### Jargon
 
-- [ ] Q-015 | Jargão | Um humano novo no time entenderia o requirements sem glossário
-- [ ] Q-016 | Jargão | Siglas são expandidas na primeira ocorrência
+- [ ] Q-015 | Jargon | A new team member would understand the requirements without a glossary
+- [ ] Q-016 | Jargon | Acronyms are expanded on their first occurrence
 
-### SoluçãoImplícita
+### ImpliedSolution
 
-- [ ] Q-017 | SoluçãoImplícita | O requirements descreve o quê, não o como
-- [ ] Q-018 | SoluçãoImplícita | Não há nome de biblioteca, framework ou produto comercial no documento
+- [ ] Q-017 | ImpliedSolution | The requirements describe the what, not the how
+- [ ] Q-018 | ImpliedSolution | No library, framework, or commercial product name appears in the document
 
-### Princípios
+### Principles
 
-- [ ] Q-019 | Princípios | Cada Regra de Negócio respeita os princípios ativos em `.reversa/principles.md`
-- [ ] Q-020 | Princípios | Conflitos com princípios estão registrados explicitamente, não escondidos
+- [ ] Q-019 | Principles | Each Business Rule respects the active principles in `.reversa/principles.md`
+- [ ] Q-020 | Principles | Conflicts with principles are explicitly recorded, not hidden
 
-## Itens reprovados, detalhe
+## Failed items, detail
 
 <!--
-Para cada item marcado [ ] após avaliação, repita o ID e adicione motivo + sugestão.
-Para itens [X] não escreva nada aqui.
+For each item still marked [ ] after evaluation, repeat the ID and add reason + suggestion.
+For items marked [X] write nothing here.
 -->
 
 ### Q-NNN
 
-> motivo: <razão objetiva, uma a duas frases>
-> sugestão: <texto curto que o autor poderia aplicar>
+> reason: <objective reason, one to two sentences>
+> suggestion: <short text the author could apply>
 
-## Veredito
+## Verdict
 
 <!--
-Escolha UM dos três:
-- Aprovado: zero reprovações.
-- Aprovado com ressalvas: até três reprovações, nenhuma CRITICAL.
-- Reprovado: mais de três reprovações OU pelo menos uma CRITICAL.
+Choose ONE of the three:
+- Passed: zero failures.
+- Passed with reservations: up to three failures, none CRITICAL.
+- Failed: more than three failures OR at least one CRITICAL.
 
-Itens CRITICAL: cobertura ausente, princípio violado, contradição interna entre seções.
+CRITICAL items: missing coverage, violated principle, internal contradiction between sections.
 -->
 
-**Aprovado / Aprovado com ressalvas / Reprovado**
+**Passed / Passed with reservations / Failed**
 
-## Histórico de alterações
+## Change history
 
-| Data | Alteração | Autor |
-|------|-----------|-------|
-| YYYY-MM-DD | Auditoria gerada por `/reversa-quality` | reversa |
+| Date | Change | Author |
+|------|--------|--------|
+| YYYY-MM-DD | Audit generated by `/reversa-quality` | reversa |

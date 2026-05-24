@@ -1,34 +1,34 @@
-# Checklist do `handoff.md`
+# `handoff.md` Checklist
 
-Antes de fechar o pipeline, o orquestrador valida que `handoff.md` cumpre todos os itens.
+Before closing the pipeline, the orchestrator validates that `handoff.md` meets all items.
 
-## Checklist obrigatório
+## Mandatory checklist
 
-- [ ] `paradigm_decision.md` aparece como **primeiro item** da seção "Leitura obrigatória" e da "Ordem de leitura recomendada".
-- [ ] `topology_decision.md` aparece como **segundo item** da seção "Leitura obrigatória".
-- [ ] `screen_modernization_decision.md` aparece como **terceiro item** quando há UI; em legado sem UI (Screen Translator skipped), a entrada é omitida com nota explícita "Screen Translator pulado, legado sem UI".
-- [ ] Lista de artefatos produzidos é completa e reflete `_reversa_sdd/migration/` e `_reversa_sdd/screens/` reais.
-- [ ] Deviations pendentes em `screen_deviation_log.md` aparecem como bloqueadores; deviations aprovadas estão refletidas em `parity_specs.md § Exceções`.
-- [ ] Itens REFERIDOS À CODIFICAÇÃO de `ambiguity_log.md` aparecem em seção dedicada de `handoff.md`.
-- [ ] Bloqueadores listados ou linha "nenhum bloqueador, prosseguir".
-- [ ] Próximos passos para o agente de codificação são específicos e acionáveis (não genéricos).
-- [ ] Em `--auto`: itens auto-decididos listados explicitamente.
-- [ ] Estilo coerente com a engine instalada (formato adaptado, ex: front-matter compatível).
+- [ ] `paradigm_decision.md` appears as the **first item** in the "Mandatory reading" section and in the "Recommended reading order".
+- [ ] `topology_decision.md` appears as the **second item** in the "Mandatory reading" section.
+- [ ] `screen_modernization_decision.md` appears as the **third item** when there is UI; for a legacy without UI (Screen Translator skipped), the entry is omitted with an explicit note "Screen Translator skipped, legacy has no UI".
+- [ ] List of produced artifacts is complete and reflects the actual `_reversa_sdd/migration/` and `_reversa_sdd/screens/` contents.
+- [ ] Pending deviations in `screen_deviation_log.md` appear as blockers; approved deviations are reflected in `parity_specs.md § Exceptions`.
+- [ ] REFERRED TO CODING items from `ambiguity_log.md` appear in a dedicated section of `handoff.md`.
+- [ ] Blockers listed or the line "no blockers, proceed".
+- [ ] Next steps for the coding agent are specific and actionable (not generic).
+- [ ] In `--auto`: auto-decided items listed explicitly.
+- [ ] Style consistent with the installed engine (adapted format, e.g.: compatible front-matter).
 
-## Estrutura mínima
+## Minimum structure
 
-1. Banner de leitura obrigatória do `paradigm_decision.md`, `topology_decision.md` e (se houver UI) `screen_modernization_decision.md`.
-2. Ordem de leitura recomendada.
-3. Lista de artefatos.
-4. Bloqueadores.
-5. Próximos passos para o agente de codificação.
-6. Itens auto-decididos (apenas se `--auto`).
-7. Notas finais.
+1. Mandatory reading banner for `paradigm_decision.md`, `topology_decision.md` and (if there is UI) `screen_modernization_decision.md`.
+2. Recommended reading order.
+3. List of artifacts.
+4. Blockers.
+5. Next steps for the coding agent.
+6. Auto-decided items (only if `--auto`).
+7. Final notes.
 
-## Sinalização forte ao agente de codificação
+## Strong signal to the coding agent
 
-A primeira frase de `handoff.md` deve transmitir clareza imediata. Padrão sugerido:
+The first sentence of `handoff.md` must convey immediate clarity. Suggested pattern:
 
-> "Sistema novo a ser construído em paradigma <X>, topologia <Y>, telas em modo <Z>. Antes de qualquer linha de código, leia `paradigm_decision.md`, `topology_decision.md` e `screen_modernization_decision.md`."
+> "New system to be built in paradigm <X>, topology <Y>, screens in mode <Z>. Before any line of code, read `paradigm_decision.md`, `topology_decision.md` and `screen_modernization_decision.md`."
 
-Em legado sem UI (Screen Translator skipped), substituir o trecho de telas por: "telas: nenhuma (sistema sem UI)".
+For a legacy without UI (Screen Translator skipped), replace the screens section with: "screens: none (system with no UI)".

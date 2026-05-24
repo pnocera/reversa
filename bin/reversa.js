@@ -27,7 +27,7 @@ if (!command || command === '--help' || command === '-h') {
 
   reversa v${pkg.version}
 
-  Uso: npx reversa <comando>
+  Uso: npx ${pkg.name} <comando>
 
   Comandos:
     install            Instala o Reversa no projeto atual
@@ -40,7 +40,7 @@ if (!command || command === '--help' || command === '-h') {
                        Opções: --format=svg|png  --output=<pasta>
                        Requer: npm install -g @mermaid-js/mermaid-cli
 
-  Documentação: https://github.com/sandeco/reversa
+  Documentação: ${pkg.homepage}
   `);
   process.exit(0);
 }
@@ -52,7 +52,7 @@ if (command === '--version' || command === '-v') {
 
 if (!commands[command]) {
   console.error(`\n  Comando desconhecido: "${command}"`);
-  console.error('  Execute "npx reversa --help" para ver os comandos disponíveis.\n');
+  console.error(`  Execute "npx ${pkg.name} --help" para ver os comandos disponíveis.\n`);
   process.exit(1);
 }
 

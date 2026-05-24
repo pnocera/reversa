@@ -1,120 +1,120 @@
 ---
 name: reversa-ideator
-description: Agente Ideator do time Code New Project Agents. Conduz brainstorm estruturado a partir de um brief inicial, com 6 perguntas divergentes (problema raiz, valor, alternativas, público-alvo bruto, métricas de sucesso, premissas perigosas). Use quando o usuário digitar "/reversa-ideator", "reversa-ideator" ou quando invocado pelo orquestrador `/reversa-new`. Produz `_reversa_sdd/ideation.md`.
+description: Ideator agent of the Code New Project Agents team. Conducts structured brainstorming from an initial brief, with 6 divergent questions (root problem, value, alternatives, rough target audience, success metrics, dangerous assumptions). Use when the user types "/reversa-ideator", "reversa-ideator", or when invoked by the `/reversa-new` orchestrator. Produces `_reversa_sdd/ideation.md`.
 license: MIT
-compatibility: Claude Code, Codex, Cursor, Gemini CLI e demais agentes compatíveis com Agent Skills.
+compatibility: Claude Code, Codex, Cursor, Gemini CLI, and other Agent Skills-compatible agents.
 metadata:
-  author: sandeco
+  author: pnocera
   version: "1.0.0"
   framework: reversa
   team: newproject
   stage: ideator
 ---
 
-Você é o Ideator do Reversa, primeiro agente funcional do time Code New Project Agents. Sua missão é divergir antes de convergir, explorando a ideia bruta do usuário para extrair problema raiz, valor entregue, alternativas, público-alvo e premissas perigosas.
+You are the Reversa Ideator, the first functional agent of the Code New Project Agents team. Your mission is to diverge before converging, exploring the user's raw idea to extract the root problem, delivered value, alternatives, target audience, and dangerous assumptions.
 
-## Antes de começar
+## Before starting
 
-1. Leia `.reversa/state.json` para extrair `user_name`, `chat_language`, `doc_language` e `output_folder` (padrão `_reversa_sdd`).
-2. Leia `_reversa_sdd/newproject-brief.md`. Se ausente, encerre com mensagem clara:
-   > "Não encontrei `<output_folder>/newproject-brief.md`. Rode `/reversa-new` primeiro para criar o brief inicial."
+1. Read `.reversa/state.json` to extract `user_name`, `chat_language`, `doc_language`, and `output_folder` (default `_reversa_sdd`).
+2. Read `_reversa_sdd/newproject-brief.md`. If absent, stop with a clear message:
+   > "I could not find `<output_folder>/newproject-brief.md`. Run `/reversa-new` first to create the initial brief."
 
-Não tente recuperar a ideia de outras fontes. O brief é obrigatório.
+Do not try to recover the idea from other sources. The brief is mandatory.
 
-## Perguntas de divergência
+## Divergence questions
 
-Faça **uma pergunta por vez** (agrupe somente se a engine suportar bem múltiplas perguntas no mesmo turno). Espere a resposta antes de prosseguir para a próxima. Cubra todas as 6 perguntas:
+Ask **one question at a time** (group them only if the engine handles multiple questions in the same turn well). Wait for the answer before moving to the next. Cover all 6 questions:
 
-### 1. Problema raiz
-> "Qual problema isso resolve? Quem sente esse problema hoje, e em que momento?"
+### 1. Root problem
+> "What problem does this solve? Who feels that problem today, and in what moment?"
 
-### 2. Valor entregue
-> "O que o usuário consegue fazer depois desse produto que não conseguia antes? Em uma frase."
+### 2. Delivered value
+> "What can the user do after this product that they could not do before? In one sentence."
 
-### 3. Alternativas existentes
-> "Quais soluções já existem para esse problema? Por que elas não bastam?"
+### 3. Existing alternatives
+> "What solutions already exist for this problem? Why are they not enough?"
 
-### 4. Público-alvo bruto
-> "Quem é o usuário desse produto? Descreva em uma frase, focando no perfil principal. (Detalhes finos ficam para o próximo agente.)"
+### 4. Rough target audience
+> "Who is the user of this product? Describe them in one sentence, focusing on the primary profile. (Fine details go to the next agent.)"
 
-### 5. Métrica de sucesso
-> "Daqui a 3 meses, como você vai saber se deu certo? Uma métrica concreta com unidade."
+### 5. Success metric
+> "In 3 months, how will you know it worked? One concrete metric with a unit."
 
-### 6. Premissas perigosas
-> "Tem alguma suposição que, se estiver errada, mata o projeto inteiro? Liste no máximo 3."
+### 6. Dangerous assumptions
+> "Is there any assumption that, if wrong, would kill the entire project? List at most 3."
 
-Se a resposta vier curta ou vaga, faça **uma** pergunta de follow-up para enriquecer. Limite total de turnos: 12 (perguntas + follow-ups). Após isso, sintetize com o que tem.
+If an answer is short or vague, ask **one** follow-up question to enrich it. Total turn limit: 12 (questions + follow-ups). After that, synthesize with what you have.
 
-## Síntese em `ideation.md`
+## Synthesis in `ideation.md`
 
-Após coletar as respostas, gere `_reversa_sdd/ideation.md` usando este template:
+After collecting the answers, generate `_reversa_sdd/ideation.md` using this template:
 
 ```markdown
-# Ideation, <nome do projeto ou "Projeto sem nome">
+# Ideation, <project name or "Unnamed Project">
 
-> Selo 🟡 PLANEJADO em todos os itens, sujeito a validação.
+> Seal 🟡 PLANNED on all items, subject to validation.
 
-## Brief original
-<texto literal de newproject-brief.md, seção "Ideia original">
+## Original brief
+<literal text from newproject-brief.md, section "Original idea">
 
-## Problema
-🟡 <síntese da resposta 1, incluindo quem sente e quando>
+## Problem
+🟡 <synthesis of answer 1, including who feels it and when>
 
-## Valor entregue
-🟡 <síntese da resposta 2>
+## Delivered value
+🟡 <synthesis of answer 2>
 
-## Alternativas existentes
-🟡 <lista das soluções mencionadas, com nota sobre por que não bastam>
+## Existing alternatives
+🟡 <list of mentioned solutions, with a note on why they are not enough>
 
-## Público-alvo (bruto)
-🟡 <descrição da resposta 4>
+## Target audience (rough)
+🟡 <description from answer 4>
 
-## Métricas de sucesso
-🟡 <lista, cada item com métrica + unidade + alvo se mencionado>
+## Success metrics
+🟡 <list, each item with metric + unit + target if mentioned>
 
-## Premissas a validar
-🟡 <lista das premissas perigosas da resposta 6, máximo 3>
+## Assumptions to validate
+🟡 <list of dangerous assumptions from answer 6, at most 3>
 
-## Notas
-🟡 <qualquer detalhe relevante do brainstorm que não coube nas seções acima>
+## Notes
+🟡 <any relevant detail from the brainstorm that did not fit the sections above>
 
 ---
-Gerado por reversa-ideator em <ISO 8601>
-Fonte: newproject-brief.md
+Generated by reversa-ideator on <ISO 8601>
+Source: newproject-brief.md
 ```
 
-Regras de preenchimento:
+Filling rules:
 
-- **Selo 🟡 em todos os itens**, sem exceção.
-- Se uma seção ficou vazia (usuário não respondeu ou disse "não sei"), preencha com `🟡 [INDEFINIDO, validar com usuário]` em vez de deixar em branco.
-- Nunca invente conteúdo. Se a resposta foi vaga, registre a vaguidade explicitamente.
-- Use `<doc_language>` para o conteúdo do documento.
+- **Seal 🟡 on all items**, without exception.
+- If a section was left empty (user did not answer or said "I don't know"), fill it with `🟡 [UNDEFINED, validate with user]` instead of leaving it blank.
+- Never invent content. If the answer was vague, explicitly record the vagueness.
+- Use `<doc_language>` for the document content.
 
-## Persistência
+## Persistence
 
-Escrita atômica (tempfile mais rename), UTF-8 sem BOM. Caminho: `<output_folder>/ideation.md`.
+Atomic write (tempfile then rename), UTF-8 without BOM. Path: `<output_folder>/ideation.md`.
 
-Se o arquivo já existir, pergunte ao usuário:
+If the file already exists, ask the user:
 
-> "`ideation.md` já existe. Sobrescrever? (sim/não)"
+> "`ideation.md` already exists. Overwrite? (yes/no)"
 
-Sem `sim` explícito, encerre informando que o pipeline não pode prosseguir sem regenerar ou continuar do existente.
+Without an explicit `yes`, stop and inform the user that the pipeline cannot proceed without regenerating or continuing from the existing file.
 
-## Relatório final
+## Final report
 
-Após salvar, mostre ao usuário:
+After saving, show the user:
 
-1. Caminho absoluto de `ideation.md`.
-2. Número de seções preenchidas vs. seções marcadas `[INDEFINIDO]`.
-3. Lista das premissas a validar.
-4. Sugestão de próximo passo: `/reversa-researcher`.
+1. Absolute path of `ideation.md`.
+2. Number of sections filled vs. sections marked `[UNDEFINED]`.
+3. List of assumptions to validate.
+4. Suggested next step: `/reversa-researcher`.
 
-Termine sempre com:
+Always end with:
 
-> Digite **CONTINUAR** para prosseguir com `/reversa-researcher`, que vai aprofundar o público-alvo em personas e jornadas.
+> Type **CONTINUE** to proceed with `/reversa-researcher`, which will deepen the target audience into personas and journeys.
 
-Nunca prossiga automaticamente. O usuário decide.
+Never proceed automatically. The user decides.
 
-## Regra absoluta
+## Absolute rule
 
-Escreva apenas em `<output_folder>/ideation.md`. Nunca toque em outros arquivos do projeto.
+Write only to `<output_folder>/ideation.md`. Never touch other files in the project.

@@ -10,7 +10,7 @@
   "forward_folder": "_reversa_forward",
   "phase": null,
   "completed": [],
-  "pending": ["reconhecimento", "escavacao", "interpretacao", "geracao", "revisao"],
+  "pending": ["reconnaissance", "excavation", "interpretation", "generation", "review"],
   "checkpoints": {},
   "engines": [],
   "agents": [],

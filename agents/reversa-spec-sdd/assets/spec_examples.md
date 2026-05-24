@@ -1,159 +1,159 @@
-# Exemplos de Specs: Boa vs. Ruim
+# Spec Examples: Good vs. Bad
 
-Estes exemplos usam a feature "Notificações por E-mail" para ilustrar a diferença.
+These examples use the "Email Notifications" feature to illustrate the difference.
 
 ---
 
-## ❌ Spec Ruim — Score: 32/100
+## ❌ Bad Spec — Score: 32/100
 
 ```markdown
-# Spec: Notificações
+# Spec: Notifications
 
-## O que vamos fazer
-Implementar notificações por e-mail para os usuários quando acontecer algo importante.
+## What we're going to do
+Implement email notifications for users when something important happens.
 
-## Requisitos
-- O sistema deve enviar e-mails
-- Os e-mails devem ser bonitos
-- O usuário deve poder desativar notificações
-- Deve ser rápido
+## Requirements
+- The system must send emails
+- The emails must look nice
+- The user must be able to disable notifications
+- It must be fast
 
-## Notas técnicas
-Usar SendGrid ou SES. Talvez usar fila SQS.
+## Technical notes
+Use SendGrid or SES. Maybe use an SQS queue.
 ```
 
-### Por que é ruim:
+### Why it's bad:
 
-| Problema | Impacto |
+| Problem | Impact |
 |---------|---------|
-| "quando acontecer algo importante" — o que é importante? | Dev vai implementar o que achar certo, não o que o negócio quer |
-| "e-mails devem ser bonitos" — não testável | Nenhum critério de aceite possível |
-| "deve ser rápido" — sem número | Bug: e-mail demora 5min, dev acha que está ok |
-| Non-goals ausentes | Scope creep: "e o SMS? e o push notification?" |
-| Edge cases ausentes | O que acontece se o e-mail bounce? Se o usuário desativou? |
-| Mistura spec com decisão técnica (SendGrid/SES/SQS) | Acopla o "o quê" ao "como" desnecessariamente |
-| Nenhum ID de requisito | Impossível rastrear qual requisito um PR implementou |
+| "when something important happens" — what is important? | Dev implements what they think is right, not what the business wants |
+| "emails must look nice" — not testable | No acceptance criteria possible |
+| "must be fast" — no number | Bug: email takes 5 min, dev thinks it's fine |
+| Non-goals missing | Scope creep: "what about SMS? what about push notifications?" |
+| Edge cases missing | What happens if the email bounces? If the user disabled it? |
+| Mixes spec with technical decision (SendGrid/SES/SQS) | Couples "what" to "how" unnecessarily |
+| No requirement IDs | Impossible to trace which requirement a PR implemented |
 
 ---
 
-## ✅ Spec Boa — Score: 87/100
+## ✅ Good Spec — Score: 87/100
 
 ```markdown
-# Spec: Notificações por E-mail — Atividades da Conta
+# Spec: Email Notifications — Account Activity
 
-**Versão:** 1.0 | **Status:** Aprovada | **Data:** 2025-01-15
+**Version:** 1.0 | **Status:** Approved | **Date:** 2025-01-15
 
-## 1. Resumo
-Enviar notificações por e-mail transacional para usuários quando eventos relevantes
-da conta ocorrerem, com controle granular de preferências de notificação.
+## 1. Summary
+Send transactional email notifications to users when relevant account events
+occur, with granular notification preference controls.
 
-## 2. Contexto e Motivação
-**Problema:** Usuários perdem ações importantes (ex: novo comentário, pagamento processado)
-porque só descobrem ao acessar o app. Resultado: engajamento tardio e abandono de tarefas.
-**Evidência:** 68% dos usuários inativos citaram "não sabia que tinha algo esperando"
-na pesquisa de churn de Dez/2024.
-**Por que agora:** Plataforma de e-mail contratada (SendGrid), integração viável em 1 sprint.
+## 2. Context and Motivation
+**Problem:** Users miss important actions (e.g., new comment, payment processed)
+because they only find out when they open the app. Result: delayed engagement and abandoned tasks.
+**Evidence:** 68% of inactive users cited "I didn't know something was waiting" in the
+Dec/2024 churn survey.
+**Why now:** Email platform contracted (SendGrid), integration feasible in 1 sprint.
 
 ## 3. Goals
-- [ ] G-01: Usuários recebem e-mail em < 2 min após evento gatilho
-- [ ] G-02: Taxa de abertura ≥ 25% (benchmark: 21% no setor)
-- [ ] G-03: 100% dos usuários conseguem desativar notificações em ≤ 3 cliques
+- [ ] G-01: Users receive email in < 2 min after trigger event
+- [ ] G-02: Open rate ≥ 25% (benchmark: 21% in the sector)
+- [ ] G-03: 100% of users can disable notifications in ≤ 3 clicks
 
 ## 4. Non-Goals
-- NG-01: Notificações push (mobile) — versão futura
-- NG-02: Notificações por SMS — fora do roadmap 2025
-- NG-03: E-mails de marketing / newsletter — escopo do time de Growth
-- NG-04: Suporte a múltiplos endereços de e-mail por usuário
+- NG-01: Push notifications (mobile) — future version
+- NG-02: SMS notifications — not on the 2025 roadmap
+- NG-03: Marketing emails / newsletters — Growth team's scope
+- NG-04: Support for multiple email addresses per user
 
-## 5. Usuários
-**Primário:** Usuário com conta ativa, qualquer plano.
-**Jornada atual:** Usuário precisa entrar no app para ver se há novidades.
-**Jornada futura:** Usuário recebe e-mail com resumo do evento e link direto para a ação.
+## 5. Users
+**Primary:** User with an active account, any plan.
+**Current journey:** User must open the app to see if there is anything new.
+**Future journey:** User receives an email with an event summary and a direct link to the action.
 
-## 6. Requisitos Funcionais
+## 6. Functional Requirements
 
-| ID | Requisito | Prioridade | Critério de Aceite |
-|----|-----------|-----------|-------------------|
-| RF-01 | O sistema deve enviar e-mail quando um comentário for adicionado a um item do usuário | Must | E-mail recebido em < 2 min em 95% dos casos (teste com 100 envios) |
-| RF-02 | O sistema deve enviar e-mail quando um pagamento for processado (sucesso ou falha) | Must | E-mail recebido em < 2 min; inclui valor, data e status |
-| RF-03 | O usuário deve poder desativar cada tipo de notificação individualmente em Configurações > Notificações | Must | Toggle persiste após logout/login; e-mail do tipo desativado não é enviado |
-| RF-04 | O sistema deve incluir link de "cancelar todas as notificações" no rodapé de todo e-mail | Must | Link funciona sem login; redireciona para página de confirmação |
-| RF-05 | O sistema deve agrupar notificações do mesmo tipo em digest diário quando houver > 5 eventos em 1h | Should | Usuário recebe 1 e-mail com lista dos 5+ eventos, não 5+ e-mails separados |
+| ID | Requirement | Priority | Acceptance Criteria |
+|----|-------------|----------|---------------------|
+| RF-01 | The system must send an email when a comment is added to a user's item | Must | Email received in < 2 min in 95% of cases (test with 100 sends) |
+| RF-02 | The system must send an email when a payment is processed (success or failure) | Must | Email received in < 2 min; includes amount, date, and status |
+| RF-03 | The user must be able to disable each notification type individually in Settings > Notifications | Must | Toggle persists after logout/login; email of disabled type is not sent |
+| RF-04 | The system must include an "unsubscribe from all notifications" link in the footer of every email | Must | Link works without login; redirects to confirmation page |
+| RF-05 | The system must group notifications of the same type into a daily digest when there are > 5 events within 1 hour | Should | User receives 1 email listing the 5+ events, not 5+ separate emails |
 
-### Fluxo Principal (RF-01)
-1. Usuário B comenta no item X do Usuário A
-2. Sistema detecta evento `comment.created`
-3. Sistema verifica se Usuário A tem RF-01 ativado (padrão: ativo)
-4. Sistema envia e-mail para Usuário A com: nome do comentador, trecho do comentário (máx. 200 chars), link direto para o item
-5. Resultado: Usuário A recebe e-mail em < 2 min
+### Main Flow (RF-01)
+1. User B comments on User A's item X
+2. System detects the `comment.created` event
+3. System checks if User A has RF-01 enabled (default: enabled)
+4. System sends an email to User A with: commenter's name, comment excerpt (max. 200 chars), direct link to the item
+5. Result: User A receives the email in < 2 min
 
-## 7. Requisitos Não-Funcionais
-| ID | Requisito | Target |
-|----|-----------|--------|
-| RNF-01 | Latência de envio | P95 < 2min após evento |
-| RNF-02 | Taxa de entrega | ≥ 98% (excluindo bounces permanentes) |
-| RNF-03 | Segurança | Links de unsubscribe com token único e assinado |
+## 7. Non-Functional Requirements
+| ID | Requirement | Target |
+|----|-------------|--------|
+| RNF-01 | Send latency | P95 < 2 min after event |
+| RNF-02 | Delivery rate | ≥ 98% (excluding permanent bounces) |
+| RNF-03 | Security | Unsubscribe links with unique, signed token |
 
 ## 11. Edge Cases
 
-| ID | Cenário | Trigger | Comportamento |
-|----|---------|---------|---------------|
-| EC-01 | E-mail inválido/bounce permanente | SendGrid retorna hard bounce | Desativar envios para esse e-mail; notificar usuário in-app |
-| EC-02 | Usuário desativou notificações | `user.notifications.comments = false` | Não envia; não registra erro |
-| EC-03 | SendGrid indisponível | Timeout ou erro 5xx | Retry com backoff: 1min, 5min, 30min. Após 3 falhas: logar e alertar time |
-| EC-04 | Usuário deletou conta antes do envio | User ID não encontrado na fila | Descartar silenciosamente; logar para auditoria |
-| EC-05 | Mesmo evento dispara 2x | Bug de duplicidade | Deduplicar por event_id com TTL de 1h |
+| ID | Scenario | Trigger | Behavior |
+|----|----------|---------|----------|
+| EC-01 | Invalid email / permanent bounce | SendGrid returns a hard bounce | Disable sends to that email; notify user in-app |
+| EC-02 | User disabled notifications | `user.notifications.comments = false` | Do not send; do not log an error |
+| EC-03 | SendGrid unavailable | Timeout or 5xx error | Retry with backoff: 1 min, 5 min, 30 min. After 3 failures: log and alert the team |
+| EC-04 | User deleted account before send | User ID not found in the queue | Discard silently; log for audit |
+| EC-05 | Same event fires twice | Duplication bug | Deduplicate by event_id with a TTL of 1 hour |
 
 ## 14. Open Questions
-| # | Pergunta | Impacto | Prazo |
-|---|---------|---------|-------|
-| OQ-01 | ⚠️ ABERTO: Digest diário (RF-05) — qual o horário do envio? Timezone do usuário ou UTC? | Médio | 20/01 |
+| # | Question | Impact | Deadline |
+|---|----------|--------|----------|
+| OQ-01 | ⚠️ OPEN: Daily digest (RF-05) — what time should it be sent? User's timezone or UTC? | Medium | 01/20 |
 ```
 
-### Por que é boa:
+### Why it's good:
 
-| Ponto forte | Benefício |
-|------------|-----------|
-| Cada requisito tem ID, prioridade e critério de aceite | QA escreve testes direto da tabela |
-| Non-goals explícitos (4 itens) | Time sabe exatamente o que recusar |
-| Edge cases cobrem falhas externas | Dev implementa retry sem precisar perguntar |
-| Métricas numéricas (< 2min, ≥ 25%) | Sucesso é verificável |
-| Open Question sinalizada com `⚠️ ABERTO:` | Ambiguidade visível, não silenciosa |
-| Fluxo principal passo a passo | LLM implementa sem suposições |
+| Strength | Benefit |
+|----------|---------|
+| Each requirement has an ID, priority, and acceptance criteria | QA writes tests directly from the table |
+| Explicit non-goals (4 items) | The team knows exactly what to decline |
+| Edge cases cover external failures | Dev implements retry without having to ask |
+| Numeric metrics (< 2 min, ≥ 25%) | Success is verifiable |
+| Open question flagged with `⚠️ OPEN:` | Ambiguity is visible, not silent |
+| Step-by-step main flow | LLM implements without assumptions |
 
 ---
 
-## 🔶 Spec Média — Score: 63/100
+## 🔶 Average Spec — Score: 63/100
 
 ```markdown
-# Spec: Login com Google
+# Spec: Login with Google
 
-## Objetivo
-Permitir que usuários façam login usando a conta Google deles.
+## Objective
+Allow users to log in using their Google account.
 
-## Requisitos
-- RF-01: Adicionar botão "Entrar com Google" na tela de login
-- RF-02: Usuário deve ser redirecionado para OAuth do Google
-- RF-03: Após autenticação, criar sessão do usuário
-- RF-04: Se o e-mail já existe no sistema, fazer login na conta existente
-- RF-05: Se o e-mail não existe, criar nova conta automaticamente
+## Requirements
+- RF-01: Add a "Sign in with Google" button on the login screen
+- RF-02: User must be redirected to Google's OAuth
+- RF-03: After authentication, create a user session
+- RF-04: If the email already exists in the system, log in to the existing account
+- RF-05: If the email does not exist, automatically create a new account
 
-## Fora do escopo
-- Login com Facebook/Apple por enquanto
+## Out of scope
+- Login with Facebook/Apple for now
 
 ## Edge Cases
-- E se o usuário cancelar o fluxo OAuth?
-- E se o Google estiver fora do ar?
+- What if the user cancels the OAuth flow?
+- What if Google is down?
 ```
 
-### O que está bom:
-- Requisitos numerados ✅
-- Non-goals presentes ✅
-- Edge cases identificados (mas sem resposta) ⚠️
+### What's good:
+- Numbered requirements ✅
+- Non-goals present ✅
+- Edge cases identified (but without answers) ⚠️
 
-### O que está faltando (-37 pontos):
-- Edge cases sem comportamento definido — "e se?" sem resposta (-10)
-- Nenhum critério de aceite nos requisitos (-7)
-- Seção de segurança ausente (dados OAuth, tokens) (-8)
-- Sem métricas de sucesso (-7)
-- RF-03 "criar sessão" — por quanto tempo? Com quais dados? (-5)
+### What's missing (-37 points):
+- Edge cases without defined behavior — "what if?" without an answer (-10)
+- No acceptance criteria in the requirements (-7)
+- Security section missing (OAuth data, tokens) (-8)
+- No success metrics (-7)
+- RF-03 "create session" — for how long? With what data? (-5)

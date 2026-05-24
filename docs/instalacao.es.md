@@ -13,7 +13,7 @@ Si no tienes Node.js, instálalo en [nodejs.org](https://nodejs.org) y vuelve aq
 En la raíz del proyecto heredado que quieres analizar:
 
 ```bash
-npx reversa install
+npx @pnocera/reversa install
 ```
 
 El instalador hace todo esto por ti:
@@ -65,7 +65,7 @@ proyecto-heredado/
 Si quieres añadir soporte para otro motor más tarde:
 
 ```bash
-npx reversa add-engine
+npx @pnocera/reversa add-engine
 ```
 
 El instalador detecta lo que ya existe y agrega solo lo que falta.

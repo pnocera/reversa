@@ -1,11 +1,11 @@
 site_name: Reversa
-site_url: https://sandeco.github.io/reversa
+site_url: https://pnocera.github.io/reversa
 site_description: Transforme sistemas legados em especificações executáveis por agentes de IA.
-site_author: sandeco
-repo_url: https://github.com/sandeco/reversa
-repo_name: sandeco/reversa
+site_author: pnocera
+repo_url: https://github.com/pnocera/reversa
+repo_name: pnocera/reversa
 edit_uri: edit/main/docs/
-copyright: '"Reversa" by sandeco'
+copyright: '"Reversa" by pnocera'
 
 theme:
   name: material

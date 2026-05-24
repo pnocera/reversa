@@ -37,5 +37,5 @@
   "risk_adjustment_classes": 1,
   "size_score": 60,
   "complexity_class": "L",
-  "notes": "Feature grande por ajuste de risco: classe base M subiu para L por 5 pontos de risco, incluindo 1 duvida alta."
+  "notes": "Large feature due to risk adjustment: base class M raised to L by 5 risk points, including 1 high doubt."
 }

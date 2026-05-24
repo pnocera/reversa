@@ -1,6 +1,6 @@
-# Fontes esperadas pelo Time Reversa Docs
-# Cada item declara um artefato do core do Reversa que, se presente, alimenta uma ou mais páginas do mini-site.
-# Ausência nunca bloqueia: páginas dependentes da fonte são omitidas graciosamente.
+# Sources expected by the Reversa Docs Team
+# Each item declares a Reversa core artifact that, if present, feeds one or more mini-site pages.
+# Absence never blocks: pages that depend on the source are omitted gracefully.
 
 sources:
   - id: soul
@@ -11,8 +11,8 @@ sources:
       - "Publisher (seed sha256, hero)"
     required_for:
       - "glossario.html"
-      - "deck.html (parcialmente)"
-    description: "Síntese executiva do projeto. Origem do glossário e do título do hero."
+      - "deck.html (partially)"
+    description: "Executive summary of the project. Origin of the glossary and the hero title."
 
   - id: chronicle
     path: ".reversa/chronicle.md"
@@ -21,7 +21,7 @@ sources:
       - "Analyst (timeline.html)"
     required_for:
       - "timeline.html"
-    description: "Histórico de eventos, releases e incidentes. Origem da timeline interativa."
+    description: "History of events, releases, and incidents. Origin of the interactive timeline."
 
   - id: topology
     path: "_reversa_sdd/architecture.md"
@@ -30,7 +30,7 @@ sources:
       - "Mapper (topologia.html)"
     required_for:
       - "topologia.html"
-    description: "Topologia detectada (legado vs moderno vs híbrido). Origem da página side-by-side."
+    description: "Detected topology (legacy vs. modern vs. hybrid). Origin of the side-by-side page."
     optional: true
 
   - id: sdd_specs
@@ -40,13 +40,13 @@ sources:
     consumed_by:
       - "Storyteller (features/*.html)"
     required_for:
-      - "features/<spec>.html (uma página por spec)"
-    description: "Specs SDD por feature. Cada subpasta com requirements.md vira uma página detalhada."
+      - "features/<spec>.html (one page per spec)"
+    description: "SDD specs per feature. Each subfolder with requirements.md becomes a detailed page."
 
   - id: source_code
     path: "."
-    pattern: "(arquivos do projeto legado)"
-    producer: "(humano + git)"
+    pattern: "(legacy project files)"
+    producer: "(human + git)"
     consumed_by:
       - "Mapper (arquitetura.html, modulos.html, modules.json, deps.json)"
       - "Analyst (metricas.html via modules.json)"
@@ -54,7 +54,7 @@ sources:
       - "arquitetura.html"
       - "modulos.html"
       - "metricas.html"
-    description: "Código fonte do projeto legado. Origem das métricas de LOC, complexidade e dependências."
+    description: "Legacy project source code. Origin of LOC, complexity, and dependency metrics."
     extraction_scripts:
       - "extract_modules.py"
       - "extract_deps.py"

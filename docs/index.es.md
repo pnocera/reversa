@@ -19,7 +19,7 @@ Reversa es un framework de ingeniería inversa de especificaciones. Lo instalas 
 En la raíz del proyecto heredado:
 
 ```bash
-npx reversa install
+npx @pnocera/reversa install
 ```
 
 Luego abre el proyecto en tu agente de IA favorito y escribe:

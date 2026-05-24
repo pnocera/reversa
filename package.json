@@ -1,5 +1,5 @@
 {
-  "name": "reversa",
+  "name": "@pnocera/reversa",
   "version": "1.2.47",
   "description": "Transform legacy systems into executable specifications for AI coding agents",
   "bin": {
@@ -25,15 +25,18 @@
     "README.md",
     "LICENSE"
   ],
-  "author": "sandeco",
+  "author": "pnocera",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sandeco/reversa.git"
+    "url": "git+https://github.com/pnocera/reversa.git"
   },
-  "homepage": "https://github.com/sandeco/reversa",
+  "homepage": "https://github.com/pnocera/reversa",
   "bugs": {
-    "url": "https://github.com/sandeco/reversa/issues"
+    "url": "https://github.com/pnocera/reversa/issues"
   },
   "engines": {
     "node": ">=18.20.2"

@@ -1,6 +1,6 @@
 # CLI
 
-O Reversa tem um CLI simples para gerenciar a instalação e o ciclo de vida dos agentes no seu projeto. Todos os comandos rodam com `npx reversa` na raiz do projeto.
+O Reversa tem um CLI simples para gerenciar a instalação e o ciclo de vida dos agentes no seu projeto. Todos os comandos rodam com `npx @pnocera/reversa` na raiz do projeto.
 
 ---
 
@@ -8,7 +8,7 @@ O Reversa tem um CLI simples para gerenciar a instalação e o ciclo de vida dos
 
 Ao iniciar e antes de mostrar a logo ASCII do Reversa, o CLI deve limpar a tela do terminal. A logo deve aparecer no alto do terminal, sem conteúdo anterior acima dela.
 
-A assinatura `by sandeco` deve aparecer em branco na última linha da arte, depois de uma margem à direita do final do `Reversa` grande. Ela não deve ficar flutuando no meio da altura da logo.
+A assinatura `by pnocera` deve aparecer em branco na última linha da arte, depois de uma margem à direita do final do `Reversa` grande. Ela não deve ficar flutuando no meio da altura da logo.
 
 Formato esperado:
 
@@ -18,7 +18,7 @@ Formato esperado:
   | |_/ /_____   _____ _ __ ___  __ _
   |    // _ \ \ / / _ \ '__/ __|/ _` |
   | |\ \  __/\ V /  __/ |  \__ \ (_| |
-  \_| \_\___| \_/ \___|_|  |___/\__,_|  by sandeco
+  \_| \_\___| \_/ \___|_|  |___/\__,_|  by pnocera
 
   AI-Powered Reverse Engineering Framework
 ```
@@ -30,7 +30,7 @@ Formato esperado:
 ### `install`
 
 ```bash
-npx reversa install
+npx @pnocera/reversa install
 ```
 
 Instala o Reversa no projeto legado atual. Detecta as engines presentes, pergunta suas preferências e cria toda a estrutura necessária.
@@ -61,7 +61,7 @@ O `Reversa Agents Core` é renderizado como um separator cinza não selecionáve
 ### `status`
 
 ```bash
-npx reversa status
+npx @pnocera/reversa status
 ```
 
 Mostra o estado atual da análise: qual fase está em andamento, quais agentes já rodaram, o que falta completar.
@@ -73,7 +73,7 @@ Mostra o estado atual da análise: qual fase está em andamento, quais agentes j
 ### `update`
 
 ```bash
-npx reversa update
+npx @pnocera/reversa update
 ```
 
 Atualiza os agentes para a versão mais recente do Reversa.
@@ -85,7 +85,7 @@ O comando é inteligente: ele verifica o manifesto SHA-256 de cada arquivo e nun
 ### `add-agent`
 
 ```bash
-npx reversa add-agent
+npx @pnocera/reversa add-agent
 ```
 
 Adiciona um agente específico ao projeto. Útil se você não instalou todos os agentes na instalação inicial e agora quer incluir, por exemplo, o Data Master ou o Design System.
@@ -95,7 +95,7 @@ Adiciona um agente específico ao projeto. Útil se você não instalou todos os
 ### `add-engine`
 
 ```bash
-npx reversa add-engine
+npx @pnocera/reversa add-engine
 ```
 
 Adiciona suporte a uma engine de IA que não estava presente quando você instalou. Por exemplo: instalou só para Claude Code e agora quer adicionar Codex também.
@@ -105,7 +105,7 @@ Adiciona suporte a uma engine de IA que não estava presente quando você instal
 ### `uninstall`
 
 ```bash
-npx reversa uninstall
+npx @pnocera/reversa uninstall
 ```
 
 Remove o Reversa do projeto: apaga os arquivos criados pela instalação (`.reversa/`, `.agents/skills/reversa-*/`, os arquivos de entrada das engines).

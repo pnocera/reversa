@@ -1,6 +1,6 @@
 # Motores compatibles
 
-Reversa funciona con los principales motores de IA del mercado. El instalador detecta automáticamente cuáles están presentes en el entorno, pero puedes agregar más en cualquier momento con `npx reversa add-engine`.
+Reversa funciona con los principales motores de IA del mercado. El instalador detecta automáticamente cuáles están presentes en el entorno, pero puedes agregar más en cualquier momento con `npx @pnocera/reversa add-engine`.
 
 ---
 

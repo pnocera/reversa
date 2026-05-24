@@ -1,21 +1,21 @@
 # Reversa 
-<small>by sandeco</small>
+
 
 **Turn legacy systems into executable specifications for AI agents.**
 
 > 📄 **Paper:** [Reversa: A Reverse Documentation Engineering Framework for Converting Legacy Software into Operational Specifications for AI Agents](https://arxiv.org/abs/2605.18684) — Macedo & da Costa, May 2026.
 
-[![Reversa paper](https://raw.githubusercontent.com/sandeco/reversa/main/docs/img/reversa-paper.png)](https://arxiv.org/abs/2605.18684)
+[![Reversa paper](https://raw.githubusercontent.com/pnocera/reversa/main/docs/img/reversa-paper.png)](https://arxiv.org/abs/2605.18684)
 
-[![English Docs](https://img.shields.io/badge/DOCS-English-009c3b?style=for-the-badge&logo=material-for-mkdocs&logoColor=white&labelColor=2d2d2d)](https://sandeco.github.io/reversa/)<br>
-[![Português Docs](https://img.shields.io/badge/DOCS-Portugu%C3%AAs-ffcc00?style=for-the-badge&logo=material-for-mkdocs&logoColor=black&labelColor=2d2d2d)](https://sandeco.github.io/reversa/pt/)<br>
-[![Español Docs](https://img.shields.io/badge/DOCS-Espa%C3%B1ol-c60b1e?style=for-the-badge&logo=material-for-mkdocs&logoColor=white&labelColor=2d2d2d)](https://sandeco.github.io/reversa/es/)
+[![English Docs](https://img.shields.io/badge/DOCS-English-009c3b?style=for-the-badge&logo=material-for-mkdocs&logoColor=white&labelColor=2d2d2d)](https://pnocera.github.io/reversa/)<br>
+[![Português Docs](https://img.shields.io/badge/DOCS-Portugu%C3%AAs-ffcc00?style=for-the-badge&logo=material-for-mkdocs&logoColor=black&labelColor=2d2d2d)](https://pnocera.github.io/reversa/pt/)<br>
+[![Español Docs](https://img.shields.io/badge/DOCS-Espa%C3%B1ol-c60b1e?style=for-the-badge&logo=material-for-mkdocs&logoColor=white&labelColor=2d2d2d)](https://pnocera.github.io/reversa/es/)
 
 Reversa is a specification reverse-engineering framework. Install it inside a legacy project and it coordinates a team of specialized AI agents to analyze the existing code and generate complete, traceable specifications ready for use by any coding agent.
 
 ---
 
-![Reversa installer](https://raw.githubusercontent.com/sandeco/reversa/main/docs/img/reversa-installer.png)
+![Reversa installer](https://raw.githubusercontent.com/pnocera/reversa/main/docs/img/reversa-installer.png)
 
 ---
 
@@ -38,7 +38,7 @@ The result is not documentation for humans to read. These are **operational cont
 In the root of the legacy project:
 
 ```bash
-npx reversa install
+npx @pnocera/reversa install
 ```
 
 The installer will:
@@ -346,12 +346,12 @@ Every statement in the specs is marked with:
 ## CLI commands
 
 ```bash
-npx reversa install      # Install Reversa in the project
-npx reversa status       # Show current analysis state
-npx reversa update       # Update agents to the latest version
-npx reversa add-agent    # Add an agent to the project
-npx reversa add-engine   # Add support for a new engine
-npx reversa uninstall    # Remove Reversa from the project
+npx @pnocera/reversa install      # Install Reversa in the project
+npx @pnocera/reversa status       # Show current analysis state
+npx @pnocera/reversa update       # Update agents to the latest version
+npx @pnocera/reversa add-agent    # Add an agent to the project
+npx @pnocera/reversa add-engine   # Add support for a new engine
+npx @pnocera/reversa uninstall    # Remove Reversa from the project
 ```
 
 The `update` command detects files you modified via SHA-256 and never overwrites customizations.
@@ -386,7 +386,7 @@ The `uninstall` command removes only files created by Reversa — nothing from t
 Contributions are welcome. Open an issue to discuss before submitting a PR.
 
 ```bash
-git clone https://github.com/sandeco/reversa.git
+git clone https://github.com/pnocera/reversa.git
 cd reversa
 npm install
 ```
