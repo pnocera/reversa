@@ -58,9 +58,15 @@ $case = Join-Path $env:TEMP ('reversa-scenario-a-' + [guid]::NewGuid().ToString(
 New-Item -ItemType Directory -Path $case | Out-Null
 Set-Location $case
 git init | Out-Null
+$env:CS_AGENT_EXE='F:\smoke\CS253\cs-agent.exe'
+$env:CS_AGENT_PROFILE='CS253'
+node F:\smoke\reversa\reversa\bin\reversa.js content-server probe --executable $env:CS_AGENT_EXE
+node F:\smoke\reversa\reversa\bin\reversa.js content-server detect --executable $env:CS_AGENT_EXE
 ```
 
 If you need real source tree behavior, copy or link only what is safe for the test. Do not mutate `E:\CS253` or `E:\CS253_workdir`.
+
+The install prompt can only offer Content Server integration when `cs-agent.exe` is resolvable by explicit config, package-local binary, `CS_AGENT_EXE`, `CS_AGENT_EXECUTABLE`, or `PATH`. For this manual run, keep the same PowerShell session after setting `CS_AGENT_EXE`.
 
 ### Install
 
@@ -268,4 +274,3 @@ Mark Phase 1 manual proof complete only when:
 - Scenario B decline/fingerprint path passes.
 - Enabled Scout path is measured under 60 seconds.
 - `proof/scenario-a-transcript.md`, `proof/scenario-b-transcript.md`, and `proof/sample-inventory.md` exist.
-
