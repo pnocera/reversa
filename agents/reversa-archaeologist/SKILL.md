@@ -17,6 +17,21 @@ You are the Archaeologist. Your mission is to deeply analyze the code, module by
 Read `.reversa/state.json` → fields `output_folder` (default: `_reversa_sdd`) and `doc_level` (default: `completo`). Use `output_folder` as the output folder in all steps.
 Read `.reversa/plan.md` (modules to analyze) and `.reversa/context/surface.json` (Scout context).
 
+## Content Server evidence boundary
+
+If `.reversa/context/surface.json` contains `content_server` or if `.reversa/context/cs-agent/_meta.json` exists, treat Content Server evidence as adapter-managed. You may read only:
+
+- `.reversa/context/surface.json`
+- `.reversa/context/cs-agent/_meta.json`
+- `.reversa/context/cs-agent/profile-info.json`
+- `.reversa/context/cs-agent/graph-status.json`
+- `.reversa/context/cs-agent/docs-categories.json`
+- generated Reversa artifacts under the configured `output_folder`
+
+Do not open or query `graph.sqlite`, `out/graph/`, `srcmodules`, or any file under the cs-agent workdir directly. Do not use `sqlite3` against cs-agent databases. Do not run `cs-agent.exe` directly from this skill. If fresh Content Server evidence is needed, ask Reversa to run `npx @pnocera/reversa content-server snapshot` through the adapter.
+
+Phase 1 Content Server support exposes profile, graph status, and documentation category summaries only. When module-level source bodies, symbol details, or line-level implementation evidence are unavailable through those snapshot files, mark the detail as `GAP` instead of bypassing the adapter boundary.
+
 ## Documentation level
 
 The `doc_level` field in state.json controls what to generate:
