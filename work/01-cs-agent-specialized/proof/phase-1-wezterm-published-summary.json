@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "scenario": "Both",
+  "run_codex": false,
+  "include_decline": true,
+  "remove_cases": true,
+  "package_source": "Published",
+  "published_package": "@pnocera/reversa@latest",
+  "proof_root": "F:\\smoke\\reversa\\reversa\\work\\01-cs-agent-specialized\\proof",
+  "cases": [
+    "C:\\Windows\\TEMP\\reversa-scenario-a-360b1ae6cd884435bf18e2a2c33e320a",
+    "C:\\Windows\\TEMP\\reversa-scenario-b-accept-760902285d7d488486a0e6e06aa1b20b",
+    "C:\\Windows\\TEMP\\reversa-scenario-b-decline-78da355287914bb0a0aef9ef34f41944"
+  ],
+  "completed_at": "2026-05-24T22:13:11.3151810Z"
+}

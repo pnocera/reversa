@@ -1,0 +1,253 @@
+{
+  "corpus": [
+    "E:\\CS253_workdir\\out\\sdk_docs\\cs\\all_docs.jsonl",
+    "E:\\CS253_workdir\\out\\sdk_docs\\csui\\all_docs.jsonl"
+  ],
+  "corpus_selection": "all",
+  "corpus_source": [
+    "csdoc",
+    "csui-doc"
+  ],
+  "corpora": [
+    {
+      "name": "cs",
+      "source": "csdoc",
+      "path": "E:\\CS253_workdir\\out\\sdk_docs\\cs\\all_docs.jsonl",
+      "manifest": "E:\\CS253_workdir\\out\\sdk_docs\\cs\\manifest.json",
+      "stale": false,
+      "rebuilt": false
+    },
+    {
+      "name": "csui",
+      "source": "csui-doc",
+      "path": "E:\\CS253_workdir\\out\\sdk_docs\\csui\\all_docs.jsonl",
+      "manifest": "E:\\CS253_workdir\\out\\sdk_docs\\csui\\manifest.json",
+      "stale": false,
+      "rebuilt": false
+    }
+  ],
+  "manifest": [
+    "E:\\CS253_workdir\\out\\sdk_docs\\cs\\manifest.json",
+    "E:\\CS253_workdir\\out\\sdk_docs\\csui\\manifest.json"
+  ],
+  "stale": false,
+  "rebuilt": false,
+  "total_docs": 13690,
+  "count": 13,
+  "categories": [
+    {
+      "category": "moduleindex",
+      "count": 13088,
+      "examples": [
+        {
+          "title": "ACTIVEVIEW::ActiveViewAdminLLRequestHandler::AllAVOverrides",
+          "source_ref": "csdoc!/moduleindex/files/activeview/ACTIVEVIEW/ActiveViewAdminLLRequestHandler/AllAVOverrides-os.html"
+        },
+        {
+          "title": "ACTIVEVIEW::ActiveViewAdminLLRequestHandler::AllAVPerspectives",
+          "source_ref": "csdoc!/moduleindex/files/activeview/ACTIVEVIEW/ActiveViewAdminLLRequestHandler/AllAVPerspectives-os.html"
+        },
+        {
+          "title": "ACTIVEVIEW::ActiveViewAdminLLRequestHandler::AllowAVIDInURL",
+          "source_ref": "csdoc!/moduleindex/files/activeview/ACTIVEVIEW/ActiveViewAdminLLRequestHandler/AllowAVIDInURL-os.html"
+        }
+      ]
+    },
+    {
+      "category": "reference",
+      "count": 179,
+      "examples": [
+        {
+          "title": "CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/404.html"
+        },
+        {
+          "title": "Add Business Workspace from Side Panel Command - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/utils/commands/addbwsfromsidepanel.html"
+        },
+        {
+          "title": "Workspace Navigation - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/utils/commands/navigate/navigate.workspace.html"
+        }
+      ]
+    },
+    {
+      "category": "control",
+      "count": 114,
+      "examples": [
+        {
+          "title": "DescriptionView (controls/description) - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/controls/description/doc/description.html"
+        },
+        {
+          "title": "Alpaca.Fields.ConwsWorkspaceField (conws/controls/form/fields/alpaca/alpworkspacefield) - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/controls/form/doc/alpaca/alpworkspacefield.html"
+        },
+        {
+          "title": "WorkspaceFieldView (conws/controls/form/fields/workspacefield.view) - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/controls/form/doc/workspacefield.html"
+        }
+      ]
+    },
+    {
+      "category": "documentation",
+      "count": 100,
+      "examples": [
+        {
+          "title": "Class: Assoc",
+          "source_ref": "csdoc!/documentation/assoc.html"
+        },
+        {
+          "title": "Class: Boolean",
+          "source_ref": "csdoc!/documentation/boolean.html"
+        },
+        {
+          "title": "Class: Builder",
+          "source_ref": "csdoc!/documentation/builder.html"
+        }
+      ]
+    },
+    {
+      "category": "workflow",
+      "count": 87,
+      "examples": [
+        {
+          "title": "CBExecute()",
+          "source_ref": "csdoc!/workflow/CBExecute.html"
+        },
+        {
+          "title": "CBExecute()",
+          "source_ref": "csdoc!/workflow/CBExecuteWFTypes.html"
+        },
+        {
+          "title": "ChangeAttribute()",
+          "source_ref": "csdoc!/workflow/ChangeAttribute.html"
+        }
+      ]
+    },
+    {
+      "category": "widget",
+      "count": 61,
+      "examples": [
+        {
+          "title": "Configuration Volume - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/widgets/configurationvolume/doc/configurationvolume.html"
+        },
+        {
+          "title": "Header - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/widgets/header/doc/header.html"
+        },
+        {
+          "title": "Metadata - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/conws/widgets/metadata/doc/metadata.html"
+        }
+      ]
+    },
+    {
+      "category": "oscript",
+      "count": 20,
+      "examples": [
+        {
+          "title": "Behaviour / Semantics",
+          "source_ref": "csdoc!/oscript/behaviour.html"
+        },
+        {
+          "title": "OScript Reference Guide",
+          "source_ref": "csdoc!/oscript/frameset.html"
+        },
+        {
+          "title": "Special Characters",
+          "source_ref": "csdoc!/oscript/intro/characters.html"
+        }
+      ]
+    },
+    {
+      "category": "article",
+      "count": 15,
+      "examples": [
+        {
+          "title": "Architecture - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/articles/architecture.html"
+        },
+        {
+          "title": "Coding - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/articles/coding.html"
+        },
+        {
+          "title": "Csui - CS Smart View SDK",
+          "source_ref": "csui-doc!/doc/articles/csui.html"
+        }
+      ]
+    },
+    {
+      "category": "cside",
+      "count": 14,
+      "examples": [
+        {
+          "title": "Debugging and Building",
+          "source_ref": "csdoc!/cside/debugAndBuild.html"
+        },
+        {
+          "title": "Distributing Modules",
+          "source_ref": "csdoc!/cside/distribution.html"
+        },
+        {
+          "title": "Editing OScript",
+          "source_ref": "csdoc!/cside/editing.html"
+        }
+      ]
+    },
+    {
+      "category": "xml",
+      "count": 8,
+      "examples": [
+        {
+          "title": "xml/index.xml",
+          "source_ref": "csdoc!/xml/index.xml"
+        },
+        {
+          "title": "xml/languageRef.xml",
+          "source_ref": "csdoc!/xml/languageRef.xml"
+        },
+        {
+          "title": "xml/moduleindex.xml",
+          "source_ref": "csdoc!/xml/moduleindex.xml"
+        }
+      ]
+    },
+    {
+      "category": "root",
+      "count": 2,
+      "examples": [
+        {
+          "title": "Livelink: Copyright Information",
+          "source_ref": "csdoc!/copyright.html"
+        },
+        {
+          "title": "Content Server SDK Documentation: Index",
+          "source_ref": "csdoc!/index.html"
+        }
+      ]
+    },
+    {
+      "category": "docs",
+      "count": 1,
+      "examples": [
+        {
+          "title": "JavaObject: Calling OScript from Java",
+          "source_ref": "csdoc!/docs/jo.html"
+        }
+      ]
+    },
+    {
+      "category": "ollsigner",
+      "count": 1,
+      "examples": [
+        {
+          "title": "OLL Signer User Guide",
+          "source_ref": "csdoc!/ollsigner/index.html"
+        }
+      ]
+    }
+  ]
+}

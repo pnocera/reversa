@@ -36,6 +36,16 @@ Set-Location F:\smoke\reversa\reversa
 .\work\01-cs-agent-specialized\manual-test\run-phase-1-wezterm.ps1 -Scenario Both -IncludeDecline -RunCodex
 ```
 
+Published package proof:
+
+```powershell
+Set-Location F:\smoke\reversa\reversa
+.\work\01-cs-agent-specialized\manual-test\run-phase-1-wezterm.ps1 -Scenario Both -IncludeDecline -PackageSource Published
+.\work\01-cs-agent-specialized\manual-test\run-phase-1-wezterm.ps1 -Scenario Both -IncludeDecline -RunCodex -PackageSource Published
+```
+
+Published mode intentionally skips `npm install F:\smoke\reversa\reversa` in the disposable scenario folders and uses `npx -y @pnocera/reversa@latest` for install, detect, snapshot, and inventory. Its proof artifacts are suffixed with `-published` so they do not overwrite local-checkout evidence.
+
 The full Codex mode launches WezTerm panes and kills those panes after artifacts are verified unless `-KeepWindows` is passed. It retains disposable temp cases by default so failed runs can be inspected; pass `-RemoveCases` only when the proof artifacts are enough.
 
 Codex choice prompts require a numeric answer. When Codex asks whether to trust a disposable scenario directory, enter `1`; pressing Enter alone does not reliably select the highlighted choice. The WezTerm harness sends `1` for this prompt.

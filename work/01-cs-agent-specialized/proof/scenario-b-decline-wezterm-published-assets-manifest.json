@@ -1,0 +1,10 @@
+{
+  "name": "scenario-b-decline-wezterm-published",
+  "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-decline-9b5c93a06b45413e8cc40b56af5aede3",
+  "copied_at": "2026-05-24T22:20:18.5719310Z",
+  "assets": [
+    "reversa-config.toml",
+    "reversa-plan.md",
+    "reversa-state.json"
+  ]
+}

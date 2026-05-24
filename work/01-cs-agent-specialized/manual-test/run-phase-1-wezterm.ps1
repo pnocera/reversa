@@ -22,6 +22,10 @@ param(
   [switch] $KeepWindows,
   [switch] $RemoveCases,
 
+  [ValidateSet('Local', 'Published')]
+  [string] $PackageSource = 'Local',
+  [string] $PublishedPackage = '@pnocera/reversa@latest',
+
   [string] $ReversaRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path,
   [string] $CsAgentExe = 'F:\smoke\CS253\cs-agent.exe',
   [string] $Profile = 'CS253',
@@ -44,6 +48,59 @@ function Assert-Command {
 function Quote-PS {
   param([Parameter(Mandatory)][string] $Value)
   return "'" + ($Value -replace "'", "''") + "'"
+}
+
+function Get-ReversaPaneCommand {
+  param([Parameter(Mandatory)][string[]] $Arguments)
+  $argsText = ($Arguments | ForEach-Object { Quote-PS $_ }) -join ' '
+  if ($PackageSource -eq 'Published') {
+    return "npx -y $(Quote-PS $PublishedPackage) $argsText"
+  }
+  return "npx @pnocera/reversa $argsText"
+}
+
+function Get-ReversaInstallPaneCommand {
+  if ($PackageSource -eq 'Published') {
+    return "npx -y $(Quote-PS $PublishedPackage) install"
+  }
+  return "node $(Quote-PS (Join-Path $ReversaRoot 'bin\reversa.js')) install"
+}
+
+function Invoke-ReversaPackage {
+  param([Parameter(Mandatory)][string[]] $Arguments)
+  if ($PackageSource -eq 'Published') {
+    & npx -y $PublishedPackage @Arguments
+  } else {
+    & npx '@pnocera/reversa' @Arguments
+  }
+}
+
+function Get-ProofRunName {
+  param([Parameter(Mandatory)][string] $BaseName)
+  if ($PackageSource -eq 'Published') {
+    return "$BaseName-published"
+  }
+  return $BaseName
+}
+
+function Get-ProofFile {
+  param(
+    [Parameter(Mandatory)][string] $BaseName,
+    [Parameter(Mandatory)][string] $Kind
+  )
+  $runName = Get-ProofRunName -BaseName $BaseName
+  return Join-Path $ProofRoot "$runName-$Kind"
+}
+
+function Get-SummaryPath {
+  $suffix = ''
+  if ($PackageSource -eq 'Published') {
+    $suffix += '-published'
+  }
+  if ($RunCodex) {
+    $suffix += '-codex'
+  }
+  return Join-Path $ProofRoot "phase-1-wezterm$suffix-summary.json"
 }
 
 function New-ScenarioCase {
@@ -184,13 +241,17 @@ function Invoke-ScenarioInstaller {
 
     Send-PaneLine $paneId "`$env:CS_AGENT_EXE=$(Quote-PS $CsAgentExe)"
     Send-PaneLine $paneId "`$env:CS_AGENT_PROFILE=$(Quote-PS $Profile)"
-    Send-PaneLine $paneId "npm install --no-save --package-lock=false $(Quote-PS $ReversaRoot); if (`$LASTEXITCODE -eq 0) { Write-Host '__REVERSA_NPM_INSTALLED__' }"
-    Wait-PaneText $paneId '__REVERSA_NPM_INSTALLED__' $InstallTimeoutSeconds | Out-Null
+    Send-PaneLine $paneId "`$env:npm_config_yes='true'"
+    if ($PackageSource -eq 'Local') {
+      Send-PaneLine $paneId "npm install --no-save --package-lock=false $(Quote-PS $ReversaRoot); if (`$LASTEXITCODE -eq 0) { Write-Host '__REVERSA_NPM_INSTALLED__' }"
+      Wait-PaneText $paneId '__REVERSA_NPM_INSTALLED__' $InstallTimeoutSeconds | Out-Null
+    }
 
-    Send-PaneLine $paneId "npx @pnocera/reversa content-server detect --json; if (`$LASTEXITCODE -eq 0) { Write-Host '__REVERSA_DETECT_DONE__' }"
+    $detectCommand = Get-ReversaPaneCommand -Arguments @('content-server', 'detect', '--json')
+    Send-PaneLine $paneId "$detectCommand; if (`$LASTEXITCODE -eq 0) { Write-Host '__REVERSA_DETECT_DONE__' }"
     Wait-PaneText $paneId '__REVERSA_DETECT_DONE__' $InstallTimeoutSeconds | Out-Null
 
-    Send-PaneLine $paneId "node $(Quote-PS (Join-Path $ReversaRoot 'bin\reversa.js')) install"
+    Send-PaneLine $paneId (Get-ReversaInstallPaneCommand)
 
     Wait-PaneText $paneId 'Engines Harness to support' $InstallTimeoutSeconds | Out-Null
     Send-PaneLine $paneId
@@ -236,9 +297,9 @@ function Invoke-DirectSnapshot {
   try {
     $env:CS_AGENT_EXE = $CsAgentExe
     $env:CS_AGENT_PROFILE = $Profile
-    npx @pnocera/reversa content-server snapshot --json | Out-Null
+    Invoke-ReversaPackage -Arguments @('content-server', 'snapshot', '--json') | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'content-server snapshot failed' }
-    npx @pnocera/reversa content-server inventory --json | Out-Null
+    Invoke-ReversaPackage -Arguments @('content-server', 'inventory', '--json') | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'content-server inventory failed' }
   } finally {
     $env:CS_AGENT_EXE = $oldExe
@@ -282,7 +343,7 @@ function Set-ScenarioBDismissed {
   try {
     $env:CS_AGENT_EXE = $CsAgentExe
     $env:CS_AGENT_PROFILE = $Profile
-    $raw = npx @pnocera/reversa content-server detect --json
+    $raw = Invoke-ReversaPackage -Arguments @('content-server', 'detect', '--json')
     if ($LASTEXITCODE -ne 0) { throw 'content-server detect failed' }
   } finally {
     $env:CS_AGENT_EXE = $oldExe
@@ -325,6 +386,7 @@ Automation contract:
 - If Content Server enablement is offered, $choice.
 - Use only read-only Reversa adapter commands: npx @pnocera/reversa content-server probe, detect, snapshot, and inventory.
 - Do not run cs-agent.exe directly and do not run init, refresh, build, lint, test, dev, csui, edit, xlate, deploy, or graph rebuild commands.
+- The scenario package source is $PackageSource. If it is Published, do not install from $ReversaRoot.
 - Stop after Scout writes _reversa_sdd/inventory.md and .reversa/context/surface.json, or after the decline fingerprint is written for the decline scenario.
 - Do not start Archaeologist.
 - Finish with the literal marker ${RunName}_DONE.
@@ -332,6 +394,7 @@ Automation contract:
     $encodedPrompt = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($prompt))
     Send-PaneLine $paneId "`$env:CS_AGENT_EXE=$(Quote-PS $CsAgentExe)"
     Send-PaneLine $paneId "`$env:CS_AGENT_PROFILE=$(Quote-PS $Profile)"
+    Send-PaneLine $paneId "`$env:npm_config_yes='true'"
     Send-PaneLine $paneId "`$p=[Text.Encoding]::Unicode.GetString([Convert]::FromBase64String('$encodedPrompt'))"
     Send-PaneLine $paneId "codex --no-alt-screen --dangerously-bypass-approvals-and-sandbox `$p"
     Confirm-CodexTrustIfPrompted -PaneId $paneId | Out-Null
@@ -401,7 +464,7 @@ function Assert-InstalledPackageResolution {
   try {
     $env:CS_AGENT_EXE = $CsAgentExe
     $env:CS_AGENT_PROFILE = $Profile
-    $json = npx @pnocera/reversa content-server detect --json
+    $json = Invoke-ReversaPackage -Arguments @('content-server', 'detect', '--json')
     if ($LASTEXITCODE -ne 0) { throw 'npx content-server detect failed' }
     $parsed = $json | ConvertFrom-Json
     if ($parsed.ok -ne $true -or $parsed.action -ne 'detect') {
@@ -516,18 +579,18 @@ function Copy-ProofAssets {
 
 function Invoke-ScenarioA {
   $case = New-ScenarioCase 'reversa-scenario-a'
-  $transcript = Join-Path $ProofRoot 'scenario-a-wezterm-install-transcript.md'
+  $transcript = Get-ProofFile -BaseName 'scenario-a-wezterm' -Kind 'install-transcript.md'
   Invoke-ScenarioInstaller -CaseDir $case -ScenarioName A -TranscriptPath $transcript
   Assert-InstalledPackageResolution -CaseDir $case
 
   if ($RunCodex) {
-    Invoke-CodexRun -CaseDir $case -RunName A -TranscriptPath (Join-Path $ProofRoot 'scenario-a-wezterm-codex-transcript.md')
+    Invoke-CodexRun -CaseDir $case -RunName A -TranscriptPath (Get-ProofFile -BaseName 'scenario-a-wezterm' -Kind 'codex-transcript.md')
   } else {
     Invoke-DirectSnapshot -CaseDir $case
   }
 
   Assert-EnabledScenario -CaseDir $case
-  Copy-ProofAssets -CaseDir $case -Name 'scenario-a-wezterm'
+  Copy-ProofAssets -CaseDir $case -Name (Get-ProofRunName -BaseName 'scenario-a-wezterm')
   if ($RemoveCases) {
     Remove-ScenarioCase -CaseDir $case
   } else {
@@ -538,21 +601,21 @@ function Invoke-ScenarioA {
 
 function Invoke-ScenarioBAccept {
   $case = New-ScenarioCase 'reversa-scenario-b-accept'
-  $transcript = Join-Path $ProofRoot 'scenario-b-accept-wezterm-install-transcript.md'
+  $transcript = Get-ProofFile -BaseName 'scenario-b-accept-wezterm' -Kind 'install-transcript.md'
   Invoke-ScenarioInstaller -CaseDir $case -ScenarioName B -TranscriptPath $transcript
   Assert-InstalledPackageResolution -CaseDir $case
   Assert-DisabledAfterInstall -CaseDir $case
   Clear-ScenarioBDismissal -CaseDir $case
 
   if ($RunCodex) {
-    Invoke-CodexRun -CaseDir $case -RunName B-Accept -TranscriptPath (Join-Path $ProofRoot 'scenario-b-accept-wezterm-codex-transcript.md')
+    Invoke-CodexRun -CaseDir $case -RunName B-Accept -TranscriptPath (Get-ProofFile -BaseName 'scenario-b-accept-wezterm' -Kind 'codex-transcript.md')
   } else {
     Enable-ScenarioBConfig -CaseDir $case
     Invoke-DirectSnapshot -CaseDir $case
   }
 
   Assert-EnabledScenario -CaseDir $case
-  Copy-ProofAssets -CaseDir $case -Name 'scenario-b-accept-wezterm'
+  Copy-ProofAssets -CaseDir $case -Name (Get-ProofRunName -BaseName 'scenario-b-accept-wezterm')
   if ($RemoveCases) {
     Remove-ScenarioCase -CaseDir $case
   } else {
@@ -563,20 +626,20 @@ function Invoke-ScenarioBAccept {
 
 function Invoke-ScenarioBDecline {
   $case = New-ScenarioCase 'reversa-scenario-b-decline'
-  $transcript = Join-Path $ProofRoot 'scenario-b-decline-wezterm-install-transcript.md'
+  $transcript = Get-ProofFile -BaseName 'scenario-b-decline-wezterm' -Kind 'install-transcript.md'
   Invoke-ScenarioInstaller -CaseDir $case -ScenarioName B -TranscriptPath $transcript
   Assert-InstalledPackageResolution -CaseDir $case
   Assert-DisabledAfterInstall -CaseDir $case
   Clear-ScenarioBDismissal -CaseDir $case
 
   if ($RunCodex) {
-    Invoke-CodexRun -CaseDir $case -RunName B-Decline -TranscriptPath (Join-Path $ProofRoot 'scenario-b-decline-wezterm-codex-transcript.md')
+    Invoke-CodexRun -CaseDir $case -RunName B-Decline -TranscriptPath (Get-ProofFile -BaseName 'scenario-b-decline-wezterm' -Kind 'codex-transcript.md')
   } else {
     Set-ScenarioBDismissed -CaseDir $case
   }
 
   Assert-DismissedScenario -CaseDir $case
-  Copy-ProofAssets -CaseDir $case -Name 'scenario-b-decline-wezterm'
+  Copy-ProofAssets -CaseDir $case -Name (Get-ProofRunName -BaseName 'scenario-b-decline-wezterm')
   if ($RemoveCases) {
     Remove-ScenarioCase -CaseDir $case
   } else {
@@ -597,6 +660,7 @@ function Main {
   }
 
   New-Item -ItemType Directory -Path $ProofRoot -Force | Out-Null
+  $env:npm_config_yes = 'true'
 
   $cases = @()
   if ($Scenario -in @('A', 'Both')) {
@@ -615,11 +679,13 @@ function Main {
     run_codex = [bool]$RunCodex
     include_decline = [bool]$IncludeDecline
     remove_cases = [bool]$RemoveCases
+    package_source = $PackageSource
+    published_package = if ($PackageSource -eq 'Published') { $PublishedPackage } else { $null }
     proof_root = $ProofRoot
     cases = $cases
     completed_at = (Get-Date).ToUniversalTime().ToString('o')
   }
-  $summaryPath = Join-Path $ProofRoot 'phase-1-wezterm-summary.json'
+  $summaryPath = Get-SummaryPath
   $summary | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $summaryPath -Encoding UTF8
   Write-Host "Phase 1 WezTerm automation passed. Summary: $summaryPath"
 }

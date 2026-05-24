@@ -1,0 +1,93 @@
+# Reversa — Project Configuration
+# This file is managed by the installer. For customizations, edit config.user.toml
+
+[project]
+name = "reversa-scenario-a-1246a78a95a24a1bbbe98aefd95f7aff"
+version = "1.0.0"
+
+[user]
+name = "Neo"
+chat_language = "en-us"
+doc_language = "English"
+
+[output]
+folder = "_reversa_sdd"
+
+[agents]
+installed = [
+  "reversa",
+  "reversa-scout",
+  "reversa-archaeologist",
+  "reversa-detective",
+  "reversa-architect",
+  "reversa-writer",
+  "reversa-reviewer",
+  "reversa-visor",
+  "reversa-data-master",
+  "reversa-design-system",
+  "reversa-agents-help",
+  "reversa-content-server",
+  "reversa-reconstructor",
+  "reversa-migrate",
+  "reversa-paradigm-advisor",
+  "reversa-curator",
+  "reversa-strategist",
+  "reversa-designer",
+  "reversa-screen-translator",
+  "reversa-inspector",
+  "reversa-forward",
+  "reversa-requirements",
+  "reversa-clarify",
+  "reversa-plan",
+  "reversa-to-do",
+  "reversa-audit",
+  "reversa-quality",
+  "reversa-coding",
+  "reversa-principles",
+  "reversa-resume",
+  "reversa-new",
+  "reversa-ideator",
+  "reversa-researcher",
+  "reversa-drafter",
+  "reversa-spec-sdd",
+  "reversa-pricing-profile",
+  "reversa-pricing-size",
+  "reversa-pricing-estimate",
+  "reversa-docs",
+  "reversa-docs-mapper",
+  "reversa-docs-analyst",
+  "reversa-docs-storyteller",
+  "reversa-docs-publisher",
+  "reversa-arquitetura-3d",
+  "reversa-selo-generativo",
+  "reversa-highcharts-visualizer",
+  "reversa-especialista-d3",
+  "reversa-image-prompt-json"
+]
+
+[engines]
+installed = [
+  "claude-code",
+  "codex",
+  "gemini-cli",
+  "opencode"
+]
+
+[analysis]
+answer_mode = "chat"
+doc_level = "completo"
+
+[integrations.cs_agent]
+enabled = true
+profile = "CS253"
+executable = "F:\\smoke\\CS253\\cs-agent.exe"
+context_dir = ".reversa/context/cs-agent"
+inventory_path = "_reversa_sdd/inventory.md"
+snapshot_ttl_days = 7
+
+[specs]
+layout = ""              # constant "feature-folder" after the first run
+granularity = ""         # module | use-case | endpoint | hybrid | feature | custom
+custom_folders = []      # populated only when granularity == "custom"
+scout_suggestion = ""    # record of Scout's original suggestion, immutable after the 1st run
+decided_at = ""          # ISO 8601 timestamp of the user's choice

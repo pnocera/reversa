@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "command": "npx -y @pnocera/reversa@latest content-server detect --json",
+  "registry_version": "1.2.49",
+  "detected_action": "detect",
+  "adapter_version": "0.1.0",
+  "executable": "F:\\smoke\\CS253\\cs-agent.exe",
+  "active_profile": "CS253",
+  "profile_names": [
+    "CS253"
+  ],
+  "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+  "captured_at": "2026-05-24T22:21:30.4594518Z"
+}

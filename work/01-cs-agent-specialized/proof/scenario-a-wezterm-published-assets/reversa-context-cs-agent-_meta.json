@@ -1,0 +1,20 @@
+{
+  "adapter_version": "0.1.0",
+  "created_at": "2026-05-24T22:15:18.316Z",
+  "profile": "CS253",
+  "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+  "executable_source": "config",
+  "executable_trust": {
+    "path": "F:\\smoke\\CS253\\cs-agent.exe",
+    "size_bytes": 100953088,
+    "mtime_ms": 1779600811501.0994,
+    "signature": "not_checked",
+    "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+  },
+  "schema_version_observed": 3,
+  "files": {
+    "profile": "profile-info.json",
+    "graph": "graph-status.json",
+    "docs": "docs-categories.json"
+  }
+}
