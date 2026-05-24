@@ -70,7 +70,7 @@ if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($npmUser)) {
 }
 Write-Host "npm user: $npmUser"
 
-$pending = Get-GitStatus
+$pending = @(Get-GitStatus)
 if ($pending.Count -gt 0) {
     Write-Host "Committing $($pending.Count) pending git change(s)..."
     Invoke-Checked "git" @("add", "-A")
