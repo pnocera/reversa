@@ -1,0 +1,13 @@
+Command: RUN_CS_AGENT_TESTS=1 CS_AGENT_EXE=F:\smoke\CS253\cs-agent.exe CS_AGENT_PROFILE=CS253 npm run test:cs-agent
+Working directory: F:\smoke\reversa\reversa
+Recorded at: 2026-05-24T21:25:14.4972303+02:00
+
+
+> @pnocera/reversa@1.2.48 test:cs-agent
+> node scripts/test-cs-agent-integration.mjs
+
+Live cs-agent integration test passed for profile CS253.
+Snapshot: C:\Windows\TEMP\reversa-cs-agent-live-wGas1W\.reversa\context\cs-agent
+Inventory: C:\Windows\TEMP\reversa-cs-agent-live-wGas1W\inventory.md
+
+Exit code: 0
