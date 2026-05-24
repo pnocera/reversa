@@ -1,7 +1,7 @@
 {
   "name": "scenario-b-accept-wezterm",
-  "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-accept-a4486770815e49df8b895fa6f5e4bf75",
-  "copied_at": "2026-05-24T21:20:33.9723301Z",
+  "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2",
+  "copied_at": "2026-05-24T21:57:53.3154900Z",
   "assets": [
     "reversa_sdd-inventory.md",
     "reversa-config.toml",

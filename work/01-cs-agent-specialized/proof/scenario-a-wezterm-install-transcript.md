@@ -1,55 +1,55 @@
-PS C:\Windows\TEMP\reversa-scenario-a-87d9a84f382f4129b6631c8e85190797> Write-Ho
+PS C:\Windows\TEMP\reversa-scenario-a-a391302ff31e4579b62f8235397b01cf> Write-Ho
 st '__REVERSA_PANE_READY__'
 __REVERSA_PANE_READY__
-PS C:\Windows\TEMP\reversa-scenario-a-87d9a84f382f4129b6631c8e85190797> $env:CS_
+PS C:\Windows\TEMP\reversa-scenario-a-a391302ff31e4579b62f8235397b01cf> $env:CS_
 AGENT_EXE='F:\smoke\CS253\cs-agent.exe'
-______                                                                          
-| ___ \                                                                         
-| |_/ /_____   _____ _ __ ___  __ _                                             
-|    // _ \ \ / / _ \ '__/ __|/ _` |                                            
-| |\ \  __/\ V /  __/ |  \__ \ (_| |                                            
-\_| \_\___| \_/ \___|_|  |___/\__,_|   by pnocera                               
-                                                                                
-AI-Powered Reverse Engineering Framework                                        
-                                                                                
+______
+| ___ \
+| |_/ /_____   _____ _ __ ___  __ _
+|    // _ \ \ / / _ \ '__/ __|/ _` |
+| |\ \  __/\ V /  __/ |  \__ \ (_| |
+\_| \_\___| \_/ \___|_|  |___/\__,_|   by pnocera
+
+AI-Powered Reverse Engineering Framework
+
 Installation
-                                                                                
-Detected: Claude Code, Codex, Gemini CLI, Opencode                              
-                                                                                
-                                                                                
+
+Detected: Claude Code, Codex, Gemini CLI, Opencode
+
+
 1. Engines Harness to support
-                                                                                
- Claude Code (recommended), Codex (recommended), Gemini CLI, Opencode           
-                                                                                
+
+ Claude Code (recommended), Codex (recommended), Gemini CLI, Opencode
+
 2. Agents teams to install
-                                                                                
- Migration Agents, Code Forward Agents, Code New Project Agents (requer Code    
-Forward Agents), Documentation Agents (HTML mini-site), Pricing and Size Agents 
-                                                                                
-3. Project name: reversa-scenario-a-87d9a84f382f4129b6631c8e85190797
-                                                                                
+
+ Migration Agents, Code Forward Agents, Code New Project Agents (requer Code
+Forward Agents), Documentation Agents (HTML mini-site), Pricing and Size Agents
+
+3. Project name: reversa-scenario-a-a391302ff31e4579b62f8235397b01cf
+
 4. What should the agents call you? Neo
-                                                                                
+
 5. Language for agent interactions: en-us
-                                                                                
+
 6. Language for generated documents and specs: English
-                                                                                
+
 7. Output folder for specs: _reversa_sdd
 
 8. How to handle artifacts in git?
- Commit with the project (recommended for teams)                                
-                                                                                
+ Commit with the project (recommended for teams)
+
 9. How do you prefer to answer agent questions?
- In the chat (faster)                                                           
-                                                                                
-Detected Content Server profile: CS253                                          
+ In the chat (faster)
+
+Detected Content Server profile: CS253
 cs-agent: F:\smoke\CS253\cs-agent.exe
 
-10. Enable read-only Content Server integration for profile "CS253"? Yes        
-✔ Installation complete!                                                        
+10. Enable read-only Content Server integration for profile "CS253"? Yes
+✔ Installation complete!
 
   Summary:
-  Project:   reversa-scenario-a-87d9a84f382f4129b6631c8e85190797
+  Project:   reversa-scenario-a-a391302ff31e4579b62f8235397b01cf
   Engines:   Claude Code, Codex, Gemini CLI, Opencode
   Version:   1.2.48
 
@@ -71,5 +71,5 @@ y
 rsa-pricing-size after each /reversa-to-do, then /reversa-pricing-estimate to ge
 t the 3 price scenarios
 
-PS C:\Windows\TEMP\reversa-scenario-a-87d9a84f382f4129b6631c8e85190797> 
+PS C:\Windows\TEMP\reversa-scenario-a-a391302ff31e4579b62f8235397b01cf>
 

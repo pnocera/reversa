@@ -2,7 +2,7 @@
 # This file is managed by the installer. For customizations, edit config.user.toml
 
 [project]
-name = "reversa-scenario-b-accept-a4486770815e49df8b895fa6f5e4bf75"
+name = "reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2"
 version = "1.0.0"
 
 [user]
@@ -91,4 +91,3 @@ granularity = ""         # module | use-case | endpoint | hybrid | feature | cus
 custom_folders = []      # populated only when granularity == "custom"
 scout_suggestion = ""    # record of Scout's original suggestion, immutable after the 1st run
 decided_at = ""          # ISO 8601 timestamp of the user's choice
-

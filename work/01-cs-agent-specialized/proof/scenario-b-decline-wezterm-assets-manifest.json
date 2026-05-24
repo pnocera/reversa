@@ -1,7 +1,7 @@
 {
   "name": "scenario-b-decline-wezterm",
-  "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-decline-307e348b987f44bc883426e23e925021",
-  "copied_at": "2026-05-24T21:20:48.7500182Z",
+  "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-decline-fa66e19ec5224cd3b2982fcde1c63fc2",
+  "copied_at": "2026-05-24T21:59:23.4605428Z",
   "assets": [
     "reversa-config.toml",
     "reversa-plan.md",

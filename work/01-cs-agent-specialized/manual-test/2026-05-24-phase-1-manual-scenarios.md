@@ -38,6 +38,8 @@ Set-Location F:\smoke\reversa\reversa
 
 The full Codex mode launches WezTerm panes and kills those panes after artifacts are verified unless `-KeepWindows` is passed. It retains disposable temp cases by default so failed runs can be inspected; pass `-RemoveCases` only when the proof artifacts are enough.
 
+Codex choice prompts require a numeric answer. When Codex asks whether to trust a disposable scenario directory, enter `1`; pressing Enter alone does not reliably select the highlighted choice. The WezTerm harness sends `1` for this prompt.
+
 Create one transcript file per scenario and save the resulting inventory sample:
 
 ```text

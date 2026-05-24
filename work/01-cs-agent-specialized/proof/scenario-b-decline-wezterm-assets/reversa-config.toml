@@ -2,7 +2,7 @@
 # This file is managed by the installer. For customizations, edit config.user.toml
 
 [project]
-name = "reversa-scenario-b-decline-307e348b987f44bc883426e23e925021"
+name = "reversa-scenario-b-decline-fa66e19ec5224cd3b2982fcde1c63fc2"
 version = "1.0.0"
 
 [user]

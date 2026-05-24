@@ -1,0 +1,32 @@
+{
+  "ok": true,
+  "scenario": "Both",
+  "run_codex": true,
+  "include_decline": true,
+  "remove_cases": true,
+  "proof_root": "F:\\smoke\\reversa\\reversa\\work\\01-cs-agent-specialized\\proof",
+  "completed_at": "2026-05-24T21:59:23.4605428Z",
+  "runs": [
+    {
+      "name": "scenario-a-wezterm",
+      "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-a-a391302ff31e4579b62f8235397b01cf",
+      "install_transcript": "scenario-a-wezterm-install-transcript.md",
+      "codex_transcript": "scenario-a-wezterm-codex-transcript.md",
+      "assets_manifest": "scenario-a-wezterm-assets-manifest.json"
+    },
+    {
+      "name": "scenario-b-accept-wezterm",
+      "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2",
+      "install_transcript": "scenario-b-accept-wezterm-install-transcript.md",
+      "codex_transcript": "scenario-b-accept-wezterm-codex-transcript.md",
+      "assets_manifest": "scenario-b-accept-wezterm-assets-manifest.json"
+    },
+    {
+      "name": "scenario-b-decline-wezterm",
+      "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-b-decline-fa66e19ec5224cd3b2982fcde1c63fc2",
+      "install_transcript": "scenario-b-decline-wezterm-install-transcript.md",
+      "codex_transcript": "scenario-b-decline-wezterm-codex-transcript.md",
+      "assets_manifest": "scenario-b-decline-wezterm-assets-manifest.json"
+    }
+  ]
+}

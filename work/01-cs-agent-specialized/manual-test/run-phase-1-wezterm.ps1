@@ -138,6 +138,28 @@ function Wait-PaneText {
   throw "Timed out waiting for pane $PaneId text pattern: $Pattern"
 }
 
+function Confirm-CodexTrustIfPrompted {
+  param(
+    [Parameter(Mandatory)][string] $PaneId,
+    [int] $TimeoutSeconds = 45
+  )
+
+  $deadline = (Get-Date).AddSeconds($TimeoutSeconds)
+  do {
+    $text = Get-PaneText -PaneId $PaneId
+    if ($text -match 'Do you trust the contents of this directory\?') {
+      Send-PaneLine -PaneId $PaneId -Text '1'
+      return $true
+    }
+    if ($text -match 'OpenAI Codex' -and $text -match 'Working|Run Reversa|Use /skills') {
+      return $false
+    }
+    Start-Sleep -Milliseconds 750
+  } while ((Get-Date) -lt $deadline)
+
+  throw "Timed out waiting for Codex startup or trust prompt in pane $PaneId"
+}
+
 function Stop-WezPane {
   param([Parameter(Mandatory)][string] $PaneId)
   if ($KeepWindows) { return }
@@ -312,6 +334,7 @@ Automation contract:
     Send-PaneLine $paneId "`$env:CS_AGENT_PROFILE=$(Quote-PS $Profile)"
     Send-PaneLine $paneId "`$p=[Text.Encoding]::Unicode.GetString([Convert]::FromBase64String('$encodedPrompt'))"
     Send-PaneLine $paneId "codex --no-alt-screen --dangerously-bypass-approvals-and-sandbox `$p"
+    Confirm-CodexTrustIfPrompted -PaneId $paneId | Out-Null
 
     if ($RunName -eq 'B-Decline') {
       Wait-ForDismissal -CaseDir $CaseDir -TimeoutSeconds $CodexTimeoutSeconds
@@ -319,6 +342,15 @@ Automation contract:
       Wait-ForInventory -CaseDir $CaseDir -TimeoutSeconds $CodexTimeoutSeconds
     }
     Save-PaneTranscript -PaneId $paneId -Path $TranscriptPath
+  } catch {
+    $failedTranscript = $TranscriptPath -replace '\.md$', '-failed.md'
+    try {
+      Save-PaneTranscript -PaneId $paneId -Path $failedTranscript
+      Write-Warning "Saved failed Codex transcript: $failedTranscript"
+    } catch {
+      Write-Warning "Could not save failed Codex transcript: $($_.Exception.Message)"
+    }
+    throw
   } finally {
     Stop-WezPane $paneId
   }
@@ -424,6 +456,15 @@ function Assert-DisabledAfterInstall {
   if ($config -notmatch 'profile\s*=\s*""') { throw 'Expected empty profile after disabled install' }
 }
 
+function Clear-ScenarioBDismissal {
+  param([Parameter(Mandatory)][string] $CaseDir)
+
+  $statePath = Join-Path $CaseDir '.reversa\state.json'
+  $state = Get-Content -Raw -LiteralPath $statePath | ConvertFrom-Json
+  $state.cs_agent_enablement_dismissed = $null
+  $state | ConvertTo-Json -Depth 20 | Set-Content -LiteralPath $statePath -Encoding UTF8
+}
+
 function Assert-DismissedScenario {
   param([Parameter(Mandatory)][string] $CaseDir)
   $config = Get-Content -Raw -LiteralPath (Join-Path $CaseDir '.reversa\config.toml')
@@ -501,6 +542,7 @@ function Invoke-ScenarioBAccept {
   Invoke-ScenarioInstaller -CaseDir $case -ScenarioName B -TranscriptPath $transcript
   Assert-InstalledPackageResolution -CaseDir $case
   Assert-DisabledAfterInstall -CaseDir $case
+  Clear-ScenarioBDismissal -CaseDir $case
 
   if ($RunCodex) {
     Invoke-CodexRun -CaseDir $case -RunName B-Accept -TranscriptPath (Join-Path $ProofRoot 'scenario-b-accept-wezterm-codex-transcript.md')
@@ -525,6 +567,7 @@ function Invoke-ScenarioBDecline {
   Invoke-ScenarioInstaller -CaseDir $case -ScenarioName B -TranscriptPath $transcript
   Assert-InstalledPackageResolution -CaseDir $case
   Assert-DisabledAfterInstall -CaseDir $case
+  Clear-ScenarioBDismissal -CaseDir $case
 
   if ($RunCodex) {
     Invoke-CodexRun -CaseDir $case -RunName B-Decline -TranscriptPath (Join-Path $ProofRoot 'scenario-b-decline-wezterm-codex-transcript.md')

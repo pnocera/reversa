@@ -1,6 +1,6 @@
 {
   "version": "1.2.48",
-  "project": "reversa-scenario-a-87d9a84f382f4129b6631c8e85190797",
+  "project": "reversa-scenario-a-a391302ff31e4579b62f8235397b01cf",
   "user_name": "Neo",
   "chat_language": "en-us",
   "doc_language": "English",
@@ -8,7 +8,7 @@
   "doc_level": "completo",
   "output_folder": "_reversa_sdd",
   "forward_folder": "_reversa_forward",
-  "phase": null,
+  "phase": "reconnaissance",
   "cs_agent_enablement_dismissed": null,
   "completed": [],
   "pending": [

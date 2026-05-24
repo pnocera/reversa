@@ -1,14 +1,13 @@
 {
   "ok": true,
-  "scenario": "Both",
-  "run_codex": false,
+  "scenario": "B",
+  "run_codex": true,
   "include_decline": true,
   "remove_cases": true,
   "proof_root": "F:\\smoke\\reversa\\reversa\\work\\01-cs-agent-specialized\\proof",
   "cases": [
-    "C:\\Windows\\TEMP\\reversa-scenario-a-87d9a84f382f4129b6631c8e85190797",
-    "C:\\Windows\\TEMP\\reversa-scenario-b-accept-a4486770815e49df8b895fa6f5e4bf75",
-    "C:\\Windows\\TEMP\\reversa-scenario-b-decline-307e348b987f44bc883426e23e925021"
+    "C:\\Windows\\TEMP\\reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2",
+    "C:\\Windows\\TEMP\\reversa-scenario-b-decline-fa66e19ec5224cd3b2982fcde1c63fc2"
   ],
-  "completed_at": "2026-05-24T21:20:48.8522065Z"
+  "completed_at": "2026-05-24T21:59:23.5612970Z"
 }

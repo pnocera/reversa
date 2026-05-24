@@ -1,6 +1,6 @@
 {
   "version": "1.2.48",
-  "project": "reversa-scenario-b-accept-a4486770815e49df8b895fa6f5e4bf75",
+  "project": "reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2",
   "user_name": "Neo",
   "chat_language": "en-us",
   "doc_language": "English",
@@ -8,14 +8,8 @@
   "doc_level": "completo",
   "output_folder": "_reversa_sdd",
   "forward_folder": "_reversa_forward",
-  "phase": null,
-  "cs_agent_enablement_dismissed": {
-    "profile": "CS253",
-    "ot_home": "E:\\CS253",
-    "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
-    "help_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
-    "dismissed_at": "2026-05-24T21:20:14.752Z"
-  },
+  "phase": "reconnaissance",
+  "cs_agent_enablement_dismissed": null,
   "completed": [],
   "pending": [
     "reconnaissance",
