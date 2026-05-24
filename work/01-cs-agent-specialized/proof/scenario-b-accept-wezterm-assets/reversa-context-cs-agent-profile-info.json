@@ -1,0 +1,208 @@
+{
+  "active": "CS253",
+  "profile": {
+    "version": 2,
+    "platform": "windows",
+    "ot_home": "E:\\CS253",
+    "workdir": "E:\\CS253_workdir",
+    "cs_version": {
+      "value": "unknown",
+      "source": "unknown"
+    },
+    "obuild": {
+      "zip": "E:\\CS253_workdir\\downloads\\obuild.zip",
+      "zip_sha256": "4757e041cea3d87b5cbd95a03ea26a49a15007388e2a3c5c66462437a4965ed6",
+      "root": "E:\\CS253_workdir\\tools\\obuild",
+      "command": "E:\\CS253_workdir\\tools\\obuild\\OBuild\\obuild.cmd",
+      "version": {
+        "value": "1.9.0",
+        "source": "manifest"
+      }
+    },
+    "eclipse_plugin": {
+      "zip": "E:\\CS253_workdir\\downloads\\eclipse-plugin.zip",
+      "zip_sha256": "2fe451420adb037cd1c7a56da3740c9b7a31ff55bea96c1afde48b30e815e980",
+      "root": "E:\\CS253_workdir\\tools\\eclipse-plugin",
+      "version": {
+        "value": "26.1.0.202512161839",
+        "source": "manifest"
+      }
+    },
+    "csdoc": {
+      "zip": "E:\\CS253_workdir\\downloads\\csdoc.zip",
+      "zip_sha256": "c15942ccdd68a2191358989a5e65388c0a8d3cb721bd495e7d31b2812c3e259b",
+      "root": "E:\\CS253_workdir\\tools\\csdoc",
+      "version": {
+        "value": "26.1.0",
+        "source": "filename"
+      }
+    },
+    "csui": {
+      "doc": {
+        "zip": "E:\\CS253_workdir\\downloads\\csui-doc.zip",
+        "zip_sha256": "7d0df660b02dbe50ee93b245e3233c94fa901e746a3774246fec00d43614578e",
+        "root": "E:\\CS253_workdir\\tools\\csui-doc",
+        "version": {
+          "value": "26.1.0",
+          "source": "filename"
+        }
+      },
+      "sdk": {
+        "zip": "E:\\CS253_workdir\\downloads\\csui-sdk.zip",
+        "zip_sha256": "407921f7cb9ff0b1a7af3455d8a4326859689bafbe65800918b73d73dcae74e2",
+        "root": "E:\\CS253_workdir\\tools\\csui-sdk",
+        "version": {
+          "value": "26.1.0",
+          "source": "filename"
+        }
+      },
+      "style_kit": {
+        "zip": "E:\\CS253_workdir\\downloads\\csui-style-override-kit.zip",
+        "zip_sha256": "b559227320ccbdc626e25c12ca4703d635d675b96aab44496751f72fd7b9a12e",
+        "root": "E:\\CS253_workdir\\tools\\csui-style-override-kit",
+        "version": {
+          "value": "26.1.0",
+          "source": "filename"
+        }
+      },
+      "generator": {
+        "zip": "E:\\CS253_workdir\\downloads\\csui-generator.zip",
+        "zip_sha256": "256bc3de15448a65b8e2b4c95b14b9670689be8d2b551d6144e6c02976ab5802",
+        "root": "E:\\CS253_workdir\\tools\\csui-generator",
+        "version": {
+          "value": "26.1.0",
+          "source": "filename"
+        }
+      }
+    },
+    "decompiler": {
+      "jar": "E:\\CS253_workdir\\tools\\decompiler\\vineflower-1.12.0.jar",
+      "jar_sha256": "1dfcfe974395734fa467ce620661c7623d05ba83670de0529b1fbd63ff548b9d",
+      "version": {
+        "value": "1.12.0",
+        "source": "manifest"
+      }
+    },
+    "java_roots": [
+      "E:\\CS253\\ojlib"
+    ],
+    "paths": {
+      "srcdir": "E:\\CS253_workdir\\srcmodules",
+      "dstdir": "E:\\CS253_workdir\\out\\build",
+      "doc_corpus_dir": "E:\\CS253_workdir\\out\\sdk_docs\\cs",
+      "sdk_docs_dir": "E:\\CS253_workdir\\out\\sdk_docs",
+      "moduleindex_db": "E:\\CS253_workdir\\out\\sdk_docs\\moduleindex.sqlite",
+      "xref_db": "E:\\CS253_workdir\\out\\sdk_docs\\xref.sqlite",
+      "graph_db": "E:\\CS253_workdir\\out\\graph\\graph.sqlite",
+      "code_db": "E:\\CS253_workdir\\out\\graph\\code.sqlite",
+      "java_decompiled_dir": "E:\\CS253_workdir\\out\\java",
+      "csui_deploy_parent": "E:\\CS253\\module",
+      "runs_dir": "E:\\CS253_workdir\\out\\runs",
+      "cs_module_dir": "E:\\CS253\\module"
+    },
+    "ounit_adapter": {
+      "kind": "http",
+      "host": "127.0.0.1",
+      "port": 19777,
+      "token_file": "E:\\CS253_workdir\\config\\ounit-adapter.token"
+    }
+  },
+  "registry": [
+    {
+      "name": "CS253",
+      "path": "config/instance.json"
+    }
+  ],
+  "path_checks": [
+    {
+      "key": "ot_home",
+      "path": "E:\\CS253",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "obuild.command",
+      "path": "E:\\CS253_workdir\\tools\\obuild\\OBuild\\obuild.cmd",
+      "exists": true,
+      "kind": "file"
+    },
+    {
+      "key": "obuild.root",
+      "path": "E:\\CS253_workdir\\tools\\obuild",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "eclipse_plugin.root",
+      "path": "E:\\CS253_workdir\\tools\\eclipse-plugin",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "csdoc.root",
+      "path": "E:\\CS253_workdir\\tools\\csdoc",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.srcdir",
+      "path": "E:\\CS253_workdir\\srcmodules",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.dstdir",
+      "path": "E:\\CS253_workdir\\out\\build",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.doc_corpus_dir",
+      "path": "E:\\CS253_workdir\\out\\sdk_docs\\cs",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.sdk_docs_dir",
+      "path": "E:\\CS253_workdir\\out\\sdk_docs",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.moduleindex_db_parent",
+      "path": "E:\\CS253_workdir\\out\\sdk_docs",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.graph_db_parent",
+      "path": "E:\\CS253_workdir\\out\\graph",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.code_db_parent",
+      "path": "E:\\CS253_workdir\\out\\graph",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.java_decompiled_dir",
+      "path": "E:\\CS253_workdir\\out\\java",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.csui_deploy_parent",
+      "path": "E:\\CS253\\module",
+      "exists": true,
+      "kind": "directory"
+    },
+    {
+      "key": "paths.cs_module_dir",
+      "path": "E:\\CS253\\module",
+      "exists": true,
+      "kind": "directory"
+    }
+  ]
+}

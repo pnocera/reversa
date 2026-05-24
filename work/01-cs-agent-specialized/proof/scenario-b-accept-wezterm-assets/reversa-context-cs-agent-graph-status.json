@@ -1,0 +1,866 @@
+{
+  "exists": true,
+  "index_db": "E:\\CS253_workdir\\out\\graph\\graph.sqlite",
+  "status": {
+    "profile": "CS253",
+    "schemaVersion": 3,
+    "fileCount": 58398,
+    "sourceFileCount": 34171,
+    "supportAssetFileCount": 24227,
+    "nodeCount": 940729,
+    "edgeCount": 2251241,
+    "ftsRowCount": 916483,
+    "extractionErrorFileCount": 82,
+    "nodesByKind": [
+      {
+        "key": "asset",
+        "count": 24227
+      },
+      {
+        "key": "feature",
+        "count": 111165
+      },
+      {
+        "key": "file",
+        "count": 34171
+      },
+      {
+        "key": "function",
+        "count": 77319
+      },
+      {
+        "key": "intrinsic",
+        "count": 3
+      },
+      {
+        "key": "module",
+        "count": 148
+      },
+      {
+        "key": "object",
+        "count": 29033
+      },
+      {
+        "key": "oscript_block",
+        "count": 711
+      },
+      {
+        "key": "ospace",
+        "count": 293
+      },
+      {
+        "key": "parameter",
+        "count": 163688
+      },
+      {
+        "key": "route",
+        "count": 4471
+      },
+      {
+        "key": "script",
+        "count": 13121
+      },
+      {
+        "key": "template",
+        "count": 4483
+      },
+      {
+        "key": "type",
+        "count": 12
+      },
+      {
+        "key": "variable",
+        "count": 463751
+      },
+      {
+        "key": "weblingo_directive",
+        "count": 14114
+      },
+      {
+        "key": "xlate_key",
+        "count": 19
+      }
+    ],
+    "nodesByLifecycle": [
+      {
+        "key": "source",
+        "count": 916486
+      },
+      {
+        "key": "synthetic",
+        "count": 24243
+      }
+    ],
+    "nodesByOriginKind": [
+      {
+        "key": "asset",
+        "count": 24227
+      },
+      {
+        "key": "embedded",
+        "count": 711
+      },
+      {
+        "key": "html",
+        "count": 27342
+      },
+      {
+        "key": "ini",
+        "count": 561
+      },
+      {
+        "key": "oscript",
+        "count": 887850
+      },
+      {
+        "key": "properties",
+        "count": 22
+      },
+      {
+        "key": "seeded",
+        "count": 16
+      }
+    ],
+    "edgesByKind": [
+      {
+        "key": "calls",
+        "count": 315123
+      },
+      {
+        "key": "contains",
+        "count": 976030
+      },
+      {
+        "key": "depends_on",
+        "count": 1190
+      },
+      {
+        "key": "dispatches_to",
+        "count": 4488
+      },
+      {
+        "key": "executes_script",
+        "count": 711
+      },
+      {
+        "key": "inherits",
+        "count": 29681
+      },
+      {
+        "key": "overrides",
+        "count": 128647
+      },
+      {
+        "key": "references",
+        "count": 11768
+      },
+      {
+        "key": "renders_template",
+        "count": 4728
+      },
+      {
+        "key": "type_of",
+        "count": 778875
+      }
+    ],
+    "edgesByConfidence": [
+      {
+        "key": "inferred",
+        "count": 17697
+      },
+      {
+        "key": "intrinsic",
+        "count": 65944
+      },
+      {
+        "key": "multi_candidate",
+        "count": 109483
+      },
+      {
+        "key": "resolved",
+        "count": 2058117
+      }
+    ],
+    "unresolvedRefsByKind": [
+      {
+        "key": "ambiguous_call",
+        "count": 22148
+      },
+      {
+        "key": "asset",
+        "count": 40
+      },
+      {
+        "key": "depends_on",
+        "count": 557
+      },
+      {
+        "key": "feature_call",
+        "count": 480631
+      },
+      {
+        "key": "inherits",
+        "count": 2
+      },
+      {
+        "key": "template",
+        "count": 8675
+      },
+      {
+        "key": "type",
+        "count": 55740
+      },
+      {
+        "key": "uses_xlate",
+        "count": 143876
+      }
+    ],
+    "support": {
+      "fileCount": 24227,
+      "assetNodeCount": 24227,
+      "assetReferenceEdgeCount": 11768,
+      "unresolvedAssetReferenceCount": 40,
+      "countsByAssetClass": [
+        {
+          "key": "bundle",
+          "count": 1043
+        },
+        {
+          "key": "css",
+          "count": 410
+        },
+        {
+          "key": "html",
+          "count": 89
+        },
+        {
+          "key": "icon",
+          "count": 7414
+        },
+        {
+          "key": "js",
+          "count": 696
+        },
+        {
+          "key": "json",
+          "count": 18
+        },
+        {
+          "key": "manifest",
+          "count": 56
+        },
+        {
+          "key": "nls",
+          "count": 60
+        },
+        {
+          "key": "other",
+          "count": 330
+        },
+        {
+          "key": "toc",
+          "count": 62
+        },
+        {
+          "key": "vendor",
+          "count": 14049
+        }
+      ],
+      "countsByModule": [
+        {
+          "key": "__platform__",
+          "count": 357
+        },
+        {
+          "key": "activeview",
+          "count": 21
+        },
+        {
+          "key": "adminhelp",
+          "count": 175
+        },
+        {
+          "key": "answerdesk",
+          "count": 54
+        },
+        {
+          "key": "appearances",
+          "count": 27
+        },
+        {
+          "key": "barcode",
+          "count": 2
+        },
+        {
+          "key": "bestbets",
+          "count": 8
+        },
+        {
+          "key": "blog",
+          "count": 23
+        },
+        {
+          "key": "calendar",
+          "count": 14
+        },
+        {
+          "key": "calendarattr",
+          "count": 2
+        },
+        {
+          "key": "casebasic",
+          "count": 57
+        },
+        {
+          "key": "channel",
+          "count": 15
+        },
+        {
+          "key": "classification",
+          "count": 46
+        },
+        {
+          "key": "cmbase",
+          "count": 116
+        },
+        {
+          "key": "cmextra",
+          "count": 4
+        },
+        {
+          "key": "collections",
+          "count": 38
+        },
+        {
+          "key": "commdirectory",
+          "count": 36
+        },
+        {
+          "key": "comments",
+          "count": 34
+        },
+        {
+          "key": "contentmove",
+          "count": 42
+        },
+        {
+          "key": "contentsharing",
+          "count": 66
+        },
+        {
+          "key": "controlledviewing",
+          "count": 26
+        },
+        {
+          "key": "core",
+          "count": 1154
+        },
+        {
+          "key": "cpdatabase",
+          "count": 13
+        },
+        {
+          "key": "cpmaip",
+          "count": 7
+        },
+        {
+          "key": "csui",
+          "count": 1838
+        },
+        {
+          "key": "discussion",
+          "count": 44
+        },
+        {
+          "key": "distributedagent",
+          "count": 8
+        },
+        {
+          "key": "doctemplates",
+          "count": 164
+        },
+        {
+          "key": "docviewer",
+          "count": 4914
+        },
+        {
+          "key": "dps",
+          "count": 17
+        },
+        {
+          "key": "dtd",
+          "count": 5
+        },
+        {
+          "key": "elink",
+          "count": 9
+        },
+        {
+          "key": "enterprisearchivesp",
+          "count": 26
+        },
+        {
+          "key": "esign",
+          "count": 27
+        },
+        {
+          "key": "expression",
+          "count": 3
+        },
+        {
+          "key": "faq",
+          "count": 18
+        },
+        {
+          "key": "folder_icons",
+          "count": 46
+        },
+        {
+          "key": "form",
+          "count": 20
+        },
+        {
+          "key": "formwf",
+          "count": 5
+        },
+        {
+          "key": "forums",
+          "count": 29
+        },
+        {
+          "key": "gciutils",
+          "count": 212
+        },
+        {
+          "key": "guienhancements",
+          "count": 529
+        },
+        {
+          "key": "help",
+          "count": 374
+        },
+        {
+          "key": "home",
+          "count": 40
+        },
+        {
+          "key": "icons",
+          "count": 16
+        },
+        {
+          "key": "indexobject",
+          "count": 18
+        },
+        {
+          "key": "interview",
+          "count": 15
+        },
+        {
+          "key": "itemtemplate",
+          "count": 19
+        },
+        {
+          "key": "journal",
+          "count": 32
+        },
+        {
+          "key": "messagecenter",
+          "count": 173
+        },
+        {
+          "key": "metadata",
+          "count": 41
+        },
+        {
+          "key": "mimetypeimages",
+          "count": 94
+        },
+        {
+          "key": "multifile",
+          "count": 12
+        },
+        {
+          "key": "ngd",
+          "count": 152
+        },
+        {
+          "key": "nickname",
+          "count": 12
+        },
+        {
+          "key": "officeintegration",
+          "count": 164
+        },
+        {
+          "key": "oi",
+          "count": 14
+        },
+        {
+          "key": "otadmin",
+          "count": 4
+        },
+        {
+          "key": "otdsintegration",
+          "count": 2
+        },
+        {
+          "key": "otemail",
+          "count": 127
+        },
+        {
+          "key": "othcm",
+          "count": 73
+        },
+        {
+          "key": "otsapxecm",
+          "count": 326
+        },
+        {
+          "key": "permissionsexplorer",
+          "count": 16
+        },
+        {
+          "key": "perspectives",
+          "count": 53
+        },
+        {
+          "key": "physicalobjects",
+          "count": 108
+        },
+        {
+          "key": "polling",
+          "count": 16
+        },
+        {
+          "key": "project",
+          "count": 49
+        },
+        {
+          "key": "projecttemplate",
+          "count": 3
+        },
+        {
+          "key": "pstage",
+          "count": 32
+        },
+        {
+          "key": "ptfdassembly",
+          "count": 6
+        },
+        {
+          "key": "ptfdbuilder",
+          "count": 74
+        },
+        {
+          "key": "ptfdprinting",
+          "count": 97
+        },
+        {
+          "key": "ptfdpublish",
+          "count": 18
+        },
+        {
+          "key": "ptfdsignature",
+          "count": 17
+        },
+        {
+          "key": "qds",
+          "count": 10
+        },
+        {
+          "key": "recman",
+          "count": 118
+        },
+        {
+          "key": "recmansecurity",
+          "count": 20
+        },
+        {
+          "key": "recommender",
+          "count": 102
+        },
+        {
+          "key": "recyclebin",
+          "count": 4
+        },
+        {
+          "key": "rendition",
+          "count": 20
+        },
+        {
+          "key": "report",
+          "count": 12
+        },
+        {
+          "key": "resubmission",
+          "count": 40
+        },
+        {
+          "key": "rssfeed",
+          "count": 3
+        },
+        {
+          "key": "salesforceinterface",
+          "count": 537
+        },
+        {
+          "key": "searchstats",
+          "count": 2
+        },
+        {
+          "key": "signatureproviders",
+          "count": 23
+        },
+        {
+          "key": "socialfeed",
+          "count": 213
+        },
+        {
+          "key": "socialobject",
+          "count": 11
+        },
+        {
+          "key": "spdcommittee",
+          "count": 203
+        },
+        {
+          "key": "spdwizard",
+          "count": 4
+        },
+        {
+          "key": "storageprovider",
+          "count": 6
+        },
+        {
+          "key": "style",
+          "count": 151
+        },
+        {
+          "key": "summarizer",
+          "count": 13
+        },
+        {
+          "key": "supportasset",
+          "count": 16
+        },
+        {
+          "key": "task",
+          "count": 28
+        },
+        {
+          "key": "textedit",
+          "count": 7
+        },
+        {
+          "key": "todo",
+          "count": 4
+        },
+        {
+          "key": "transport",
+          "count": 40
+        },
+        {
+          "key": "ual",
+          "count": 2
+        },
+        {
+          "key": "undelete",
+          "count": 2
+        },
+        {
+          "key": "unittest",
+          "count": 1
+        },
+        {
+          "key": "viewx",
+          "count": 24
+        },
+        {
+          "key": "webadmin",
+          "count": 48
+        },
+        {
+          "key": "webattribute",
+          "count": 21
+        },
+        {
+          "key": "webconfig",
+          "count": 3
+        },
+        {
+          "key": "webdirwalk",
+          "count": 2
+        },
+        {
+          "key": "webdiscussion",
+          "count": 11
+        },
+        {
+          "key": "webdoc",
+          "count": 187
+        },
+        {
+          "key": "webdoctemplate",
+          "count": 2
+        },
+        {
+          "key": "webedit",
+          "count": 128
+        },
+        {
+          "key": "webform",
+          "count": 18
+        },
+        {
+          "key": "webhelp",
+          "count": 31
+        },
+        {
+          "key": "webhh",
+          "count": 13
+        },
+        {
+          "key": "webinbox",
+          "count": 2
+        },
+        {
+          "key": "webnode",
+          "count": 32
+        },
+        {
+          "key": "webnotify",
+          "count": 9
+        },
+        {
+          "key": "webotcindex",
+          "count": 8
+        },
+        {
+          "key": "webproj",
+          "count": 38
+        },
+        {
+          "key": "webprospector",
+          "count": 19
+        },
+        {
+          "key": "webreports",
+          "count": 165
+        },
+        {
+          "key": "websbroker",
+          "count": 97
+        },
+        {
+          "key": "websovmgmt",
+          "count": 13
+        },
+        {
+          "key": "websystemobj",
+          "count": 77
+        },
+        {
+          "key": "webuser",
+          "count": 9
+        },
+        {
+          "key": "webwfp",
+          "count": 1
+        },
+        {
+          "key": "webwork",
+          "count": 226
+        },
+        {
+          "key": "webxmlactivator",
+          "count": 8
+        },
+        {
+          "key": "wiki",
+          "count": 139
+        },
+        {
+          "key": "wopi",
+          "count": 18
+        },
+        {
+          "key": "xecmgov",
+          "count": 111
+        },
+        {
+          "key": "xecmoffice",
+          "count": 59
+        },
+        {
+          "key": "xecmpf",
+          "count": 236
+        },
+        {
+          "key": "xecmsap",
+          "count": 57
+        },
+        {
+          "key": "xeng",
+          "count": 4
+        },
+        {
+          "key": "xengadn",
+          "count": 26
+        },
+        {
+          "key": "xengcad",
+          "count": 17
+        },
+        {
+          "key": "xengcrt",
+          "count": 30
+        },
+        {
+          "key": "xenggis",
+          "count": 8125
+        },
+        {
+          "key": "xengppm",
+          "count": 10
+        },
+        {
+          "key": "xengse",
+          "count": 19
+        },
+        {
+          "key": "xengsfm",
+          "count": 35
+        },
+        {
+          "key": "xengtm",
+          "count": 14
+        },
+        {
+          "key": "xengtransmittal",
+          "count": 31
+        },
+        {
+          "key": "xgovexpimp",
+          "count": 16
+        },
+        {
+          "key": "xml",
+          "count": 3
+        },
+        {
+          "key": "xmlsearch",
+          "count": 7
+        },
+        {
+          "key": "xmlwfextensions",
+          "count": 35
+        },
+        {
+          "key": "xsd",
+          "count": 3
+        }
+      ],
+      "totalSizeBytes": 381945197
+    }
+  }
+}

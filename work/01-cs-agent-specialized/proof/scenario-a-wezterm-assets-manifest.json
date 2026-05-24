@@ -1,0 +1,15 @@
+{
+  "name": "scenario-a-wezterm",
+  "case_dir": "C:\\Windows\\TEMP\\reversa-scenario-a-87d9a84f382f4129b6631c8e85190797",
+  "copied_at": "2026-05-24T21:20:04.5446562Z",
+  "assets": [
+    "reversa_sdd-inventory.md",
+    "reversa-config.toml",
+    "reversa-context-cs-agent-_meta.json",
+    "reversa-context-cs-agent-docs-categories.json",
+    "reversa-context-cs-agent-graph-status.json",
+    "reversa-context-cs-agent-profile-info.json",
+    "reversa-plan.md",
+    "reversa-state.json"
+  ]
+}

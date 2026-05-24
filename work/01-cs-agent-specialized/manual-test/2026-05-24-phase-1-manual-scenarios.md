@@ -18,6 +18,26 @@ Proof output folder:
 F:\smoke\reversa\reversa\work\01-cs-agent-specialized\proof
 ```
 
+## Automation
+
+Prefer the WezTerm harness for repeatable proof runs. It drives the interactive installer in a real terminal, saves transcripts, and then uses deterministic file checks as the pass/fail authority.
+
+Fast bounded adapter proof without starting Codex:
+
+```powershell
+Set-Location F:\smoke\reversa\reversa
+.\work\01-cs-agent-specialized\manual-test\run-phase-1-wezterm.ps1 -Scenario Both -IncludeDecline
+```
+
+Full interactive Codex proof:
+
+```powershell
+Set-Location F:\smoke\reversa\reversa
+.\work\01-cs-agent-specialized\manual-test\run-phase-1-wezterm.ps1 -Scenario Both -IncludeDecline -RunCodex
+```
+
+The full Codex mode launches WezTerm panes and kills those panes after artifacts are verified unless `-KeepWindows` is passed. It retains disposable temp cases by default so failed runs can be inspected; pass `-RemoveCases` only when the proof artifacts are enough.
+
 Create one transcript file per scenario and save the resulting inventory sample:
 
 ```text

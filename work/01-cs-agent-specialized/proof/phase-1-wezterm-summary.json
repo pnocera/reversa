@@ -1,0 +1,14 @@
+{
+  "ok": true,
+  "scenario": "Both",
+  "run_codex": false,
+  "include_decline": true,
+  "remove_cases": true,
+  "proof_root": "F:\\smoke\\reversa\\reversa\\work\\01-cs-agent-specialized\\proof",
+  "cases": [
+    "C:\\Windows\\TEMP\\reversa-scenario-a-87d9a84f382f4129b6631c8e85190797",
+    "C:\\Windows\\TEMP\\reversa-scenario-b-accept-a4486770815e49df8b895fa6f5e4bf75",
+    "C:\\Windows\\TEMP\\reversa-scenario-b-decline-307e348b987f44bc883426e23e925021"
+  ],
+  "completed_at": "2026-05-24T21:20:48.8522065Z"
+}
