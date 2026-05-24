@@ -68,6 +68,15 @@ If you need real source tree behavior, copy or link only what is safe for the te
 
 The install prompt can only offer Content Server integration when `cs-agent.exe` is resolvable by explicit config, package-local binary, `CS_AGENT_EXE`, `CS_AGENT_EXECUTABLE`, or `PATH`. For this manual run, keep the same PowerShell session after setting `CS_AGENT_EXE`.
 
+Because the installed agent skills call `npx @pnocera/reversa ...`, unpublished local builds must be made available to `npx` before running Codex from the disposable project:
+
+```powershell
+npm install --no-save --package-lock=false F:\smoke\reversa\reversa
+npx @pnocera/reversa content-server detect --json
+```
+
+Do not publish to npm just to run this local scenario. Publish only when you are ready to validate the released package path.
+
 ### Install
 
 Run the local package under test:
