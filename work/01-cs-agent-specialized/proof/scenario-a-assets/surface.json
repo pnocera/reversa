@@ -1,0 +1,489 @@
+{
+  "generated_at": "2026-05-24T20:10:35Z",
+  "project_root": "C:\\Windows\\Temp\\reversa-scenario-a-5166398bf87b4826859d40188574f63c",
+  "languages": [
+    {
+      "name": "OScript",
+      "extensions": [
+        ".os",
+        ".oll"
+      ],
+      "file_count": 34171
+    },
+    {
+      "name": "JavaScript",
+      "extensions": [
+        ".js"
+      ],
+      "file_count": 696
+    },
+    {
+      "name": "CSS",
+      "extensions": [
+        ".css"
+      ],
+      "file_count": 410
+    },
+    {
+      "name": "HTML",
+      "extensions": [
+        ".html"
+      ],
+      "file_count": 89
+    },
+    {
+      "name": "JSON",
+      "extensions": [
+        ".json"
+      ],
+      "file_count": 18
+    }
+  ],
+  "primary_language": "OScript",
+  "frameworks": [
+    {
+      "name": "OpenText Content Server",
+      "version": "unknown",
+      "source": ".reversa/context/cs-agent/profile-info.json"
+    },
+    {
+      "name": "OBuild",
+      "version": "1.9.0",
+      "source": ".reversa/context/cs-agent/profile-info.json"
+    },
+    {
+      "name": "Content Server SDK Documentation",
+      "version": "26.1.0",
+      "source": ".reversa/context/cs-agent/profile-info.json"
+    },
+    {
+      "name": "CS Smart View SDK",
+      "version": "26.1.0",
+      "source": ".reversa/context/cs-agent/profile-info.json"
+    },
+    {
+      "name": "Eclipse OScript plugin",
+      "version": "26.1.0.202512161839",
+      "source": ".reversa/context/cs-agent/profile-info.json"
+    }
+  ],
+  "package_manager": "OBuild",
+  "entry_points": [
+    {
+      "path": "E:\\CS253_workdir\\srcmodules",
+      "type": "content_server_source_root"
+    },
+    {
+      "path": "E:\\CS253\\module",
+      "type": "content_server_module_root"
+    },
+    {
+      "path": "E:\\CS253_workdir\\out\\graph\\graph.sqlite",
+      "type": "cs_agent_graph_index"
+    }
+  ],
+  "signals": [
+    {
+      "type": "cs_agent_profile_detected",
+      "evidence": [
+        "content-server detect",
+        "CS253",
+        "E:\\CS253"
+      ]
+    },
+    {
+      "type": "cs_agent_profile",
+      "evidence": [
+        ".reversa/context/cs-agent/_meta.json",
+        ".reversa/context/cs-agent/graph-status.json"
+      ]
+    },
+    {
+      "type": "content_server_module_index",
+      "evidence": [
+        ".reversa/context/cs-agent/graph-status.json",
+        "module nodes: 148"
+      ]
+    },
+    {
+      "type": "content_server_routes",
+      "evidence": [
+        ".reversa/context/cs-agent/graph-status.json",
+        "route nodes: 4471"
+      ]
+    }
+  ],
+  "config_files": [
+    ".reversa/config.toml",
+    ".reversa/context/cs-agent/profile-info.json",
+    "config/instance.json"
+  ],
+  "ci_cd": [],
+  "database_hints": [
+    {
+      "path": "E:\\CS253_workdir\\out\\sdk_docs\\moduleindex.sqlite",
+      "type": "cs_agent_moduleindex_sqlite"
+    },
+    {
+      "path": "E:\\CS253_workdir\\out\\sdk_docs\\xref.sqlite",
+      "type": "cs_agent_xref_sqlite"
+    },
+    {
+      "path": "E:\\CS253_workdir\\out\\graph\\graph.sqlite",
+      "type": "cs_agent_graph_sqlite"
+    },
+    {
+      "path": "E:\\CS253_workdir\\out\\graph\\code.sqlite",
+      "type": "cs_agent_code_sqlite"
+    }
+  ],
+  "test_framework": "OUnit adapter configured",
+  "test_file_count": 0,
+  "modules": [
+    "__platform__",
+    "activeview",
+    "adminhelp",
+    "answerdesk",
+    "appearances",
+    "barcode",
+    "bestbets",
+    "blog",
+    "calendar",
+    "calendarattr",
+    "casebasic",
+    "channel",
+    "classification",
+    "cmbase",
+    "cmextra",
+    "collections",
+    "commdirectory",
+    "comments",
+    "contentmove",
+    "contentsharing",
+    "controlledviewing",
+    "core",
+    "cpdatabase",
+    "cpmaip",
+    "csui",
+    "discussion",
+    "distributedagent",
+    "doctemplates",
+    "docviewer",
+    "dps",
+    "dtd",
+    "elink",
+    "enterprisearchivesp",
+    "esign",
+    "expression",
+    "faq",
+    "folder_icons",
+    "form",
+    "formwf",
+    "forums",
+    "gciutils",
+    "guienhancements",
+    "help",
+    "home",
+    "icons",
+    "indexobject",
+    "interview",
+    "itemtemplate",
+    "journal",
+    "messagecenter",
+    "metadata",
+    "mimetypeimages",
+    "multifile",
+    "ngd",
+    "nickname",
+    "officeintegration",
+    "oi",
+    "otadmin",
+    "otdsintegration",
+    "otemail",
+    "othcm",
+    "otsapxecm",
+    "permissionsexplorer",
+    "perspectives",
+    "physicalobjects",
+    "polling",
+    "project",
+    "projecttemplate",
+    "pstage",
+    "ptfdassembly",
+    "ptfdbuilder",
+    "ptfdprinting",
+    "ptfdpublish",
+    "ptfdsignature",
+    "qds",
+    "recman",
+    "recmansecurity",
+    "recommender",
+    "recyclebin",
+    "rendition",
+    "report",
+    "resubmission",
+    "rssfeed",
+    "salesforceinterface",
+    "searchstats",
+    "signatureproviders",
+    "socialfeed",
+    "socialobject",
+    "spdcommittee",
+    "spdwizard",
+    "storageprovider",
+    "style",
+    "summarizer",
+    "supportasset",
+    "task",
+    "textedit",
+    "todo",
+    "transport",
+    "ual",
+    "undelete",
+    "unittest",
+    "viewx",
+    "webadmin",
+    "webattribute",
+    "webconfig",
+    "webdirwalk",
+    "webdiscussion",
+    "webdoc",
+    "webdoctemplate",
+    "webedit",
+    "webform",
+    "webhelp",
+    "webhh",
+    "webinbox",
+    "webnode",
+    "webnotify",
+    "webotcindex",
+    "webproj",
+    "webprospector",
+    "webreports",
+    "websbroker",
+    "websovmgmt",
+    "websystemobj",
+    "webuser",
+    "webwfp",
+    "webwork",
+    "webxmlactivator",
+    "wiki",
+    "wopi",
+    "xecmgov",
+    "xecmoffice",
+    "xecmpf",
+    "xecmsap",
+    "xeng",
+    "xengadn",
+    "xengcad",
+    "xengcrt",
+    "xenggis",
+    "xengppm",
+    "xengse",
+    "xengsfm",
+    "xengtm",
+    "xengtransmittal",
+    "xgovexpimp",
+    "xml",
+    "xmlsearch",
+    "xmlwfextensions",
+    "xsd"
+  ],
+  "content_server": {
+    "profile": "CS253",
+    "schema_version": 3,
+    "source_file_count": 34171,
+    "support_asset_count": 24227,
+    "counts_by_module": {
+      "__platform__": 357,
+      "activeview": 21,
+      "adminhelp": 175,
+      "answerdesk": 54,
+      "appearances": 27,
+      "barcode": 2,
+      "bestbets": 8,
+      "blog": 23,
+      "calendar": 14,
+      "calendarattr": 2,
+      "casebasic": 57,
+      "channel": 15,
+      "classification": 46,
+      "cmbase": 116,
+      "cmextra": 4,
+      "collections": 38,
+      "commdirectory": 36,
+      "comments": 34,
+      "contentmove": 42,
+      "contentsharing": 66,
+      "controlledviewing": 26,
+      "core": 1154,
+      "cpdatabase": 13,
+      "cpmaip": 7,
+      "csui": 1838,
+      "discussion": 44,
+      "distributedagent": 8,
+      "doctemplates": 164,
+      "docviewer": 4914,
+      "dps": 17,
+      "dtd": 5,
+      "elink": 9,
+      "enterprisearchivesp": 26,
+      "esign": 27,
+      "expression": 3,
+      "faq": 18,
+      "folder_icons": 46,
+      "form": 20,
+      "formwf": 5,
+      "forums": 29,
+      "gciutils": 212,
+      "guienhancements": 529,
+      "help": 374,
+      "home": 40,
+      "icons": 16,
+      "indexobject": 18,
+      "interview": 15,
+      "itemtemplate": 19,
+      "journal": 32,
+      "messagecenter": 173,
+      "metadata": 41,
+      "mimetypeimages": 94,
+      "multifile": 12,
+      "ngd": 152,
+      "nickname": 12,
+      "officeintegration": 164,
+      "oi": 14,
+      "otadmin": 4,
+      "otdsintegration": 2,
+      "otemail": 127,
+      "othcm": 73,
+      "otsapxecm": 326,
+      "permissionsexplorer": 16,
+      "perspectives": 53,
+      "physicalobjects": 108,
+      "polling": 16,
+      "project": 49,
+      "projecttemplate": 3,
+      "pstage": 32,
+      "ptfdassembly": 6,
+      "ptfdbuilder": 74,
+      "ptfdprinting": 97,
+      "ptfdpublish": 18,
+      "ptfdsignature": 17,
+      "qds": 10,
+      "recman": 118,
+      "recmansecurity": 20,
+      "recommender": 102,
+      "recyclebin": 4,
+      "rendition": 20,
+      "report": 12,
+      "resubmission": 40,
+      "rssfeed": 3,
+      "salesforceinterface": 537,
+      "searchstats": 2,
+      "signatureproviders": 23,
+      "socialfeed": 213,
+      "socialobject": 11,
+      "spdcommittee": 203,
+      "spdwizard": 4,
+      "storageprovider": 6,
+      "style": 151,
+      "summarizer": 13,
+      "supportasset": 16,
+      "task": 28,
+      "textedit": 7,
+      "todo": 4,
+      "transport": 40,
+      "ual": 2,
+      "undelete": 2,
+      "unittest": 1,
+      "viewx": 24,
+      "webadmin": 48,
+      "webattribute": 21,
+      "webconfig": 3,
+      "webdirwalk": 2,
+      "webdiscussion": 11,
+      "webdoc": 187,
+      "webdoctemplate": 2,
+      "webedit": 128,
+      "webform": 18,
+      "webhelp": 31,
+      "webhh": 13,
+      "webinbox": 2,
+      "webnode": 32,
+      "webnotify": 9,
+      "webotcindex": 8,
+      "webproj": 38,
+      "webprospector": 19,
+      "webreports": 165,
+      "websbroker": 97,
+      "websovmgmt": 13,
+      "websystemobj": 77,
+      "webuser": 9,
+      "webwfp": 1,
+      "webwork": 226,
+      "webxmlactivator": 8,
+      "wiki": 139,
+      "wopi": 18,
+      "xecmgov": 111,
+      "xecmoffice": 59,
+      "xecmpf": 236,
+      "xecmsap": 57,
+      "xeng": 4,
+      "xengadn": 26,
+      "xengcad": 17,
+      "xengcrt": 30,
+      "xenggis": 8125,
+      "xengppm": 10,
+      "xengse": 19,
+      "xengsfm": 35,
+      "xengtm": 14,
+      "xengtransmittal": 31,
+      "xgovexpimp": 16,
+      "xml": 3,
+      "xmlsearch": 7,
+      "xmlwfextensions": 35,
+      "xsd": 3
+    },
+    "confidence_counts": {
+      "inferred": 17697,
+      "intrinsic": 65944,
+      "multi_candidate": 109483,
+      "resolved": 2058117
+    },
+    "unresolved_refs_by_kind": {
+      "ambiguous_call": 22148,
+      "asset": 40,
+      "depends_on": 557,
+      "feature_call": 480631,
+      "inherits": 2,
+      "template": 8675,
+      "type": 55740,
+      "uses_xlate": 143876
+    },
+    "node_count": 940729,
+    "edge_count": 2251241,
+    "extraction_error_file_count": 82
+  },
+  "total_files": 58398,
+  "organization_suggestion": {
+    "granularity": "module",
+    "rationale": "The Content Server graph exposes 148 module nodes and module-scoped source/support counts; route nodes are internal to those modules.",
+    "signals": [
+      {
+        "type": "content_server_modules",
+        "evidence": [
+          ".reversa/context/cs-agent/graph-status.json",
+          "nodesByKind.module = 148"
+        ]
+      },
+      {
+        "type": "module_scoped_assets",
+        "evidence": [
+          ".reversa/context/cs-agent/graph-status.json",
+          "support.countsByModule"
+        ]
+      }
+    ],
+    "features": []
+  }
+}

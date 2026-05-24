@@ -1,0 +1,351 @@
+{
+  "generated_at": "2026-05-24T20:25:42Z",
+  "evidence_policy": {
+    "allowed_inputs": [
+      ".reversa\\context\\surface.json",
+      ".reversa/context/cs-agent/*.json",
+      "_reversa_sdd/inventory.md",
+      "_reversa_sdd/dependencies.md"
+    ],
+    "excluded_inputs": [
+      "E:\\CS253_workdir\\out\\graph\\graph.sqlite",
+      "E:\\CS253_workdir\\srcmodules"
+    ],
+    "note": "Archaeologist output is limited to snapshot JSON. Missing module-level detail is recorded as GAP."
+  },
+  "modules": [
+    {
+      "name": "__platform__",
+      "path": "cs-agent://CS253/modules/__platform__",
+      "purpose": "🔴 GAP - module-level purpose is not exposed by the allowed snapshot JSON files.",
+      "primary_files": [],
+      "functions": [],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Module-level business rules are not available in .reversa/context/surface.json or .reversa/context/cs-agent/*.json.",
+          "location": ".reversa/context/cs-agent/graph-status.json",
+          "confidence": "unknown"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [
+        {
+          "name": "Module implementation algorithms",
+          "description": "🔴 GAP - function bodies, control flow, and module-level call edges are not exposed by the allowed snapshot JSON files.",
+          "confidence": "unknown"
+        }
+      ],
+      "complexity": "unknown",
+      "snapshot": {
+        "support_asset_count": 357,
+        "evidence": [
+          ".reversa\\context\\surface.json",
+          ".reversa\\context\\cs-agent\\graph-status.json"
+        ],
+        "confidence": "confirmed"
+      }
+    },
+    {
+      "name": "activeview",
+      "path": "cs-agent://CS253/modules/activeview",
+      "purpose": "🔴 GAP - module-level purpose is not exposed by the allowed snapshot JSON files.",
+      "primary_files": [],
+      "functions": [],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Module-level business rules are not available in .reversa/context/surface.json or .reversa/context/cs-agent/*.json.",
+          "location": ".reversa/context/cs-agent/graph-status.json",
+          "confidence": "unknown"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [
+        {
+          "name": "Module implementation algorithms",
+          "description": "🔴 GAP - function bodies, control flow, and module-level call edges are not exposed by the allowed snapshot JSON files.",
+          "confidence": "unknown"
+        }
+      ],
+      "complexity": "unknown",
+      "snapshot": {
+        "support_asset_count": 21,
+        "evidence": [
+          ".reversa\\context\\surface.json",
+          ".reversa\\context\\cs-agent\\graph-status.json"
+        ],
+        "confidence": "confirmed"
+      }
+    },
+    {
+      "name": "adminhelp",
+      "path": "cs-agent://CS253/modules/adminhelp",
+      "purpose": "🔴 GAP - module-level purpose is not exposed by the allowed snapshot JSON files.",
+      "primary_files": [],
+      "functions": [],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Module-level business rules are not available in .reversa/context/surface.json or .reversa/context/cs-agent/*.json.",
+          "location": ".reversa/context/cs-agent/graph-status.json",
+          "confidence": "unknown"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [
+        {
+          "name": "Module implementation algorithms",
+          "description": "🔴 GAP - function bodies, control flow, and module-level call edges are not exposed by the allowed snapshot JSON files.",
+          "confidence": "unknown"
+        }
+      ],
+      "complexity": "unknown",
+      "snapshot": {
+        "support_asset_count": 175,
+        "evidence": [
+          ".reversa\\context\\surface.json",
+          ".reversa\\context\\cs-agent\\graph-status.json"
+        ],
+        "confidence": "confirmed"
+      }
+    },
+    {
+      "name": "answerdesk",
+      "path": "cs-agent://CS253/modules/answerdesk",
+      "purpose": "🔴 GAP - module-level purpose is not exposed by the allowed snapshot JSON files.",
+      "primary_files": [],
+      "functions": [],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Module-level business rules are not available in .reversa/context/surface.json or .reversa/context/cs-agent/*.json.",
+          "location": ".reversa/context/surface.json",
+          "confidence": "unknown"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [
+        {
+          "name": "Module implementation algorithms",
+          "description": "🔴 GAP - function bodies, control flow, and module-level call edges are not exposed by the allowed snapshot JSON files.",
+          "confidence": "unknown"
+        }
+      ],
+      "complexity": "unknown",
+      "snapshot": {
+        "support_asset_count": 54,
+        "evidence": [
+          ".reversa\\context\\surface.json"
+        ],
+        "confidence": "confirmed"
+      }
+    },
+    {
+      "name": "appearances",
+      "path": "cs-agent://CS253/modules/appearances",
+      "purpose": "🔴 GAP - module-level purpose is not exposed by the allowed snapshot JSON files.",
+      "primary_files": [],
+      "functions": [],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Module-level business rules are not available in .reversa/context/surface.json or .reversa/context/cs-agent/*.json.",
+          "location": ".reversa/context/surface.json",
+          "confidence": "unknown"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [
+        {
+          "name": "Module implementation algorithms",
+          "description": "🔴 GAP - function bodies, control flow, and module-level call edges are not exposed by the allowed snapshot JSON files.",
+          "confidence": "unknown"
+        }
+      ],
+      "complexity": "unknown",
+      "snapshot": {
+        "support_asset_count": 27,
+        "evidence": [
+          ".reversa\\context\\surface.json"
+        ],
+        "confidence": "confirmed"
+      }
+    },
+    {
+      "name": "barcode",
+      "path": "cs-agent://CS253/modules/barcode",
+      "purpose": "🔴 GAP - module-level purpose is not exposed by the allowed snapshot JSON files.",
+      "primary_files": [],
+      "functions": [],
+      "entities": [],
+      "business_rules": [
+        {
+          "description": "Module-level business rules are not available in .reversa/context/surface.json or .reversa/context/cs-agent/*.json.",
+          "location": ".reversa/context/surface.json",
+          "confidence": "unknown"
+        }
+      ],
+      "dependencies": [],
+      "algorithms": [
+        {
+          "name": "Module implementation algorithms",
+          "description": "🔴 GAP - function bodies, control flow, and module-level call edges are not exposed by the allowed snapshot JSON files.",
+          "confidence": "unknown"
+        }
+      ],
+      "complexity": "unknown",
+      "snapshot": {
+        "support_asset_count": 2,
+        "evidence": [
+          ".reversa\\context\\surface.json"
+        ],
+        "confidence": "confirmed"
+      }
+    }
+  ],
+  "pending_modules": [
+    "bestbets",
+    "blog",
+    "calendar",
+    "calendarattr",
+    "casebasic",
+    "channel",
+    "classification",
+    "cmbase",
+    "cmextra",
+    "collections",
+    "commdirectory",
+    "comments",
+    "contentmove",
+    "contentsharing",
+    "controlledviewing",
+    "core",
+    "cpdatabase",
+    "cpmaip",
+    "csui",
+    "discussion",
+    "distributedagent",
+    "doctemplates",
+    "docviewer",
+    "dps",
+    "dtd",
+    "elink",
+    "enterprisearchivesp",
+    "esign",
+    "expression",
+    "faq",
+    "folder_icons",
+    "form",
+    "formwf",
+    "forums",
+    "gciutils",
+    "guienhancements",
+    "help",
+    "home",
+    "icons",
+    "indexobject",
+    "interview",
+    "itemtemplate",
+    "journal",
+    "messagecenter",
+    "metadata",
+    "mimetypeimages",
+    "multifile",
+    "ngd",
+    "nickname",
+    "officeintegration",
+    "oi",
+    "otadmin",
+    "otdsintegration",
+    "otemail",
+    "othcm",
+    "otsapxecm",
+    "permissionsexplorer",
+    "perspectives",
+    "physicalobjects",
+    "polling",
+    "project",
+    "projecttemplate",
+    "pstage",
+    "ptfdassembly",
+    "ptfdbuilder",
+    "ptfdprinting",
+    "ptfdpublish",
+    "ptfdsignature",
+    "qds",
+    "recman",
+    "recmansecurity",
+    "recommender",
+    "recyclebin",
+    "rendition",
+    "report",
+    "resubmission",
+    "rssfeed",
+    "salesforceinterface",
+    "searchstats",
+    "signatureproviders",
+    "socialfeed",
+    "socialobject",
+    "spdcommittee",
+    "spdwizard",
+    "storageprovider",
+    "style",
+    "summarizer",
+    "supportasset",
+    "task",
+    "textedit",
+    "todo",
+    "transport",
+    "ual",
+    "undelete",
+    "unittest",
+    "viewx",
+    "webadmin",
+    "webattribute",
+    "webconfig",
+    "webdirwalk",
+    "webdiscussion",
+    "webdoc",
+    "webdoctemplate",
+    "webedit",
+    "webform",
+    "webhelp",
+    "webhh",
+    "webinbox",
+    "webnode",
+    "webnotify",
+    "webotcindex",
+    "webproj",
+    "webprospector",
+    "webreports",
+    "websbroker",
+    "websovmgmt",
+    "websystemobj",
+    "webuser",
+    "webwfp",
+    "webwork",
+    "webxmlactivator",
+    "wiki",
+    "wopi",
+    "xecmgov",
+    "xecmoffice",
+    "xecmpf",
+    "xecmsap",
+    "xeng",
+    "xengadn",
+    "xengcad",
+    "xengcrt",
+    "xenggis",
+    "xengppm",
+    "xengse",
+    "xengsfm",
+    "xengtm",
+    "xengtransmittal",
+    "xgovexpimp",
+    "xml",
+    "xmlsearch",
+    "xmlwfextensions",
+    "xsd"
+  ]
+}

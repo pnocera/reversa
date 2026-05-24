@@ -1,0 +1,318 @@
+# Scout Inventory - reversa-scenario-a-5166398bf87b4826859d40188574f63c
+
+Generated: 2026-05-24T20:12:59Z
+
+## Scope
+
+The local project directory is a Reversa wrapper. The legacy system surface is the configured OpenText Content Server profile CS253, collected read-only through cs-agent into .reversa/context/cs-agent/. Scout did not recursively traverse E:\CS253_workdir\srcmodules; it used the snapshot and graph status as the evidence source.
+
+## Local root
+
+- AGENTS.md - agent instructions for this project.
+- CLAUDE.md - Claude-facing project instructions.
+- .agents/ and .claude/ - installed Reversa agent skills; not treated as legacy product modules.
+- .reversa/ - Reversa state, config, templates, and Content Server snapshot.
+- _reversa_sdd/ - generated specification output.
+
+## Content Server profile
+
+- Profile: CS253
+- OT home: E:\CS253
+- Workdir: E:\CS253_workdir
+- Source dir: E:\CS253_workdir\srcmodules
+- Deployed module dir: E:\CS253\module
+- Graph database: E:\CS253_workdir\out\graph\graph.sqlite
+- Snapshot schema version: 3
+- Adapter version: 0.1.0
+- Snapshot created at: 05/24/2026 20:07:24
+
+## Technology surface
+
+- Primary language: OScript
+- Source files indexed: 34171
+- Support assets indexed: 24227
+- Total files indexed by cs-agent graph: 58398
+- Graph nodes: 940729
+- Graph edges: 2251241
+- Extraction error files: 82
+- Package/build tool: OBuild 1.9.0
+- Content Server version: unknown (unknown)
+- CS SDK docs: 26.1.0
+- CS Smart View SDK: 26.1.0
+- Eclipse OScript plugin: 26.1.0.202512161839
+
+## Entry points and configuration
+
+- Source root: E:\CS253_workdir\srcmodules
+- Content Server module root: E:\CS253\module
+- OBuild command: E:\CS253_workdir\tools\obuild\OBuild\obuild.cmd
+- OUnit adapter: http at 127.0.0.1:19777
+- Profile registry: config/instance.json
+
+## Path checks
+
+- ot_home: E:\CS253 (exists, directory)
+- obuild.command: E:\CS253_workdir\tools\obuild\OBuild\obuild.cmd (exists, file)
+- obuild.root: E:\CS253_workdir\tools\obuild (exists, directory)
+- eclipse_plugin.root: E:\CS253_workdir\tools\eclipse-plugin (exists, directory)
+- csdoc.root: E:\CS253_workdir\tools\csdoc (exists, directory)
+- paths.srcdir: E:\CS253_workdir\srcmodules (exists, directory)
+- paths.dstdir: E:\CS253_workdir\out\build (exists, directory)
+- paths.doc_corpus_dir: E:\CS253_workdir\out\sdk_docs\cs (exists, directory)
+- paths.sdk_docs_dir: E:\CS253_workdir\out\sdk_docs (exists, directory)
+- paths.moduleindex_db_parent: E:\CS253_workdir\out\sdk_docs (exists, directory)
+- paths.graph_db_parent: E:\CS253_workdir\out\graph (exists, directory)
+- paths.code_db_parent: E:\CS253_workdir\out\graph (exists, directory)
+- paths.java_decompiled_dir: E:\CS253_workdir\out\java (exists, directory)
+- paths.csui_deploy_parent: E:\CS253\module (exists, directory)
+- paths.cs_module_dir: E:\CS253\module (exists, directory)
+
+## Module inventory
+
+- __platform__: 357
+- activeview: 21
+- adminhelp: 175
+- answerdesk: 54
+- appearances: 27
+- barcode: 2
+- bestbets: 8
+- blog: 23
+- calendar: 14
+- calendarattr: 2
+- casebasic: 57
+- channel: 15
+- classification: 46
+- cmbase: 116
+- cmextra: 4
+- collections: 38
+- commdirectory: 36
+- comments: 34
+- contentmove: 42
+- contentsharing: 66
+- controlledviewing: 26
+- core: 1154
+- cpdatabase: 13
+- cpmaip: 7
+- csui: 1838
+- discussion: 44
+- distributedagent: 8
+- doctemplates: 164
+- docviewer: 4914
+- dps: 17
+- dtd: 5
+- elink: 9
+- enterprisearchivesp: 26
+- esign: 27
+- expression: 3
+- faq: 18
+- folder_icons: 46
+- form: 20
+- formwf: 5
+- forums: 29
+- gciutils: 212
+- guienhancements: 529
+- help: 374
+- home: 40
+- icons: 16
+- indexobject: 18
+- interview: 15
+- itemtemplate: 19
+- journal: 32
+- messagecenter: 173
+- metadata: 41
+- mimetypeimages: 94
+- multifile: 12
+- ngd: 152
+- nickname: 12
+- officeintegration: 164
+- oi: 14
+- otadmin: 4
+- otdsintegration: 2
+- otemail: 127
+- othcm: 73
+- otsapxecm: 326
+- permissionsexplorer: 16
+- perspectives: 53
+- physicalobjects: 108
+- polling: 16
+- project: 49
+- projecttemplate: 3
+- pstage: 32
+- ptfdassembly: 6
+- ptfdbuilder: 74
+- ptfdprinting: 97
+- ptfdpublish: 18
+- ptfdsignature: 17
+- qds: 10
+- recman: 118
+- recmansecurity: 20
+- recommender: 102
+- recyclebin: 4
+- rendition: 20
+- report: 12
+- resubmission: 40
+- rssfeed: 3
+- salesforceinterface: 537
+- searchstats: 2
+- signatureproviders: 23
+- socialfeed: 213
+- socialobject: 11
+- spdcommittee: 203
+- spdwizard: 4
+- storageprovider: 6
+- style: 151
+- summarizer: 13
+- supportasset: 16
+- task: 28
+- textedit: 7
+- todo: 4
+- transport: 40
+- ual: 2
+- undelete: 2
+- unittest: 1
+- viewx: 24
+- webadmin: 48
+- webattribute: 21
+- webconfig: 3
+- webdirwalk: 2
+- webdiscussion: 11
+- webdoc: 187
+- webdoctemplate: 2
+- webedit: 128
+- webform: 18
+- webhelp: 31
+- webhh: 13
+- webinbox: 2
+- webnode: 32
+- webnotify: 9
+- webotcindex: 8
+- webproj: 38
+- webprospector: 19
+- webreports: 165
+- websbroker: 97
+- websovmgmt: 13
+- websystemobj: 77
+- webuser: 9
+- webwfp: 1
+- webwork: 226
+- webxmlactivator: 8
+- wiki: 139
+- wopi: 18
+- xecmgov: 111
+- xecmoffice: 59
+- xecmpf: 236
+- xecmsap: 57
+- xeng: 4
+- xengadn: 26
+- xengcad: 17
+- xengcrt: 30
+- xenggis: 8125
+- xengppm: 10
+- xengse: 19
+- xengsfm: 35
+- xengtm: 14
+- xengtransmittal: 31
+- xgovexpimp: 16
+- xml: 3
+- xmlsearch: 7
+- xmlwfextensions: 35
+- xsd: 3
+
+## Support asset classes
+
+- bundle: 1043
+- css: 410
+- html: 89
+- icon: 7414
+- js: 696
+- json: 18
+- manifest: 56
+- nls: 60
+- other: 330
+- toc: 62
+- vendor: 14049
+
+## Graph node kinds
+
+- asset: 24227
+- feature: 111165
+- file: 34171
+- function: 77319
+- intrinsic: 3
+- module: 148
+- object: 29033
+- oscript_block: 711
+- ospace: 293
+- parameter: 163688
+- route: 4471
+- script: 13121
+- template: 4483
+- type: 12
+- variable: 463751
+- weblingo_directive: 14114
+- xlate_key: 19
+
+## Graph edge kinds
+
+- calls: 315123
+- contains: 976030
+- depends_on: 1190
+- dispatches_to: 4488
+- executes_script: 711
+- inherits: 29681
+- overrides: 128647
+- references: 11768
+- renders_template: 4728
+- type_of: 778875
+
+## Reference confidence
+
+- inferred: 17697
+- intrinsic: 65944
+- multi_candidate: 109483
+- resolved: 2058117
+
+## Unresolved references
+
+- ambiguous_call: 22148
+- asset: 40
+- depends_on: 557
+- feature_call: 480631
+- inherits: 2
+- template: 8675
+- type: 55740
+- uses_xlate: 143876
+
+## Documentation corpus
+
+- Corpus selection: all
+- Corpus source: csdoc, csui-doc
+- Total docs: 13690
+- Stale: False
+- Rebuilt during snapshot: False
+
+- moduleindex: 13088
+- reference: 179
+- control: 114
+- documentation: 100
+- workflow: 87
+- widget: 61
+- oscript: 20
+- article: 15
+- cside: 14
+- xml: 8
+- root: 2
+- docs: 1
+- ollsigner: 1
+
+## Database surface
+
+Scout found analysis/index SQLite databases exposed by cs-agent: module index, xref, graph, and code databases. No application DDL or migration files were enumerated in the local wrapper. Detailed database analysis should be delegated to Data Master only if live schema artifacts are provided or exposed by a later Content Server-specific pass.
+
+## Test surface
+
+OUnit adapter configuration is present in the profile. Scout did not count legacy test files because the Content Server integration intentionally replaced recursive srcmodules traversal with the graph snapshot.
+
+## Spec organization suggestion
+
+Suggested granularity: module. The Content Server graph exposes 148 module nodes and module-scoped source/support counts; route nodes are internal to those modules.

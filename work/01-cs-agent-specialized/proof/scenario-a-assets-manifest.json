@@ -1,0 +1,61 @@
+{
+  "generated_at": "2026-05-24T20:31:55Z",
+  "source_project": "C:\\Windows\\Temp\\reversa-scenario-a-5166398bf87b4826859d40188574f63c",
+  "files": [
+    {
+      "file": "code-analysis.md",
+      "bytes": 2221,
+      "sha256": "67d5e2530acc4b582b6f6a1acbb08bb2b895b20533dbf80e9f0958bbcca6f155"
+    },
+    {
+      "file": "cs-agent-docs-categories.json",
+      "bytes": 7114,
+      "sha256": "908f12619f6f487ff182bd8b283cf0ae56c3c8c6f6f68df3a1ed3fc1b2ee19f8"
+    },
+    {
+      "file": "cs-agent-graph-status.json",
+      "bytes": 15573,
+      "sha256": "236e1c87baed463139f9e1b0009f43616f50eebac61f85008d829b02880f75cd"
+    },
+    {
+      "file": "cs-agent-meta.json",
+      "bytes": 610,
+      "sha256": "1ded28b60d7aec236e223948ce21de871662c9a7e8cdf0175ec5c9e9b75cd157"
+    },
+    {
+      "file": "cs-agent-profile-info.json",
+      "bytes": 6060,
+      "sha256": "02edd081b1307820130bd934fe6d97d4968461f4129391e7a2e277384a179e2a"
+    },
+    {
+      "file": "dependencies.md",
+      "bytes": 1973,
+      "sha256": "b7ce55e909cb508d7efe971df07bf61959d33199ec63e3bfb3ac77f728ba09f4"
+    },
+    {
+      "file": "inventory.md",
+      "bytes": 7648,
+      "sha256": "383bc00e3ede26addde209eb08647f98c9ead2245a19d1259ca7e5db515f97ae"
+    },
+    {
+      "file": "modules.json",
+      "bytes": 9979,
+      "sha256": "4518de1dc44f27e8b70b3a942077f033d5c4cd8fae19b4543dee52fba81bcfed"
+    },
+    {
+      "file": "plan.md",
+      "bytes": 11508,
+      "sha256": "148bcec3996cd6a6f99281b304ce08a52c8652b902a34813a7da31e236e3d891"
+    },
+    {
+      "file": "state.json",
+      "bytes": 11197,
+      "sha256": "2f9c7793cf09b64bc3eb3465825244eaafbe367eadac10c5ec3d025a998dd160"
+    },
+    {
+      "file": "surface.json",
+      "bytes": 10938,
+      "sha256": "c8919d9545d75c6f3e568de4441ce6564b7fab0c7366114de8642f61412d14c0"
+    }
+  ]
+}
