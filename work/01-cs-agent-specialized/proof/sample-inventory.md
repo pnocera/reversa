@@ -1,0 +1,186 @@
+<!-- reversa:cs-profile:begin -->
+## CS Profile (cs-agent)
+
+Generated: 2026-05-24T19:50:38.304Z
+Profile: `CS253`
+Adapter: `0.1.0`
+
+### Profile
+- OT home: `E:\CS253`
+- Workdir: `E:\CS253_workdir`
+- Source dir: `E:\CS253_workdir\srcmodules`
+- Schema version: `3`
+
+### Graph
+- Source files: 34171
+- Support assets: 24227
+- Nodes: 940729
+- Edges: 2251241
+- Extraction errors: 82
+
+### Modules
+- __platform__: 357
+- activeview: 21
+- adminhelp: 175
+- answerdesk: 54
+- appearances: 27
+- barcode: 2
+- bestbets: 8
+- blog: 23
+- calendar: 14
+- calendarattr: 2
+- casebasic: 57
+- channel: 15
+- classification: 46
+- cmbase: 116
+- cmextra: 4
+- collections: 38
+- commdirectory: 36
+- comments: 34
+- contentmove: 42
+- contentsharing: 66
+- controlledviewing: 26
+- core: 1154
+- cpdatabase: 13
+- cpmaip: 7
+- csui: 1838
+- discussion: 44
+- distributedagent: 8
+- doctemplates: 164
+- docviewer: 4914
+- dps: 17
+- dtd: 5
+- elink: 9
+- enterprisearchivesp: 26
+- esign: 27
+- expression: 3
+- faq: 18
+- folder_icons: 46
+- form: 20
+- formwf: 5
+- forums: 29
+- gciutils: 212
+- guienhancements: 529
+- help: 374
+- home: 40
+- icons: 16
+- indexobject: 18
+- interview: 15
+- itemtemplate: 19
+- journal: 32
+- messagecenter: 173
+- metadata: 41
+- mimetypeimages: 94
+- multifile: 12
+- ngd: 152
+- nickname: 12
+- officeintegration: 164
+- oi: 14
+- otadmin: 4
+- otdsintegration: 2
+- otemail: 127
+- othcm: 73
+- otsapxecm: 326
+- permissionsexplorer: 16
+- perspectives: 53
+- physicalobjects: 108
+- polling: 16
+- project: 49
+- projecttemplate: 3
+- pstage: 32
+- ptfdassembly: 6
+- ptfdbuilder: 74
+- ptfdprinting: 97
+- ptfdpublish: 18
+- ptfdsignature: 17
+- qds: 10
+- recman: 118
+- recmansecurity: 20
+- recommender: 102
+- recyclebin: 4
+- rendition: 20
+- report: 12
+- resubmission: 40
+- rssfeed: 3
+- salesforceinterface: 537
+- searchstats: 2
+- signatureproviders: 23
+- socialfeed: 213
+- socialobject: 11
+- spdcommittee: 203
+- spdwizard: 4
+- storageprovider: 6
+- style: 151
+- summarizer: 13
+- supportasset: 16
+- task: 28
+- textedit: 7
+- todo: 4
+- transport: 40
+- ual: 2
+- undelete: 2
+- unittest: 1
+- viewx: 24
+- webadmin: 48
+- webattribute: 21
+- webconfig: 3
+- webdirwalk: 2
+- webdiscussion: 11
+- webdoc: 187
+- webdoctemplate: 2
+- webedit: 128
+- webform: 18
+- webhelp: 31
+- webhh: 13
+- webinbox: 2
+- webnode: 32
+- webnotify: 9
+- webotcindex: 8
+- webproj: 38
+- webprospector: 19
+- webreports: 165
+- websbroker: 97
+- websovmgmt: 13
+- websystemobj: 77
+- webuser: 9
+- webwfp: 1
+- webwork: 226
+- webxmlactivator: 8
+- wiki: 139
+- wopi: 18
+- xecmgov: 111
+- xecmoffice: 59
+- xecmpf: 236
+- xecmsap: 57
+- xeng: 4
+- xengadn: 26
+- xengcad: 17
+- xengcrt: 30
+- xenggis: 8125
+- xengppm: 10
+- xengse: 19
+- xengsfm: 35
+- xengtm: 14
+- xengtransmittal: 31
+- xgovexpimp: 16
+- xml: 3
+- xmlsearch: 7
+- xmlwfextensions: 35
+- xsd: 3
+
+### Reference Confidence
+- inferred: 17697
+- intrinsic: 65944
+- multi_candidate: 109483
+- resolved: 2058117
+
+### Unresolved References
+- ambiguous_call: 22148
+- asset: 40
+- depends_on: 557
+- feature_call: 480631
+- inherits: 2
+- template: 8675
+- type: 55740
+- uses_xlate: 143876
+<!-- reversa:cs-profile:end -->
