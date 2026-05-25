@@ -7,3 +7,5 @@ site/
 .npm-cache/
 .tmp-mkdocs-site/
 specs/
+.codex/
+work/**/*.git-context.md
