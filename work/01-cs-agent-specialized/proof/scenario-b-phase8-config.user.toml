@@ -1,0 +1,16 @@
+# Reversa — Personal Settings
+# This file is for your personal customizations. Do NOT commit this file.
+# Add .reversa/config.user.toml to your personal .gitignore.
+
+# Override example:
+# [user]
+# name = "Your Name"
+# chat_language = "pt-br"
+
+# Optional Content Server integration override:
+# [integrations.cs_agent]
+# executable = "F:\\smoke\\CS253\\cs-agent.exe"
+# profile = "CS253"
+
+[integrations.cs_agent]
+executable = "F:\\smoke\\CS253\\cs-agent.exe"

@@ -238,14 +238,14 @@ reversa
 Expected:
 
 - Reversa may first present the exploration plan approval prompt. Approve the plan and confirm starting Scout.
-- Before Scout actually starts, Reversa runs the Content Server specialization gate.
-- Scout performs cheap pre-walk detection.
-- `.reversa/context/surface.json` records `cs_agent_profile_detected` or the orchestrator detects the same profile directly.
-- Reversa prompts:
+- Because Content Server is disabled, Reversa does not ask before Scout.
+- Scout performs cheap pre-walk detection and writes `.reversa/context/surface.json`.
+- `.reversa/context/surface.json` records `cs_agent_profile_detected`.
+- After Scout completes and before Archaeologist starts, Reversa prompts:
 
 ```text
 I found an initialized Content Server profile named `CS253` at `E:\CS253`.
-Reversa can use `cs-agent` in read-only mode to cache profile, graph, and documentation-category evidence before Scout runs.
+Reversa can use `cs-agent` in read-only mode to cache profile, graph, and documentation-category evidence before the next analysis step.
 Enable this Content Server specialization for this project?
 
 1. Yes, enable and collect the snapshot now
@@ -256,10 +256,11 @@ Choose option `1`.
 
 Expected immediately in the same session:
 
-- `.reversa/config.toml` is updated with `enabled = true`, `profile = "CS253"`, and the executable path.
+- `.reversa/config.toml` is updated with `enabled = true`, `profile = "CS253"`, `context_dir`, `inventory_path`, and `snapshot_ttl_days`.
+- `.reversa/config.user.toml` is updated with the executable path.
 - `.gitignore` contains `.reversa/context/cs-agent/`.
 - Snapshot is collected under `.reversa/context/cs-agent/`.
-- `_reversa_sdd/inventory.md` gets the CS Profile block before the session proceeds past Scout.
+- `_reversa_sdd/inventory.md` gets the CS Profile block before the session proceeds to Archaeologist.
 
 ### Second Reversa Run
 

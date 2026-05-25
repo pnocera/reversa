@@ -132,9 +132,9 @@ Present the user with a summary of what the Scout found and the three documentat
 > ○ **3. Detailed**
 > &nbsp;&nbsp;&nbsp;&nbsp;Maximum depth: per-function flowcharts, expanded ADRs, deployment, mandatory cross-review. For enterprise systems.
 >
-> Type 1, 2, or 3 — or press Enter to confirm **Essential**."
+> Type 1, 2, or 3. If you want **Essential**, type 1."
 
-Wait for the user's response. If the user presses Enter without typing anything (empty response or only spaces), assume `essencial` as the value. Also accept the full name: `essencial`/`completo`/`detalhado`.
+Wait for the user's response. Prefer an explicit numeric choice because some Codex choice surfaces do not submit an empty Enter reliably. Accept the full name too: `essencial`/`completo`/`detalhado`.
 
 After receiving the response, save it to `.reversa/state.json` → field `doc_level`.
 

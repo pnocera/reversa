@@ -1,0 +1,96 @@
+{
+  "case": "C:\\Windows\\Temp\\reversa-scenario-a-5166398bf87b4826859d40188574f63c",
+  "measured_at": "2026-05-25T08:00:40.2587252Z",
+  "elapsed_ms": 16121,
+  "under_60s": true,
+  "snapshot": {
+    "ok": true,
+    "action": "snapshot",
+    "data": {
+      "snapshotDir": "C:\\Windows\\Temp\\reversa-scenario-a-5166398bf87b4826859d40188574f63c\\.reversa\\context\\cs-agent",
+      "meta": {
+        "adapter_version": "0.1.0",
+        "created_at": "2026-05-25T08:00:39.487Z",
+        "collected_at": "2026-05-25T08:00:39.487Z",
+        "profile": "CS253",
+        "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+        "executable_source": "config",
+        "executable_trust": {
+          "path": "F:\\smoke\\CS253\\cs-agent.exe",
+          "size_bytes": 100953088,
+          "sizeBytes": 100953088,
+          "mtime_ms": 1779600811501.0994,
+          "mtime_iso": "2026-05-24T05:33:31.501Z",
+          "mtimeIso": "2026-05-24T05:33:31.501Z",
+          "signature": "not_checked",
+          "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+          "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+        },
+        "schema_version_observed": 3,
+        "files": {
+          "profile": "profile-info.json",
+          "graph": "graph-status.json",
+          "docs": "docs-categories.json"
+        },
+        "snapshot_files": {
+          "profile_info": "profile-info.json",
+          "graph_status": "graph-status.json",
+          "docs_categories": "docs-categories.json"
+        },
+        "snapshot_ttl_days": 7
+      }
+    }
+  },
+  "inventory": {
+    "ok": true,
+    "action": "inventory",
+    "data": {
+      "block": "<!-- reversa:cs-profile:begin -->\n## CS Profile (cs-agent)\n\nGenerated: 2026-05-25T08:00:39.487Z\nProfile: `CS253`\nAdapter: `0.1.0`\n\n### Profile\n- OT home: `E:\\CS253`\n- Workdir: `E:\\CS253_workdir`\n- Source dir: `E:\\CS253_workdir\\srcmodules`\n- Schema version: `3`\n\n### Graph\n- Source files: 34171\n- Support assets: 24227\n- Nodes: 940729\n- Edges: 2251241\n- Extraction errors: 82\n\n### Modules\n- __platform__: 357\n- activeview: 21\n- adminhelp: 175\n- answerdesk: 54\n- appearances: 27\n- barcode: 2\n- bestbets: 8\n- blog: 23\n- calendar: 14\n- calendarattr: 2\n- casebasic: 57\n- channel: 15\n- classification: 46\n- cmbase: 116\n- cmextra: 4\n- collections: 38\n- commdirectory: 36\n- comments: 34\n- contentmove: 42\n- contentsharing: 66\n- controlledviewing: 26\n- core: 1154\n- cpdatabase: 13\n- cpmaip: 7\n- csui: 1838\n- discussion: 44\n- distributedagent: 8\n- doctemplates: 164\n- docviewer: 4914\n- dps: 17\n- dtd: 5\n- elink: 9\n- enterprisearchivesp: 26\n- esign: 27\n- expression: 3\n- faq: 18\n- folder_icons: 46\n- form: 20\n- formwf: 5\n- forums: 29\n- gciutils: 212\n- guienhancements: 529\n- help: 374\n- home: 40\n- icons: 16\n- indexobject: 18\n- interview: 15\n- itemtemplate: 19\n- journal: 32\n- messagecenter: 173\n- metadata: 41\n- mimetypeimages: 94\n- multifile: 12\n- ngd: 152\n- nickname: 12\n- officeintegration: 164\n- oi: 14\n- otadmin: 4\n- otdsintegration: 2\n- otemail: 127\n- othcm: 73\n- otsapxecm: 326\n- permissionsexplorer: 16\n- perspectives: 53\n- physicalobjects: 108\n- polling: 16\n- project: 49\n- projecttemplate: 3\n- pstage: 32\n- ptfdassembly: 6\n- ptfdbuilder: 74\n- ptfdprinting: 97\n- ptfdpublish: 18\n- ptfdsignature: 17\n- qds: 10\n- recman: 118\n- recmansecurity: 20\n- recommender: 102\n- recyclebin: 4\n- rendition: 20\n- report: 12\n- resubmission: 40\n- rssfeed: 3\n- salesforceinterface: 537\n- searchstats: 2\n- signatureproviders: 23\n- socialfeed: 213\n- socialobject: 11\n- spdcommittee: 203\n- spdwizard: 4\n- storageprovider: 6\n- style: 151\n- summarizer: 13\n- supportasset: 16\n- task: 28\n- textedit: 7\n- todo: 4\n- transport: 40\n- ual: 2\n- undelete: 2\n- unittest: 1\n- viewx: 24\n- webadmin: 48\n- webattribute: 21\n- webconfig: 3\n- webdirwalk: 2\n- webdiscussion: 11\n- webdoc: 187\n- webdoctemplate: 2\n- webedit: 128\n- webform: 18\n- webhelp: 31\n- webhh: 13\n- webinbox: 2\n- webnode: 32\n- webnotify: 9\n- webotcindex: 8\n- webproj: 38\n- webprospector: 19\n- webreports: 165\n- websbroker: 97\n- websovmgmt: 13\n- websystemobj: 77\n- webuser: 9\n- webwfp: 1\n- webwork: 226\n- webxmlactivator: 8\n- wiki: 139\n- wopi: 18\n- xecmgov: 111\n- xecmoffice: 59\n- xecmpf: 236\n- xecmsap: 57\n- xeng: 4\n- xengadn: 26\n- xengcad: 17\n- xengcrt: 30\n- xenggis: 8125\n- xengppm: 10\n- xengse: 19\n- xengsfm: 35\n- xengtm: 14\n- xengtransmittal: 31\n- xgovexpimp: 16\n- xml: 3\n- xmlsearch: 7\n- xmlwfextensions: 35\n- xsd: 3\n\n### Reference Confidence\n- inferred: 17697\n- intrinsic: 65944\n- multi_candidate: 109483\n- resolved: 2058117\n\n### Unresolved References\n- ambiguous_call: 22148\n- asset: 40\n- depends_on: 557\n- feature_call: 480631\n- inherits: 2\n- template: 8675\n- type: 55740\n- uses_xlate: 143876\n<!-- reversa:cs-profile:end -->\n",
+      "validation": {
+        "ok": true,
+        "meta": {
+          "adapter_version": "0.1.0",
+          "created_at": "2026-05-25T08:00:39.487Z",
+          "collected_at": "2026-05-25T08:00:39.487Z",
+          "profile": "CS253",
+          "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+          "executable_source": "config",
+          "executable_trust": {
+            "path": "F:\\smoke\\CS253\\cs-agent.exe",
+            "size_bytes": 100953088,
+            "sizeBytes": 100953088,
+            "mtime_ms": 1779600811501.0994,
+            "mtime_iso": "2026-05-24T05:33:31.501Z",
+            "mtimeIso": "2026-05-24T05:33:31.501Z",
+            "signature": "not_checked",
+            "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+            "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+          },
+          "schema_version_observed": 3,
+          "files": {
+            "profile": "profile-info.json",
+            "graph": "graph-status.json",
+            "docs": "docs-categories.json"
+          },
+          "snapshot_files": {
+            "profile_info": "profile-info.json",
+            "graph_status": "graph-status.json",
+            "docs_categories": "docs-categories.json"
+          },
+          "snapshot_ttl_days": 7
+        },
+        "problems": [],
+        "stale": false,
+        "executableDrift": false
+      },
+      "written": true,
+      "action": "appended",
+      "inventoryPath": "C:\\Windows\\Temp\\reversa-scenario-a-5166398bf87b4826859d40188574f63c\\_reversa_sdd\\inventory.md",
+      "warning": null
+    }
+  },
+  "markers": {
+    "begin": 1,
+    "end": 1
+  }
+}

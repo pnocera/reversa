@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-05-25T07:58:27Z",
+  "project_root": "C:\\Windows\\TEMP\\reversa-scenario-b-phase8-66VA46",
+  "signals": [
+    {
+      "type": "cs_agent_profile_detected",
+      "profile": "CS253",
+      "ot_home": "E:\\CS253",
+      "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+      "help_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+      "evidence": [
+        "content-server detect",
+        "CS253",
+        "E:\\CS253"
+      ]
+    }
+  ],
+  "languages": [],
+  "modules": [],
+  "organization_suggestion": {
+    "granularity": "feature",
+    "rationale": "Disposable fixture; Scout recorded detection before migration prompt.",
+    "signals": []
+  }
+}

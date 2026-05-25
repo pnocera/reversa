@@ -382,8 +382,10 @@ Run Reversa in this disposable test project. Treat this as if the user typed "re
 
 Automation contract:
 - Approve the exploration plan.
-- Before Scout starts, obey the Content Server specialization gate.
-- If Content Server enablement is offered, $choice.
+- If Content Server is already enabled, run the enabled fast path before Scout.
+- If Content Server is disabled or absent, let Scout run first and record .reversa/context/surface.json with cs_agent_profile_detected.
+- After Scout completes and before Archaeologist starts, obey the Content Server migration prompt.
+- If Content Server enablement is offered after Scout, $choice.
 - Use only read-only Reversa adapter commands: npx @pnocera/reversa content-server probe, detect, snapshot, and inventory.
 - Do not run cs-agent.exe directly and do not run init, refresh, build, lint, test, dev, csui, edit, xlate, deploy, or graph rebuild commands.
 - The scenario package source is $PackageSource. If it is Published, do not install from $ReversaRoot.

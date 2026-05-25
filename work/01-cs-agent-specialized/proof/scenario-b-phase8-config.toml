@@ -1,0 +1,46 @@
+# Reversa — Project Configuration
+# This file is managed by the installer. For customizations, edit config.user.toml
+
+[project]
+name = "reversa-scenario-b-phase8-66VA46"
+version = "1.0.0"
+
+[user]
+name = "Neo"
+chat_language = "en-us"
+doc_language = "English"
+
+[output]
+folder = "_reversa_sdd"
+
+[agents]
+installed = [
+  "reversa",
+  "reversa-scout",
+  "reversa-archaeologist",
+  "reversa-content-server"
+]
+
+[engines]
+installed = [
+  "codex"
+]
+
+[analysis]
+answer_mode = "chat"
+doc_level = "completo"
+
+[integrations.cs_agent]
+enabled = true
+profile = "CS253"
+executable = ""
+context_dir = ".reversa/context/cs-agent"
+inventory_path = "_reversa_sdd/inventory.md"
+snapshot_ttl_days = 7
+
+[specs]
+layout = ""              # constant "feature-folder" after the first run
+granularity = ""         # module | use-case | endpoint | hybrid | feature | custom
+custom_folders = []      # populated only when granularity == "custom"
+scout_suggestion = ""    # record of Scout's original suggestion, immutable after the 1st run
+decided_at = ""          # ISO 8601 timestamp of the user's choice

@@ -1,3 +1,5 @@
+> Superseded Phase 8 note: this transcript used the obsolete pre-Scout Content Server gate wording. Use `scenario-b-transcript.md` as the canonical Scenario B evidence for the current post-Scout migration lifecycle.
+
 PS C:\Windows\TEMP\reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2> $
 env:CS_AGENT_EXE='F:\smoke\CS253\cs-agent.exe'
 PS C:\Windows\TEMP\reversa-scenario-b-accept-5f7f153471124d0e993491c7df5364e2> $

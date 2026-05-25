@@ -526,3 +526,52 @@ Adapter: `0.1.0`
 - type: 55740
 - uses_xlate: 143876
 <!-- reversa:cs-profile:end -->
+
+## Phase 8 Addendum - Scout Skip And Fast Path Evidence
+
+Added: 2026-05-25T08:00:40Z
+
+This addendum closes the Phase 8 proof gap that the original Scenario A transcript captured the adapter snapshot and inventory block, but did not explicitly quote the Scout skip evidence.
+
+### Scout srcdir skip evidence
+
+The retained Scout artifact at `scenario-a-assets/inventory.md` contains this scope statement:
+
+```text
+Scout did not recursively traverse E:\CS253_workdir\srcmodules; it used the snapshot and graph status as the evidence source.
+```
+
+The matching structured artifact at `scenario-a-assets/surface.json` records the Content Server snapshot as the surface source:
+
+```json
+{
+  "signals": [
+    { "type": "cs_agent_profile_detected", "evidence": ["content-server detect", "CS253", "E:\\CS253"] },
+    { "type": "cs_agent_profile", "evidence": [".reversa/context/cs-agent/_meta.json", ".reversa/context/cs-agent/graph-status.json"] },
+    { "type": "content_server_module_index", "evidence": [".reversa/context/cs-agent/graph-status.json", "module nodes: 148"] }
+  ],
+  "content_server": {
+    "profile": "CS253",
+    "source_file_count": 34171,
+    "support_asset_count": 24227,
+    "node_count": 940729,
+    "edge_count": 2251241
+  }
+}
+```
+
+### Enabled fast-path timing
+
+The retained Scenario A project was timed again with the current local CLI:
+
+```powershell
+Set-Location C:\Windows\Temp\reversa-scenario-a-5166398bf87b4826859d40188574f63c
+node F:\smoke\reversa\reversa\bin\reversa.js content-server snapshot --json
+node F:\smoke\reversa\reversa\bin\reversa.js content-server inventory --write --json
+```
+
+Result from `scenario-a-fast-path-timing.json`:
+
+- Elapsed: 16121 ms
+- Under 60 seconds: true
+- Inventory markers after the run: begin = 1, end = 1

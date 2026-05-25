@@ -1,0 +1,424 @@
+{
+  "case": "C:\\Windows\\TEMP\\reversa-scenario-b-phase8-66VA46",
+  "started_at": "2026-05-25T07:58:25.8799137Z",
+  "initial_config": "# Reversa — Project Configuration\n# This file is managed by the installer. For customizations, edit config.user.toml\n\n[project]\nname = \"reversa-scenario-b-phase8-66VA46\"\nversion = \"1.0.0\"\n\n[user]\nname = \"Neo\"\nchat_language = \"en-us\"\ndoc_language = \"English\"\n\n[output]\nfolder = \"_reversa_sdd\"\n\n[agents]\ninstalled = [\n  \"reversa\",\n  \"reversa-scout\",\n  \"reversa-archaeologist\",\n  \"reversa-content-server\"\n]\n\n[engines]\ninstalled = [\n  \"codex\"\n]\n\n[analysis]\nanswer_mode = \"chat\"\ndoc_level = \"completo\"\n\n[integrations.cs_agent]\nenabled = false\nprofile = \"\"\nexecutable = \"\"\ncontext_dir = \".reversa/context/cs-agent\"\ninventory_path = \"\"\nsnapshot_ttl_days = 7\n\n[specs]\nlayout = \"\"              # constant \"feature-folder\" after the first run\ngranularity = \"\"         # module | use-case | endpoint | hybrid | feature | custom\ncustom_folders = []      # populated only when granularity == \"custom\"\nscout_suggestion = \"\"    # record of Scout's original suggestion, immutable after the 1st run\ndecided_at = \"\"          # ISO 8601 timestamp of the user's choice\n",
+  "initial_state": "{\n  \"version\": \"1.2.49\",\n  \"project\": \"reversa-scenario-b-phase8-66VA46\",\n  \"user_name\": \"Neo\",\n  \"chat_language\": \"en-us\",\n  \"doc_language\": \"English\",\n  \"answer_mode\": \"chat\",\n  \"doc_level\": \"completo\",\n  \"output_folder\": \"_reversa_sdd\",\n  \"forward_folder\": \"_reversa_forward\",\n  \"phase\": null,\n  \"cs_agent_enablement_dismissed\": null,\n  \"completed\": [],\n  \"pending\": [\n    \"reconnaissance\",\n    \"excavation\",\n    \"interpretation\",\n    \"generation\",\n    \"review\"\n  ],\n  \"checkpoints\": {},\n  \"engines\": [\n    \"codex\"\n  ],\n  \"agents\": [\n    \"reversa\",\n    \"reversa-scout\",\n    \"reversa-archaeologist\",\n    \"reversa-content-server\"\n  ],\n  \"created_files\": [\n    \".agents\\\\skills\\\\reversa\",\n    \".agents\\\\skills\\\\reversa-scout\",\n    \".agents\\\\skills\\\\reversa-archaeologist\",\n    \".agents\\\\skills\\\\reversa-content-server\",\n    \"AGENTS.md\",\n    \".reversa\\\\templates\\\\actions-template.md\",\n    \".reversa\\\\templates\\\\principles-template.md\",\n    \".reversa\\\\templates\\\\quality-template.md\",\n    \".reversa\\\\templates\\\\requirements-template.md\",\n    \".reversa\\\\templates\\\\roadmap-template.md\",\n    \".reversa\\\\scripts\\\\sh\\\\bind-to-extraction.sh\",\n    \".reversa\\\\scripts\\\\sh\\\\prepare-roadmap.sh\",\n    \".reversa\\\\scripts\\\\sh\\\\verify-prerequisites.sh\",\n    \".reversa\\\\scripts\\\\ps\\\\bind-to-extraction.ps1\",\n    \".reversa\\\\scripts\\\\ps\\\\prepare-roadmap.ps1\",\n    \".reversa\\\\scripts\\\\ps\\\\verify-prerequisites.ps1\",\n    \".reversa\\\\hooks.yml\",\n    \".reversa\\\\setup.json\",\n    \".reversa\\\\state.json\",\n    \".reversa\\\\config.toml\",\n    \".reversa\\\\config.user.toml\",\n    \".reversa\\\\plan.md\",\n    \".reversa\\\\version\",\n    \".reversa\\\\_config\\\\manifest.yaml\",\n    \".gitignore\"\n  ]\n}",
+  "probe": {
+    "ok": true,
+    "action": "probe",
+    "data": {
+      "adapterVersion": "0.1.0",
+      "executable": "F:\\smoke\\CS253\\cs-agent.exe",
+      "source": "env:CS_AGENT_EXE",
+      "hint": "Resolved cs-agent from environment. Pin integrations.cs_agent.executable for repeatable project runs.",
+      "commandCount": 113,
+      "topics": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56",
+        "57",
+        "58",
+        "59",
+        "60",
+        "61",
+        "62",
+        "63",
+        "64",
+        "65",
+        "66",
+        "67",
+        "68",
+        "69",
+        "70",
+        "71",
+        "72",
+        "73",
+        "74",
+        "75",
+        "76",
+        "77",
+        "78",
+        "79",
+        "80",
+        "81",
+        "82",
+        "83",
+        "84",
+        "85",
+        "86",
+        "87",
+        "88",
+        "89",
+        "90",
+        "91",
+        "92",
+        "93",
+        "94",
+        "95",
+        "96",
+        "97",
+        "98",
+        "99",
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "109",
+        "110",
+        "111",
+        "112"
+      ],
+      "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+      "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+      "executableTrust": {
+        "path": "F:\\smoke\\CS253\\cs-agent.exe",
+        "size_bytes": 100953088,
+        "sizeBytes": 100953088,
+        "mtime_ms": 1779600811501.0994,
+        "mtime_iso": "2026-05-24T05:33:31.501Z",
+        "mtimeIso": "2026-05-24T05:33:31.501Z",
+        "signature": "not_checked",
+        "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+        "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+      }
+    }
+  },
+  "detect": {
+    "ok": true,
+    "action": "detect",
+    "data": {
+      "adapterVersion": "0.1.0",
+      "executable": "F:\\smoke\\CS253\\cs-agent.exe",
+      "active": "CS253",
+      "profiles": [
+        {
+          "name": "CS253",
+          "ot_home": "E:\\CS253",
+          "workdir": "E:\\CS253_workdir",
+          "srcdir": "E:\\CS253_workdir\\srcmodules",
+          "schema_version": 2,
+          "path_checks_green": true
+        }
+      ],
+      "registryCount": 1,
+      "executableTrust": {
+        "path": "F:\\smoke\\CS253\\cs-agent.exe",
+        "size_bytes": 100953088,
+        "sizeBytes": 100953088,
+        "mtime_ms": 1779600811501.0994,
+        "mtime_iso": "2026-05-24T05:33:31.501Z",
+        "mtimeIso": "2026-05-24T05:33:31.501Z",
+        "signature": "not_checked",
+        "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+        "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+      },
+      "hint": "Resolved cs-agent from environment. Pin integrations.cs_agent.executable for repeatable project runs."
+    }
+  },
+  "surface": {
+    "generated_at": "2026-05-25T07:58:27Z",
+    "project_root": "C:\\Windows\\TEMP\\reversa-scenario-b-phase8-66VA46",
+    "signals": [
+      {
+        "type": "cs_agent_profile_detected",
+        "profile": "CS253",
+        "ot_home": "E:\\CS253",
+        "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+        "help_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+        "evidence": [
+          "content-server detect",
+          "CS253",
+          "E:\\CS253"
+        ]
+      }
+    ],
+    "languages": [],
+    "modules": [],
+    "organization_suggestion": {
+      "granularity": "feature",
+      "rationale": "Disposable fixture; Scout recorded detection before migration prompt.",
+      "signals": []
+    }
+  },
+  "config_after_scout": "# Reversa — Project Configuration\n# This file is managed by the installer. For customizations, edit config.user.toml\n\n[project]\nname = \"reversa-scenario-b-phase8-66VA46\"\nversion = \"1.0.0\"\n\n[user]\nname = \"Neo\"\nchat_language = \"en-us\"\ndoc_language = \"English\"\n\n[output]\nfolder = \"_reversa_sdd\"\n\n[agents]\ninstalled = [\n  \"reversa\",\n  \"reversa-scout\",\n  \"reversa-archaeologist\",\n  \"reversa-content-server\"\n]\n\n[engines]\ninstalled = [\n  \"codex\"\n]\n\n[analysis]\nanswer_mode = \"chat\"\ndoc_level = \"completo\"\n\n[integrations.cs_agent]\nenabled = false\nprofile = \"\"\nexecutable = \"\"\ncontext_dir = \".reversa/context/cs-agent\"\ninventory_path = \"\"\nsnapshot_ttl_days = 7\n\n[specs]\nlayout = \"\"              # constant \"feature-folder\" after the first run\ngranularity = \"\"         # module | use-case | endpoint | hybrid | feature | custom\ncustom_folders = []      # populated only when granularity == \"custom\"\nscout_suggestion = \"\"    # record of Scout's original suggestion, immutable after the 1st run\ndecided_at = \"\"          # ISO 8601 timestamp of the user's choice\n",
+  "config_after_accept": "# Reversa — Project Configuration\n# This file is managed by the installer. For customizations, edit config.user.toml\n\n[project]\nname = \"reversa-scenario-b-phase8-66VA46\"\nversion = \"1.0.0\"\n\n[user]\nname = \"Neo\"\nchat_language = \"en-us\"\ndoc_language = \"English\"\n\n[output]\nfolder = \"_reversa_sdd\"\n\n[agents]\ninstalled = [\n  \"reversa\",\n  \"reversa-scout\",\n  \"reversa-archaeologist\",\n  \"reversa-content-server\"\n]\n\n[engines]\ninstalled = [\n  \"codex\"\n]\n\n[analysis]\nanswer_mode = \"chat\"\ndoc_level = \"completo\"\n\n[integrations.cs_agent]\nenabled = true\nprofile = \"CS253\"\nexecutable = \"\"\ncontext_dir = \".reversa/context/cs-agent\"\ninventory_path = \"_reversa_sdd/inventory.md\"\nsnapshot_ttl_days = 7\n\n[specs]\nlayout = \"\"              # constant \"feature-folder\" after the first run\ngranularity = \"\"         # module | use-case | endpoint | hybrid | feature | custom\ncustom_folders = []      # populated only when granularity == \"custom\"\nscout_suggestion = \"\"    # record of Scout's original suggestion, immutable after the 1st run\ndecided_at = \"\"          # ISO 8601 timestamp of the user's choice\n",
+  "config_user_after_accept": "# Reversa — Personal Settings\n# This file is for your personal customizations. Do NOT commit this file.\n# Add .reversa/config.user.toml to your personal .gitignore.\n\n# Override example:\n# [user]\n# name = \"Your Name\"\n# chat_language = \"pt-br\"\n\n# Optional Content Server integration override:\n# [integrations.cs_agent]\n# executable = \"F:\\\\smoke\\\\CS253\\\\cs-agent.exe\"\n# profile = \"CS253\"\n\n[integrations.cs_agent]\nexecutable = \"F:\\\\smoke\\\\CS253\\\\cs-agent.exe\"\n",
+  "gitignore_after_accept": "# Reversa\n.reversa/config.user.toml\n_reversa_sdd/\n\n.reversa/context/cs-agent/\n",
+  "first_snapshot": {
+    "ok": true,
+    "action": "snapshot",
+    "data": {
+      "snapshotDir": "C:\\Windows\\Temp\\reversa-scenario-b-phase8-66VA46\\.reversa\\context\\cs-agent",
+      "meta": {
+        "adapter_version": "0.1.0",
+        "created_at": "2026-05-25T07:58:44.105Z",
+        "collected_at": "2026-05-25T07:58:44.105Z",
+        "profile": "CS253",
+        "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+        "executable_source": "config",
+        "executable_trust": {
+          "path": "F:\\smoke\\CS253\\cs-agent.exe",
+          "size_bytes": 100953088,
+          "sizeBytes": 100953088,
+          "mtime_ms": 1779600811501.0994,
+          "mtime_iso": "2026-05-24T05:33:31.501Z",
+          "mtimeIso": "2026-05-24T05:33:31.501Z",
+          "signature": "not_checked",
+          "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+          "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+        },
+        "schema_version_observed": 3,
+        "files": {
+          "profile": "profile-info.json",
+          "graph": "graph-status.json",
+          "docs": "docs-categories.json"
+        },
+        "snapshot_files": {
+          "profile_info": "profile-info.json",
+          "graph_status": "graph-status.json",
+          "docs_categories": "docs-categories.json"
+        },
+        "snapshot_ttl_days": 7
+      }
+    }
+  },
+  "first_inventory": {
+    "ok": true,
+    "action": "inventory",
+    "data": {
+      "block": "<!-- reversa:cs-profile:begin -->\n## CS Profile (cs-agent)\n\nGenerated: 2026-05-25T07:58:44.105Z\nProfile: `CS253`\nAdapter: `0.1.0`\n\n### Profile\n- OT home: `E:\\CS253`\n- Workdir: `E:\\CS253_workdir`\n- Source dir: `E:\\CS253_workdir\\srcmodules`\n- Schema version: `3`\n\n### Graph\n- Source files: 34171\n- Support assets: 24227\n- Nodes: 940729\n- Edges: 2251241\n- Extraction errors: 82\n\n### Modules\n- __platform__: 357\n- activeview: 21\n- adminhelp: 175\n- answerdesk: 54\n- appearances: 27\n- barcode: 2\n- bestbets: 8\n- blog: 23\n- calendar: 14\n- calendarattr: 2\n- casebasic: 57\n- channel: 15\n- classification: 46\n- cmbase: 116\n- cmextra: 4\n- collections: 38\n- commdirectory: 36\n- comments: 34\n- contentmove: 42\n- contentsharing: 66\n- controlledviewing: 26\n- core: 1154\n- cpdatabase: 13\n- cpmaip: 7\n- csui: 1838\n- discussion: 44\n- distributedagent: 8\n- doctemplates: 164\n- docviewer: 4914\n- dps: 17\n- dtd: 5\n- elink: 9\n- enterprisearchivesp: 26\n- esign: 27\n- expression: 3\n- faq: 18\n- folder_icons: 46\n- form: 20\n- formwf: 5\n- forums: 29\n- gciutils: 212\n- guienhancements: 529\n- help: 374\n- home: 40\n- icons: 16\n- indexobject: 18\n- interview: 15\n- itemtemplate: 19\n- journal: 32\n- messagecenter: 173\n- metadata: 41\n- mimetypeimages: 94\n- multifile: 12\n- ngd: 152\n- nickname: 12\n- officeintegration: 164\n- oi: 14\n- otadmin: 4\n- otdsintegration: 2\n- otemail: 127\n- othcm: 73\n- otsapxecm: 326\n- permissionsexplorer: 16\n- perspectives: 53\n- physicalobjects: 108\n- polling: 16\n- project: 49\n- projecttemplate: 3\n- pstage: 32\n- ptfdassembly: 6\n- ptfdbuilder: 74\n- ptfdprinting: 97\n- ptfdpublish: 18\n- ptfdsignature: 17\n- qds: 10\n- recman: 118\n- recmansecurity: 20\n- recommender: 102\n- recyclebin: 4\n- rendition: 20\n- report: 12\n- resubmission: 40\n- rssfeed: 3\n- salesforceinterface: 537\n- searchstats: 2\n- signatureproviders: 23\n- socialfeed: 213\n- socialobject: 11\n- spdcommittee: 203\n- spdwizard: 4\n- storageprovider: 6\n- style: 151\n- summarizer: 13\n- supportasset: 16\n- task: 28\n- textedit: 7\n- todo: 4\n- transport: 40\n- ual: 2\n- undelete: 2\n- unittest: 1\n- viewx: 24\n- webadmin: 48\n- webattribute: 21\n- webconfig: 3\n- webdirwalk: 2\n- webdiscussion: 11\n- webdoc: 187\n- webdoctemplate: 2\n- webedit: 128\n- webform: 18\n- webhelp: 31\n- webhh: 13\n- webinbox: 2\n- webnode: 32\n- webnotify: 9\n- webotcindex: 8\n- webproj: 38\n- webprospector: 19\n- webreports: 165\n- websbroker: 97\n- websovmgmt: 13\n- websystemobj: 77\n- webuser: 9\n- webwfp: 1\n- webwork: 226\n- webxmlactivator: 8\n- wiki: 139\n- wopi: 18\n- xecmgov: 111\n- xecmoffice: 59\n- xecmpf: 236\n- xecmsap: 57\n- xeng: 4\n- xengadn: 26\n- xengcad: 17\n- xengcrt: 30\n- xenggis: 8125\n- xengppm: 10\n- xengse: 19\n- xengsfm: 35\n- xengtm: 14\n- xengtransmittal: 31\n- xgovexpimp: 16\n- xml: 3\n- xmlsearch: 7\n- xmlwfextensions: 35\n- xsd: 3\n\n### Reference Confidence\n- inferred: 17697\n- intrinsic: 65944\n- multi_candidate: 109483\n- resolved: 2058117\n\n### Unresolved References\n- ambiguous_call: 22148\n- asset: 40\n- depends_on: 557\n- feature_call: 480631\n- inherits: 2\n- template: 8675\n- type: 55740\n- uses_xlate: 143876\n<!-- reversa:cs-profile:end -->\n",
+      "validation": {
+        "ok": true,
+        "meta": {
+          "adapter_version": "0.1.0",
+          "created_at": "2026-05-25T07:58:44.105Z",
+          "collected_at": "2026-05-25T07:58:44.105Z",
+          "profile": "CS253",
+          "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+          "executable_source": "config",
+          "executable_trust": {
+            "path": "F:\\smoke\\CS253\\cs-agent.exe",
+            "size_bytes": 100953088,
+            "sizeBytes": 100953088,
+            "mtime_ms": 1779600811501.0994,
+            "mtime_iso": "2026-05-24T05:33:31.501Z",
+            "mtimeIso": "2026-05-24T05:33:31.501Z",
+            "signature": "not_checked",
+            "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+            "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+          },
+          "schema_version_observed": 3,
+          "files": {
+            "profile": "profile-info.json",
+            "graph": "graph-status.json",
+            "docs": "docs-categories.json"
+          },
+          "snapshot_files": {
+            "profile_info": "profile-info.json",
+            "graph_status": "graph-status.json",
+            "docs_categories": "docs-categories.json"
+          },
+          "snapshot_ttl_days": 7
+        },
+        "problems": [],
+        "stale": false,
+        "executableDrift": false
+      },
+      "written": true,
+      "action": "appended",
+      "inventoryPath": "C:\\Windows\\Temp\\reversa-scenario-b-phase8-66VA46\\_reversa_sdd\\inventory.md",
+      "warning": null
+    }
+  },
+  "meta_after_first": {
+    "adapter_version": "0.1.0",
+    "created_at": "2026-05-25T07:58:44.105Z",
+    "collected_at": "2026-05-25T07:58:44.105Z",
+    "profile": "CS253",
+    "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+    "executable_source": "config",
+    "executable_trust": {
+      "path": "F:\\smoke\\CS253\\cs-agent.exe",
+      "size_bytes": 100953088,
+      "sizeBytes": 100953088,
+      "mtime_ms": 1779600811501.0994,
+      "mtime_iso": "2026-05-24T05:33:31.501Z",
+      "mtimeIso": "2026-05-24T05:33:31.501Z",
+      "signature": "not_checked",
+      "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+      "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+    },
+    "schema_version_observed": 3,
+    "files": {
+      "profile": "profile-info.json",
+      "graph": "graph-status.json",
+      "docs": "docs-categories.json"
+    },
+    "snapshot_files": {
+      "profile_info": "profile-info.json",
+      "graph_status": "graph-status.json",
+      "docs_categories": "docs-categories.json"
+    },
+    "snapshot_ttl_days": 7
+  },
+  "inventory_markers_after_first": {
+    "begin": 1,
+    "end": 1,
+    "has_cs_profile_heading": true
+  },
+  "second_run": {
+    "elapsed_ms": 16998,
+    "under_60s": true,
+    "snapshot": {
+      "ok": true,
+      "action": "snapshot",
+      "data": {
+        "snapshotDir": "C:\\Windows\\Temp\\reversa-scenario-b-phase8-66VA46\\.reversa\\context\\cs-agent",
+        "meta": {
+          "adapter_version": "0.1.0",
+          "created_at": "2026-05-25T07:59:01.157Z",
+          "collected_at": "2026-05-25T07:59:01.157Z",
+          "profile": "CS253",
+          "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+          "executable_source": "config",
+          "executable_trust": {
+            "path": "F:\\smoke\\CS253\\cs-agent.exe",
+            "size_bytes": 100953088,
+            "sizeBytes": 100953088,
+            "mtime_ms": 1779600811501.0994,
+            "mtime_iso": "2026-05-24T05:33:31.501Z",
+            "mtimeIso": "2026-05-24T05:33:31.501Z",
+            "signature": "not_checked",
+            "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+            "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+          },
+          "schema_version_observed": 3,
+          "files": {
+            "profile": "profile-info.json",
+            "graph": "graph-status.json",
+            "docs": "docs-categories.json"
+          },
+          "snapshot_files": {
+            "profile_info": "profile-info.json",
+            "graph_status": "graph-status.json",
+            "docs_categories": "docs-categories.json"
+          },
+          "snapshot_ttl_days": 7
+        }
+      }
+    },
+    "inventory": {
+      "ok": true,
+      "action": "inventory",
+      "data": {
+        "block": "<!-- reversa:cs-profile:begin -->\n## CS Profile (cs-agent)\n\nGenerated: 2026-05-25T07:59:01.157Z\nProfile: `CS253`\nAdapter: `0.1.0`\n\n### Profile\n- OT home: `E:\\CS253`\n- Workdir: `E:\\CS253_workdir`\n- Source dir: `E:\\CS253_workdir\\srcmodules`\n- Schema version: `3`\n\n### Graph\n- Source files: 34171\n- Support assets: 24227\n- Nodes: 940729\n- Edges: 2251241\n- Extraction errors: 82\n\n### Modules\n- __platform__: 357\n- activeview: 21\n- adminhelp: 175\n- answerdesk: 54\n- appearances: 27\n- barcode: 2\n- bestbets: 8\n- blog: 23\n- calendar: 14\n- calendarattr: 2\n- casebasic: 57\n- channel: 15\n- classification: 46\n- cmbase: 116\n- cmextra: 4\n- collections: 38\n- commdirectory: 36\n- comments: 34\n- contentmove: 42\n- contentsharing: 66\n- controlledviewing: 26\n- core: 1154\n- cpdatabase: 13\n- cpmaip: 7\n- csui: 1838\n- discussion: 44\n- distributedagent: 8\n- doctemplates: 164\n- docviewer: 4914\n- dps: 17\n- dtd: 5\n- elink: 9\n- enterprisearchivesp: 26\n- esign: 27\n- expression: 3\n- faq: 18\n- folder_icons: 46\n- form: 20\n- formwf: 5\n- forums: 29\n- gciutils: 212\n- guienhancements: 529\n- help: 374\n- home: 40\n- icons: 16\n- indexobject: 18\n- interview: 15\n- itemtemplate: 19\n- journal: 32\n- messagecenter: 173\n- metadata: 41\n- mimetypeimages: 94\n- multifile: 12\n- ngd: 152\n- nickname: 12\n- officeintegration: 164\n- oi: 14\n- otadmin: 4\n- otdsintegration: 2\n- otemail: 127\n- othcm: 73\n- otsapxecm: 326\n- permissionsexplorer: 16\n- perspectives: 53\n- physicalobjects: 108\n- polling: 16\n- project: 49\n- projecttemplate: 3\n- pstage: 32\n- ptfdassembly: 6\n- ptfdbuilder: 74\n- ptfdprinting: 97\n- ptfdpublish: 18\n- ptfdsignature: 17\n- qds: 10\n- recman: 118\n- recmansecurity: 20\n- recommender: 102\n- recyclebin: 4\n- rendition: 20\n- report: 12\n- resubmission: 40\n- rssfeed: 3\n- salesforceinterface: 537\n- searchstats: 2\n- signatureproviders: 23\n- socialfeed: 213\n- socialobject: 11\n- spdcommittee: 203\n- spdwizard: 4\n- storageprovider: 6\n- style: 151\n- summarizer: 13\n- supportasset: 16\n- task: 28\n- textedit: 7\n- todo: 4\n- transport: 40\n- ual: 2\n- undelete: 2\n- unittest: 1\n- viewx: 24\n- webadmin: 48\n- webattribute: 21\n- webconfig: 3\n- webdirwalk: 2\n- webdiscussion: 11\n- webdoc: 187\n- webdoctemplate: 2\n- webedit: 128\n- webform: 18\n- webhelp: 31\n- webhh: 13\n- webinbox: 2\n- webnode: 32\n- webnotify: 9\n- webotcindex: 8\n- webproj: 38\n- webprospector: 19\n- webreports: 165\n- websbroker: 97\n- websovmgmt: 13\n- websystemobj: 77\n- webuser: 9\n- webwfp: 1\n- webwork: 226\n- webxmlactivator: 8\n- wiki: 139\n- wopi: 18\n- xecmgov: 111\n- xecmoffice: 59\n- xecmpf: 236\n- xecmsap: 57\n- xeng: 4\n- xengadn: 26\n- xengcad: 17\n- xengcrt: 30\n- xenggis: 8125\n- xengppm: 10\n- xengse: 19\n- xengsfm: 35\n- xengtm: 14\n- xengtransmittal: 31\n- xgovexpimp: 16\n- xml: 3\n- xmlsearch: 7\n- xmlwfextensions: 35\n- xsd: 3\n\n### Reference Confidence\n- inferred: 17697\n- intrinsic: 65944\n- multi_candidate: 109483\n- resolved: 2058117\n\n### Unresolved References\n- ambiguous_call: 22148\n- asset: 40\n- depends_on: 557\n- feature_call: 480631\n- inherits: 2\n- template: 8675\n- type: 55740\n- uses_xlate: 143876\n<!-- reversa:cs-profile:end -->\n",
+        "validation": {
+          "ok": true,
+          "meta": {
+            "adapter_version": "0.1.0",
+            "created_at": "2026-05-25T07:59:01.157Z",
+            "collected_at": "2026-05-25T07:59:01.157Z",
+            "profile": "CS253",
+            "executable_path": "F:\\smoke\\CS253\\cs-agent.exe",
+            "executable_source": "config",
+            "executable_trust": {
+              "path": "F:\\smoke\\CS253\\cs-agent.exe",
+              "size_bytes": 100953088,
+              "sizeBytes": 100953088,
+              "mtime_ms": 1779600811501.0994,
+              "mtime_iso": "2026-05-24T05:33:31.501Z",
+              "mtimeIso": "2026-05-24T05:33:31.501Z",
+              "signature": "not_checked",
+              "help_signature_sha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e",
+              "helpSignatureSha256": "6868bbbc1b965abde49e7c2cbc4006362e1d41e940cc8fc22f793c66ff1fcb6e"
+            },
+            "schema_version_observed": 3,
+            "files": {
+              "profile": "profile-info.json",
+              "graph": "graph-status.json",
+              "docs": "docs-categories.json"
+            },
+            "snapshot_files": {
+              "profile_info": "profile-info.json",
+              "graph_status": "graph-status.json",
+              "docs_categories": "docs-categories.json"
+            },
+            "snapshot_ttl_days": 7
+          },
+          "problems": [],
+          "stale": false,
+          "executableDrift": false
+        },
+        "written": true,
+        "action": "replaced",
+        "inventoryPath": "C:\\Windows\\Temp\\reversa-scenario-b-phase8-66VA46\\_reversa_sdd\\inventory.md",
+        "warning": null
+      }
+    },
+    "no_prompt_reason": "integrations.cs_agent.enabled is true before fast-path run; migration prompt branch is not eligible.",
+    "markers": {
+      "begin": 1,
+      "end": 1
+    }
+  },
+  "finished_at": "2026-05-25T07:59:01.7949491Z"
+}
