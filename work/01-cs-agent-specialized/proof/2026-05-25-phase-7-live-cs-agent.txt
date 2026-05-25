@@ -1,0 +1,5 @@
+Temporary directory: C:\Windows\TEMP\reversa-cs-agent-live-8Lekhd
+Live cs-agent integration test passed for profile CS253.
+Snapshot: C:\Windows\TEMP\reversa-cs-agent-live-8Lekhd\snapshot
+Inventory: C:\Windows\TEMP\reversa-cs-agent-live-8Lekhd\inventory.md
+Temporary directory removed.

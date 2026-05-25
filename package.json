@@ -25,6 +25,7 @@
     "agents/",
     "bin/",
     "lib/",
+    "scripts/",
     "templates/",
     "README.md",
     "LICENSE"
