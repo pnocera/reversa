@@ -114,6 +114,14 @@ npx @pnocera/reversa content-server doctor
 
 Usa um `cs-agent` já inicializado como fonte read-only de evidências para projetos OpenText Content Server. O adaptador permite apenas leituras de perfil, status do grafo e categorias de documentação, e grava o cache em `.reversa/context/cs-agent/`.
 
+Opções úteis:
+
+- `--json` emite exatamente um envelope legível por máquina.
+- `--quiet` suprime a saída humana de sucesso.
+- `snapshot --profile <nome> --executable <caminho> --out-dir <caminho> --ttl-days <int>` coleta o cache.
+- `inventory --snapshot-dir <caminho> --inventory-path <caminho> --write|--print` renderiza o bloco de inventário.
+- `doctor --snapshot-dir <caminho>` atualiza o snapshot e informa deltas de contagem.
+
 ---
 
 ### `uninstall`

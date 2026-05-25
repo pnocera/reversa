@@ -30,7 +30,7 @@ Always do a cheap pre-walk Content Server detection pass before recursively list
 4. If detect has no profiles, add:
    `{ "type": "cs_agent_no_profile", "evidence": ["content-server detect"] }`
 5. If detect finds a profile, add:
-   `{ "type": "cs_agent_profile_detected", "evidence": ["content-server detect", "<profile>", "<ot_home>"] }`
+   `{ "type": "cs_agent_profile_detected", "profile": "<profile>", "ot_home": "<ot_home>", "executable_path": "<path>", "help_sha256": "<sha256>", "evidence": ["content-server detect", "<profile>", "<ot_home>"] }`
 
 Do not enable the integration from Scout. Only Reversa or the installer may update `.reversa/config.toml`.
 
@@ -38,16 +38,17 @@ If `[integrations.cs_agent].enabled = true`, run:
 
 ```bash
 npx @pnocera/reversa content-server snapshot
-npx @pnocera/reversa content-server inventory
 ```
 
 Then read `.reversa/context/cs-agent/graph-status.json` and use it as the source for Content Server file counts, module counts, support assets, unresolved references, and confidence counts. Add:
-`{ "type": "cs_agent_profile", "evidence": [".reversa/context/cs-agent/_meta.json", ".reversa/context/cs-agent/graph-status.json"] }`
+`{ "type": "cs_agent_profile", "profile": "<profile>", "executable_path": "<path>", "help_sha256": "<sha256>", "evidence": [".reversa/context/cs-agent/_meta.json", ".reversa/context/cs-agent/graph-status.json"] }`
 
 If snapshot fails, continue with normal filesystem reconnaissance, add `cs_agent_snapshot_failed`, and do not recursively walk `.reversa/context/cs-agent/`.
 
 ### 1. Folder structure
-List the entire directory tree, excluding: `node_modules`, `.git`, `.reversa`, `_reversa_sdd`, `dist`, `build`, `coverage`, `__pycache__`, `.cache`. If the Content Server integration is enabled, also exclude `srcmodules` from recursive traversal and replace that detail with the cs-agent snapshot summary.
+List the entire directory tree, excluding: `node_modules`, `.git`, `.reversa`, `_reversa_sdd`, `dist`, `build`, `coverage`, `__pycache__`, `.cache`.
+
+If the Content Server integration is enabled and the snapshot succeeded, read `.reversa/context/cs-agent/profile-info.json` and skip only the exact absolute directory at `profile.paths.srcdir` (or the top-level `srcdir` field if that is the only shape present). Do not skip every folder named `srcmodules`. Continue the normal walk for everything outside that exact path, including root-level configs, scripts, tooling, and docs. Replace the skipped directory detail with the cs-agent snapshot summary.
 
 ### 2. Technologies and frameworks
 Identify from configuration files:
@@ -98,6 +99,12 @@ Always populate:
 
 **In `.reversa/context/`:**
 - `surface.json` — structured data for the other agents
+
+If `[integrations.cs_agent].enabled = true` and the snapshot succeeded, run this after writing the standard `inventory.md` so the generated CS Profile block is merged into the final file:
+
+```bash
+npx @pnocera/reversa content-server inventory --write
+```
 
 ## Artifact writing safety
 

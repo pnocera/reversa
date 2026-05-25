@@ -34,7 +34,7 @@ Use only the Reversa adapter:
 npx @pnocera/reversa content-server probe
 npx @pnocera/reversa content-server detect
 npx @pnocera/reversa content-server snapshot
-npx @pnocera/reversa content-server inventory
+npx @pnocera/reversa content-server inventory --write
 npx @pnocera/reversa content-server doctor
 ```
 
@@ -51,7 +51,7 @@ Never call `cs-agent` directly from the skill. Never pass `init`, `refresh`, `bu
 1. Run `npx @pnocera/reversa content-server probe`.
 2. Run `npx @pnocera/reversa content-server detect`.
 3. If the configured profile is present and path checks are green, run `npx @pnocera/reversa content-server snapshot`.
-4. Run `npx @pnocera/reversa content-server inventory`.
+4. Run `npx @pnocera/reversa content-server inventory --write`.
 5. Read the generated inventory block and summarize only confirmed evidence.
 
 The snapshot lives under `.reversa/context/cs-agent/` and contains:
@@ -66,7 +66,7 @@ Treat `_meta.json` as the commit marker. If it is missing, the snapshot is incom
 
 ## How to use the evidence
 
-Prefer the snapshot over filesystem traversal for Content Server code volume, module counts, support assets, unresolved references, and confidence counts. If `.reversa/context/cs-agent/graph-status.json` is present, do not recursively walk `srcmodules`.
+Prefer the snapshot over filesystem traversal for Content Server code volume, module counts, support assets, unresolved references, and confidence counts. If `.reversa/context/cs-agent/graph-status.json` is present, do not recursively walk the exact source directory reported by `.reversa/context/cs-agent/profile-info.json` at `profile.paths.srcdir` (or top-level `srcdir` in older snapshots).
 
 When writing analysis artifacts, cite the generated inventory block and keep confidence aligned with the graph data:
 

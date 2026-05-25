@@ -61,19 +61,14 @@ Refer to `references/checkpoint-guide.md` for the state.json writing rules.
 Ask: "[Name], shall we start with the **Scout** — project mapping?"
 
 After confirmation, do not activate Scout yet. First, execute the parent
-`SKILL.md` section **Content Server specialization** exactly once for this run.
-That gate must run before Scout whenever `[integrations.cs_agent].enabled` is
-`true`, `false`, or absent:
+`SKILL.md` section **Content Server specialization** for the enabled fast path:
 
 - If Content Server is already enabled, collect the snapshot and inventory
-  before Scout starts.
-- If Content Server is disabled but `content-server detect --json` finds a
-  profile whose fingerprint has not been dismissed, ask the enablement question
-  before Scout starts.
-- If the user accepts, update config, collect the snapshot and inventory, then
-  activate Scout.
-- If the user declines or no profile is available, continue to Scout without
-  enabling the integration.
+  before Scout starts, then activate Scout with the snapshot available.
+- If Content Server is disabled or absent, do not ask the enablement question
+  here. Activate Scout normally; Scout performs the cheap read-only detect pass
+  and records `surface.json.signals[]`.
 
-Only after the Content Server specialization gate has completed, activate the
-`reversa-scout` skill.
+After Scout completes and saves `.reversa/context/surface.json`, the parent
+`SKILL.md` section **Content Server migration prompt** may ask the enablement
+question at the first checkpoint, before Archaeologist starts.

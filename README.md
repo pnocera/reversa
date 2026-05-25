@@ -352,7 +352,11 @@ npx @pnocera/reversa status       # Show current analysis state
 npx @pnocera/reversa update       # Update agents to the latest version
 npx @pnocera/reversa add-agent    # Add an agent to the project
 npx @pnocera/reversa add-engine   # Add support for a new engine
-npx @pnocera/reversa content-server probe  # Probe read-only cs-agent integration
+npx @pnocera/reversa content-server probe      # Probe read-only cs-agent integration
+npx @pnocera/reversa content-server detect     # List initialized Content Server profiles
+npx @pnocera/reversa content-server snapshot   # Collect profile/graph/docs snapshots
+npx @pnocera/reversa content-server inventory  # Render the CS Profile inventory block
+npx @pnocera/reversa content-server doctor     # Refresh snapshot and report basic drift
 npx @pnocera/reversa uninstall    # Remove Reversa from the project
 ```
 

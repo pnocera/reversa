@@ -39,6 +39,7 @@ enabled = false
 profile = ""
 executable = ""
 context_dir = ".reversa/context/cs-agent"
+# Empty means use the configured specs output folder inventory.md.
 inventory_path = ""
 snapshot_ttl_days = 7
 
